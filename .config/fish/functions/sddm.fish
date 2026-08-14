@@ -1,6 +1,6 @@
 function sddm --description "Gestor maestro de temas, colores, wallpapers y avatares para SDDM Caelestia"
     if test (count $argv) -ne 1
-        echo "Uso: sddm [beige | black | blue | green | purple | red]"
+        echo "Uso: sddm [beige | black | blue | green | purple | red | orange | pink | white | yellow]"
         return 1
     end
 
@@ -95,6 +95,47 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^textDark=.*/textDark=#aa6666/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^primary=.*/primary=#ff3333/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case ORANGE
+            echo "Aplicando paleta Naranja Ámbar / Cyberpunk..."
+            sudo sed -i 's/^background=.*/background=#0f0601/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#1a0c03/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#2b1406/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#ffe0cc/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#ba8e74/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#ff6600/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case WHITE
+            echo "Aplicando paleta Blanco Tiza / Minimalista..."
+            sudo sed -i 's/^background=.*/background=#050505/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#0f0f0f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#1a1a1a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#fbfbfb/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#999999/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#e5e5e5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case PINK
+            echo "Aplicando paleta Rosa Fucsia / Neon-Noir..."
+            sudo sed -i 's/^background=.*/background=#0f020a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#1f0514/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#330d24/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#ffe6f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#ba7aa1/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#ff007f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case YELLOW
+            echo "Aplicando paleta Amarillo Eléctrico / Cyberpunk..."
+            sudo sed -i 's/^background=.*/background=#0d0d02/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#1a1a05/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#2b2b0a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#ffffe6/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#baba7a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#ccff00/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+
     end
 
     echo "¡Estructura cambiada con éxito! Reiniciando la pantalla de bloqueo..."
