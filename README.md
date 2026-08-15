@@ -44,11 +44,6 @@ Aquí puedes ver cómo luce el sistema en acción tras completar la instalación
 
 Este repositorio inyecta funciones nativas muy potentes en tu shell Fish para gestionar el sistema con palabras clave ultra cortas desde tu consola:
 
-###  Gestión Inteligente de Energía
-* `ahorro` ➔ Modo Ahorro Máximo (Baja revoluciones, ideal para cuidar la batería).
-* `balance` ➔ Modo Equilibrado (Uso fluido para el día a día o navegar en Zen Browser).
-* `performance` ➔ Modo Alto Rendimiento (Desata la máxima potencia de la CPU).
-
 ###  Selector de Estilos Visuales para el Login (`sddm.fish`)
 * `sddm black` ➔ Estilo Monocromático Blanco y Negro Puro con transparencias limpias.
 * `sddm red` | `sddm blue` | `sddm green` | `sddm purple` | `sddm beige` | `sddm orange` | `sddm pink` | `sddm white` | `sddm yellow`
@@ -58,6 +53,23 @@ Este repositorio inyecta funciones nativas muy potentes en tu shell Fish para ge
 * `icons gris` ➔ Cambia todas las carpetas del sistema a un tono Gris Plomo elegante.
 * Soporte total para toda la paleta: `rojo`, `azul`, `verde`, `beige`, `violeta`, `negro`, `blanco`, `amarillo`, `naranja`, `cian`, `magenta`, `indigo`, `marron`, `rojo-oscuro`.
 ---
+
+##  Apps Instaladas Automáticamente
+
+El instalador incluye estas aplicaciones:
+
+* **Zen Browser** ➔ Navegador moderno con transparencias.
+* **Ghostty** ➔ Terminal rápida con GPU.
+* **Loupe** ➔ Visor de imágenes.
+* **Nautilus** ➔ Gestor de archivos.
+* **qBittorrent** ➔ Cliente de torrents.
+* **Lutris** ➔ Gestor de juegos.
+* **Wine + Winetricks** ➔ Compatibilidad con apps de Windows.
+* **GNOME Calculator** ➔ Calculadora.
+* **GNOME Disk Utility** ➔ Gestor de discos.
+* **ZapZap** ➔ WhatsApp no oficial (Flatpak).
+
+También se eliminan automáticamente **Firefox** y **Alacritty** (vienen con CachyOS pero no se usan).
 
 ## Atajos del Sistema Añadidos
 
