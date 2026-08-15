@@ -22,8 +22,8 @@ hl.config({
     },
     general = {
         gaps_in     = 4,
-        gaps_out    = 50,
-        border_size = 3,
+        gaps_out    = 60,
+        border_size = 2,
         layout      = "dwindle",
         resize_on_border = true,
         ["col.active_border"]   = active,
@@ -41,7 +41,7 @@ hl.config({
             color        = 0xaa14110f,
         },
         blur = {
-            enabled           = false,
+            enabled           = true,
             size              = 4,
             passes            = 3,
             vibrancy          = 0.17,
@@ -50,3 +50,5 @@ hl.config({
         },
     },
 })
+
+hl.layer_rule({ name = "pill-blur", match = { namespace = "pill" }, blur = true, ignore_alpha = 0.5 })
