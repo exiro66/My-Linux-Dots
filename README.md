@@ -74,7 +74,6 @@ También se eliminan automáticamente **Firefox** y **Alacritty** (vienen con Ca
 ## Atajos del Sistema Añadidos
 
 * **`Alt + Shift`** ➔ Conmuta de forma nativa e instantánea la distribución del teclado entre **Inglés (US)** y **Español (ES)**, configurado directamente sobre el módulo `input.lua` de Hyprland.
-* **Transparencia Activa** ➔ Todo el renderizado gráfico de efectos visuales pesados (*blur*) ha sido desactivado en favor de transparencias alfa puras. Esto duplica el rendimiento en memoria *Single-Channel* y GPUs integradas de laptops, manteniendo una estética cyberpunk de alta gama.
 
 ###  Lista Completa de Atajos (Keybinds)
 
