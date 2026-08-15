@@ -5,36 +5,36 @@ echo "    INSTALADOR MAESTRO TOTAL: APPS + RICELINE       "
 echo "===================================================="
 
 # 1. Clonar tus configuraciones personalizadas desde TU GitHub primero
-echo "==> 1. Descargando tus parches y tu lista de aplicaciones..."
+echo "==> 1. Descargando tus parches y configuraciones..."
 set MI_REPO "https://github.com/exiro66/My-Linux-Dots.git"
 set TMP_DIR "/tmp/mis-parches"
 
 rm -rf $TMP_DIR
 git clone $MI_REPO $TMP_DIR
 
-# 2. Instalar TODAS tus aplicaciones automáticamente (Zen, Loupe, nautilus, etc.)
-echo "==> 2. Instalando tus programas y apps del sistema..."
-if test -f "$TMP_DIR/.config/fish/functions/mis_apps.txt"
-    if not command -v yay >/dev/null
-        sudo pacman -S --needed git base-devel --noconfirm
-        git clone https://aur.archlinux.org/yay.git /tmp/yay
-        cd /tmp/yay; makepkg -si --noconfirm; cd -
-    end
-
-    set apps_a_instalar (cat $TMP_DIR/.config/fish/functions/mis_apps.txt)
-    yay -S --needed --noconfirm $apps_a_instalar
-else
-    echo "¡Advertencia! No se encontró la lista mis_apps.txt, instalando básicas..."
-    yay -S --needed --noconfirm ghostty zen-browser-bin papirus-icon-theme papirus-folders sddm
+# 2. Instalar apps esenciales
+echo "==> 2. Instalando apps esenciales..."
+if not command -v yay >/dev/null
+    sudo pacman -S --needed git base-devel --noconfirm
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-# 3. Ejecutar el instalador oficial de Ricelin y Rishot
-echo "==> 3. Descargando e instalando las herramientas oficiales de Gakuseei..."
+yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris sddm wine winetricks nautilus gnome-calculator gnome-disk-utility ghostty
+
+# 3. Instalar Flatpak y ZapZap
+echo "==> 3. Instalando Flatpak y ZapZap..."
+sudo pacman -S --needed --noconfirm flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub com.rtosta.zapzap
+
+# 4. Ejecutar el instalador oficial de Ricelin y Rishot
+echo "==> 4. Descargando e instalando Ricelin y Rishot..."
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/Ricelin/main/install.sh | bash
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
 
-# 4. Desplegar tus funciones y configuraciones personales
-echo "==> 4. Inyectando comandos rápidos en tu terminal Fish y Hyprland..."
+# 5. Desplegar funciones y configuraciones personales
+echo "==> 5. Inyectando funciones Fish y config de Hyprland..."
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/hypr
 mkdir -p ~/SDDM
@@ -42,32 +42,14 @@ cp -r $TMP_DIR/.config/fish/functions/* ~/.config/fish/functions/
 cp -r $TMP_DIR/.config/hypr/* ~/.config/hypr/
 cp -r $TMP_DIR/SDDM/* ~/SDDM/
 
-# 5. Instalar y parchear Caelestia SDDM
-echo "==> 5. Configurando y parcheando la pantalla de bloqueo SDDM..."
-yay -S --noconfirm caelestia-sddm-locklike-git
-
-# Sobreescribir con tu versión personalizada
-if test -d "$TMP_DIR/caelestia"
-    sudo cp -r $TMP_DIR/caelestia/* /usr/share/sddm/themes/caelestia/
+# 6. Configurar Fish (torii-greeting)
+echo "==> 6. Configurando Fish..."
+if test -f ~/.config/fish/config.fish
+    sed -i 's|~/.config/fish/torii-greeting.sh|#~/.config/fish/torii-greeting.sh|' ~/.config/fish/config.fish
 end
 
-# Configurar tema por defecto
-if test -f /etc/sddm.conf
-    sudo sed -i 's/^Current=.*/Current=caelestia/' /etc/sddm.conf
-else
-    echo "[Theme]" | sudo tee /etc/sddm.conf
-    echo "Current=caelestia" | sudo tee -a /etc/sddm.conf
-end
-
-sudo systemctl enable sddm
-
-# 6. Forzar tus carpetas Papirus en color Gris Oscuro (Carmine)
-echo "==> 6. Configurando iconos del sistema a Papirus con folders grises..."
-sudo papirus-folders -C carmine --theme Papirus-Dark
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-
-# 7. Instalar fuente MartianMono desde Nerd Fonts
-echo "==> 7. Instalando fuente MartianMono Nerd Font..."
+# 7. Instalar fuente MartianMono y configurar Ghostty
+echo "==> 7. Instalando MartianMono Nerd Font..."
 mkdir -p ~/.local/share/fonts
 set FONT_URL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/MartianMono.zip"
 set FONT_ZIP "/tmp/MartianMono.zip"
@@ -77,16 +59,29 @@ unzip -o $FONT_ZIP -d ~/.local/share/fonts/
 rm -f $FONT_ZIP
 fc-cache -fv
 
-# 8. Configurar Limine (timeout 0 + quiet)
+echo "==> 7.1 Configurando Ghostty con MartianMono..."
+mkdir -p ~/.config/ghostty
+echo "font-family = MartianMono Nerd Font Mono" > ~/.config/ghostty/config
+echo "font-size = 11" >> ~/.config/ghostty/config
+echo "background-opacity = 0.65" >> ~/.config/ghostty/config
+echo "window-decoration = none" >> ~/.config/ghostty/config
+
+# 8. Configurar Limine (timeout 0 + quiet yes)
 echo "==> 8. Configurando Limine..."
 if test -f /boot/limine.conf
     sudo sed -i 's/^timeout:.*/timeout: 0/' /boot/limine.conf
     sudo sed -i 's/^quiet:.*/quiet: yes/' /boot/limine.conf
+    if not grep -q "^timeout:" /boot/limine.conf
+        echo "timeout: 0" | sudo tee -a /boot/limine.conf
+    end
+    if not grep -q "^quiet:" /boot/limine.conf
+        echo "quiet: yes" | sudo tee -a /boot/limine.conf
+    end
 else
     echo "limine.conf no encontrado, saltando..."
 end
 
-# 9. Configurar Plymouth
+# 9. Configurar Plymouth Pedro Raccoon
 echo "==> 9. Configurando Plymouth Pedro Raccoon..."
 if test -d ./pedro-raccoon
     sudo cp -r ./pedro-raccoon /usr/share/plymouth/themes/
@@ -101,13 +96,31 @@ echo "==> 10. Copiando wallpapers para Ricelin..."
 mkdir -p ~/Ricelin/wallpapers
 cp -r ./wallpapers/* ~/Ricelin/wallpapers/
 
-# 11. Aplicar tema por defecto (opcional, descomenta el color que quieras)
-echo "==> 11. Aplicando tema BLUE por defecto..."
-sddm BLUE --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm BLUE"
+# 11. Instalar y parchear Caelestia SDDM
+echo "==> 11. Configurando y parcheando SDDM..."
+yay -S --noconfirm caelestia-sddm-locklike-git
+if test -d "$TMP_DIR/caelestia"
+    sudo cp -r $TMP_DIR/caelestia/* /usr/share/sddm/themes/caelestia/
+end
+if test -f /etc/sddm.conf
+    sudo sed -i 's/^Current=.*/Current=caelestia/' /etc/sddm.conf
+else
+    echo "[Theme]" | sudo tee /etc/sddm.conf
+    echo "Current=caelestia" | sudo tee -a /etc/sddm.conf
+end
+sudo systemctl enable sddm
+
+# 12. Configurar iconos Papirus
+echo "==> 12. Configurando iconos Papirus..."
+sudo papirus-folders -C carmine --theme Papirus-Dark
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+
+# 13. Aplicar tema BLACK por defecto
+echo "==> 13. Aplicando tema BLACK..."
+sddm black --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm black"
 
 echo "===================================================="
 echo "   ¡PROCESO TOTAL COMPLETADO CON ÉXITO!            "
 echo "   Tus aplicaciones, Riceline y SDDM están listos. "
 echo "   Por favor, reinicia el sistema para aplicar.     "
 echo "===================================================="
-
