@@ -1,40 +1,34 @@
 function sddm --description "Gestor maestro de temas, colores, wallpapers y avatares para SDDM Caelestia"
-    if test (count $argv) -ne 1
-        echo "Uso: sddm [beige | black | blue | green | purple | red | orange | pink | white | yellow]"
+    if test (count $argv) -lt 1; or test (count $argv) -gt 2
+        echo "Uso: sddm [beige | black | blue | green | purple | red | orange | pink | white | yellow] [--no-restart]"
         return 1
     end
 
-    # Convertir el argumento de texto a MAYÚSCULAS para que coincida con tus carpetas
     set color_input (string upper $argv[1])
-    set base_dir "/home/mohamed/SDDM/$color_input"
+    set base_dir "$HOME/SDDM/$color_input"
     set wall_src "$base_dir/A.jpg"
     set avatar_src "$base_dir/B.jpg"
 
-    # Validar que la carpeta y las imágenes existan
     if not test -f $wall_src; or not test -f $avatar_src
         echo "Error: No se encontraron los archivos necesarios en $base_dir/"
-        echo "Asegúrate de tener la carpeta /home/mohamed/SDDM/$color_input con 'A.jpg' y 'B.jpg'"
+        echo "Asegúrate de tener la carpeta $base_dir con 'A.jpg' y 'B.jpg'"
         return 1
     end
 
     echo "Configurando entorno SDDM en modo: $color_input..."
 
-    # 1. Copiar Wallpaper (A.jpg) a todas las rutas de caché del tema
     sudo cp $wall_src /usr/share/sddm/themes/caelestia/background.png
     sudo cp $wall_src /usr/share/sddm/themes/caelestia/assets/background
     sudo cp $wall_src /usr/share/sddm/themes/caelestia/assets/background.png
 
-    # 2. Copiar Foto de Perfil / Avatar (B.jpg)
     sudo cp $avatar_src /usr/share/sddm/themes/caelestia/assets/avatar.jpg
-    sudo cp $avatar_src /usr/share/sddm/faces/mohamed.face.icon
+    sudo cp $avatar_src /usr/share/sddm/faces/$USER.face.icon
 
-    # 3. Corregir permisos globales para que SDDM pueda leerlos
     sudo chmod 644 /usr/share/sddm/themes/caelestia/background.png
     sudo chmod 644 /usr/share/sddm/themes/caelestia/assets/background*
     sudo chmod 644 /usr/share/sddm/themes/caelestia/assets/avatar.jpg
-    sudo chmod 644 /usr/share/sddm/faces/mohamed.face.icon
+    sudo chmod 644 /usr/share/sddm/faces/$USER.face.icon
 
-    # 4. Inyectar la paleta de colores hexadecimales al theme.conf según el color
     switch $color_input
         case BEIGE
             echo "Aplicando paleta Beige Cálida..."
@@ -136,8 +130,17 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^primary=.*/primary=#ccff00/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
+        case '*'
+            echo "Error: Color no reconocido: $color_input"
+            return 1
     end
 
-    echo "¡Estructura cambiada con éxito! Reiniciando la pantalla de bloqueo..."
-    sudo systemctl restart sddm
+    echo "Tema $color_input aplicado correctamente."
+
+    if test "$argv[2]" = "--no-restart"
+        echo "Cambios aplicados sin reiniciar SDDM."
+    else
+        echo "Reiniciando la pantalla de bloqueo..."
+        sudo systemctl restart sddm
+    end
 end
