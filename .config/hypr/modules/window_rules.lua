@@ -88,3 +88,11 @@ if ok and type(stashApps) == "table" then
     end
 end
 
+
+-- Gnome Calculator flotante con transparencia
+hl.window_rule({
+    name    = "gnome-calculator-float",
+    match   = { class = "org.gnome.Calculator" },
+    float   = true,
+    opacity = 0.85,
+})
