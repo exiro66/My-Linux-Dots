@@ -50,8 +50,8 @@ Este repositorio inyecta funciones nativas muy potentes en tu shell Fish para ge
 * `sddm (color) --no-restart` ➔ Cambiar Estilo sin Reiniciar
 
 ###  Personalización Temática de Iconos (`icons.fish`)
-* `icons gris` ➔ Cambia todas las carpetas del sistema a un tono Gris Plomo elegante.
-* Soporte total para toda la paleta: `rojo`, `azul`, `verde`, `beige`, `violeta`, `negro`, `blanco`, `amarillo`, `naranja`, `cian`, `magenta`, `indigo`, `marron`, `rojo-oscuro`.
+* `icons grey` ➔ Cambia todas las carpetas del sistema a un tono Gris Plomo elegante.
+* Soporte total para toda la paleta: `red`, `carmine`, `blue`, `green`, `palebrown`, `violet`, `black`, `white`, `yellow`, `orange`, `pink`, `cyan`, `magenta`, `indigo`, `brown`.
 ---
 
 ##  Apps Instaladas Automáticamente
