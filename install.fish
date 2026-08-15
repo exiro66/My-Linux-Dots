@@ -22,6 +22,10 @@ end
 
 yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris sddm wine winetricks nautilus gnome-calculator gnome-disk-utility ghostty
 
+# 2.1 Borrar apps que no quiero
+echo "==> 2.1 Eliminando Firefox y Alacritty..."
+sudo pacman -Rns --noconfirm firefox alacritty
+
 # 3. Instalar Flatpak y ZapZap
 echo "==> 3. Instalando Flatpak y ZapZap..."
 sudo pacman -S --needed --noconfirm flatpak
@@ -118,6 +122,9 @@ gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 # 13. Aplicar tema BLACK por defecto
 echo "==> 13. Aplicando tema BLACK..."
 sddm black --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm black"
+
+echo "==> 13.1 Aplicando iconos negros..."
+icons negro
 
 echo "===================================================="
 echo "   ¡PROCESO TOTAL COMPLETADO CON ÉXITO!            "
