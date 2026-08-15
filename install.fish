@@ -98,7 +98,16 @@ end
 # 10. Copiar wallpapers para Ricelin
 echo "==> 10. Copiando wallpapers para Ricelin..."
 mkdir -p ~/Ricelin/wallpapers
-cp -r ./wallpapers/* ~/Ricelin/wallpapers/
+cp -r ./wallpapers/BEIGE.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/BLACK.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/BLUE.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/GREEN.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/ORANGE.png ~/Ricelin/wallpapers/
+cp -r ./wallpapers/PINK.png ~/Ricelin/wallpapers/
+cp -r ./wallpapers/PURPLE.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/RED.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/WHITE.jpg ~/Ricelin/wallpapers/
+cp -r ./wallpapers/YELLOW.jpg ~/Ricelin/wallpapers/
 
 # 11. Instalar y parchear Caelestia SDDM
 echo "==> 11. Configurando y parcheando SDDM..."
