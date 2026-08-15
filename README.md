@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <strong>Mi Setup definitivo Minimalista en Blanco y Negro</strong><br>
+  <strong>Mi Setup definitivo Minimalista en Cachyos</strong><br>
   Basado en la suite de personalización <code>RICELIN</code> (Quickshell) con Isla Dinámica para Hyprland.
 </p>
 
