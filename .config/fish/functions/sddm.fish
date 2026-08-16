@@ -31,7 +31,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
 
     switch $color_input
         case BEIGE
-            echo "Aplicando paleta Beige Cálida..."
+            echo "Applying beige..."
             sudo sed -i 's/^background=.*/background=#12110e/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#1c1a16/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#292620/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -41,7 +41,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case BLACK
-            echo "Aplicando paleta Monocromática (Blanco y Negro)..."
+            echo "Applying black..."
             sudo sed -i 's/^background=.*/background=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#0a0a0a/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#121212/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -51,7 +51,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case BLUE
-            echo "Aplicando paleta Azul Gojo / Ciano..."
+            echo "Applying blue..."
             sudo sed -i 's/^background=.*/background=#020813/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#081226/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#0f1f3d/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -61,7 +61,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case GREEN
-            echo "Aplicando paleta Verde Menta Oscuro..."
+            echo "Applying green..."
             sudo sed -i 's/^background=.*/background=#020f08/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#081f12/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#12331f/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -71,7 +71,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case PURPLE
-            echo "Aplicando paleta Violeta Neon / Void..."
+            echo "Applying purple..."
             sudo sed -i 's/^background=.*/background=#090212/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#150826/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#25123d/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -81,7 +81,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case RED
-            echo "Aplicando paleta Carmesí Sangre..."
+            echo "Applying red..."
             sudo sed -i 's/^background=.*/background=#0a0202/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#120505/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#1c0a0a/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -91,7 +91,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case ORANGE
-            echo "Aplicando paleta Naranja Ámbar / Cyberpunk..."
+            echo "Applying orange..."
             sudo sed -i 's/^background=.*/background=#0f0601/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#1a0c03/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#2b1406/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -101,7 +101,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case WHITE
-            echo "Aplicando paleta Blanco Tiza / Minimalista..."
+            echo "Applying white..."
             sudo sed -i 's/^background=.*/background=#050505/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#0f0f0f/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#1a1a1a/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -111,7 +111,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case PINK
-            echo "Aplicando paleta Rosa Fucsia / Neon-Noir..."
+            echo "Applying pink..."
             sudo sed -i 's/^background=.*/background=#0f020a/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#1f0514/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#330d24/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -121,7 +121,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case YELLOW
-            echo "Aplicando paleta Amarillo Eléctrico / Cyberpunk..."
+            echo "Applying yellow..."
             sudo sed -i 's/^background=.*/background=#0d0d02/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^mainCard=.*/mainCard=#1a1a05/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^subComponents=.*/subComponents=#2b2b0a/' /usr/share/sddm/themes/caelestia/theme.conf
