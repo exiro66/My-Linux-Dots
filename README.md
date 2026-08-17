@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Mi Setup definitivo Minimalista en Cachyos</strong><br>
-  Basado en la suite de personalización <code>RICELIN</code> (Quickshell) con Isla Dinámica para Hyprland.
+  Basado en la suite de personalización <code>RICELIN</code> (Quickshell) con modo notch y dynamic island en Hyprland.
 </p>
 
 ---
@@ -36,6 +36,8 @@ Aquí puedes ver cómo luce el sistema en acción tras completar la instalación
 ![Captura 2](assets/2.png)
 
 ![Captura 3](assets/3.png)
+
+![Captura 4](assets/4.png)
 
 
 ---
