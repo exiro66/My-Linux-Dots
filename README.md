@@ -161,6 +161,11 @@ El script se encargará solo de mover tus imágenes a las carpetas del sistema, 
 
 ---
 
+### Ajuste de la pill (`pill.fish`)
+* `pill` ➔ Ajusta interactivamente el ancho, alto y grosor del borde de la pill.
+
+--- 
+
 ##  Cómo Mostrar Limine de Nuevo
 
 Si quieres volver a ver el menú de Limine al arrancar:
