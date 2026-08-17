@@ -1,7 +1,7 @@
 # 🪐 My-Linux-Dots
 
 <p align="center">
-  <img src="assets/E.jpg" width="150" height="150" style="border-radius: 50%;" alt="Gojo Avatar">
+  <img src="img/E.jpg" width="150" height="150" style="border-radius: 50%;" alt="Gojo Avatar">
 </p>
 
 <p align="center">
@@ -31,13 +31,13 @@ git clone https://github.com/exiro66/My-Linux-Dots.git && cd My-Linux-Dots && fi
 
 Aquí puedes ver cómo luce el sistema en acción tras completar la instalación automática:
 
-![Captura 1](assets/A.png)
+![Captura 1](img/A.png)
 
-![Captura 2](assets/B.png)
+![Captura 2](img/B.png)
 
-![Captura 3](assets/C.png)
+![Captura 3](img/C.png)
 
-![Captura 4](assets/D.png)
+![Captura 4](img/D.png)
 
 
 ---
