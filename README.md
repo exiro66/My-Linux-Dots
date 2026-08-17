@@ -54,6 +54,11 @@ Este repositorio inyecta funciones nativas muy potentes en tu shell Fish para ge
 ###  Personalización Temática de Iconos (`icons.fish`)
 * `icons grey` ➔ Cambia todas las carpetas del sistema a un tono Gris Plomo elegante.
 * Soporte total para toda la paleta: `red`, `carmine`, `blue`, `green`, `palebrown`, `violet`, `black`, `white`, `yellow`, `orange`, `pink`, `cyan`, `magenta`, `indigo`, `brown`.
+
+
+### Ajuste de la pill (`pill.fish`)
+* `pill` ➔ Ajusta interactivamente el ancho, alto y grosor del borde de la pill.
+
 ---
 
 ##  Apps Instaladas Automáticamente
@@ -161,10 +166,6 @@ El script se encargará solo de mover tus imágenes a las carpetas del sistema, 
 
 ---
 
-### Ajuste de la pill (`pill.fish`)
-* `pill` ➔ Ajusta interactivamente el ancho, alto y grosor del borde de la pill.
-
---- 
 
 ##  Cómo Mostrar Limine de Nuevo
 

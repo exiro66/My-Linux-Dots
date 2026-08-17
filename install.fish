@@ -20,7 +20,7 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme
+yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme ghostty caelestia-sddm-locklike-git
 
 # 2.1 Borrar apps que no quiero
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
@@ -52,7 +52,7 @@ if test -f ~/.config/fish/config.fish
     sed -i 's|~/.config/fish/torii-greeting.sh|#~/.config/fish/torii-greeting.sh|' ~/.config/fish/config.fish
 end
 
-# 7. Instalar fuente MartianMono y configurar Ghostty
+# 7. Instalar fuente MartianMono
 echo "==> 7. Instalando MartianMono Nerd Font..."
 mkdir -p ~/.local/share/fonts
 set FONT_URL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/MartianMono.zip"
@@ -62,13 +62,6 @@ wget -O $FONT_ZIP $FONT_URL
 unzip -o $FONT_ZIP -d ~/.local/share/fonts/
 rm -f $FONT_ZIP
 fc-cache -fv
-
-echo "==> 7.1 Configurando Ghostty con MartianMono..."
-mkdir -p ~/.config/ghostty
-echo "font-family = MartianMono Nerd Font Mono" > ~/.config/ghostty/config
-echo "font-size = 11" >> ~/.config/ghostty/config
-echo "background-opacity = 0.65" >> ~/.config/ghostty/config
-echo "window-decoration = none" >> ~/.config/ghostty/config
 
 # 8. Configurar Limine (timeout 0 + quiet yes)
 echo "==> 8. Configurando Limine..."
@@ -125,11 +118,24 @@ echo "==> 12. Configurando iconos Papirus..."
 sudo papirus-folders -C carmine --theme Papirus-Dark
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 
-# 13. Aplicar tema BLACK por defecto
-echo "==> 13. Aplicando tema BLACK..."
+# 13. Instalar y configurar Starship
+echo "==> 13. Instalando Starship..."
+curl -sS https://starship.rs/install.sh | sh
+mkdir -p ~/.config
+cp $TMP_DIR/starship.toml ~/.config/starship.toml
+echo "starship init fish | source" >> ~/.config/fish/config.fish
+
+# 14. Configurar Ghostty
+echo "==> 14. Configurando Ghostty..."
+mkdir -p ~/.config/ghostty
+cp $TMP_DIR/.config/ghostty/config ~/.config/ghostty/config
+
+# 15. Aplicando tema BLACK
+echo "==> 15. Aplicando tema BLACK..."
 sddm black --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm black"
 
-echo "==> 13.1 Aplicando iconos negros..."
+# 15.1 Aplicando iconos negros
+echo "==> 15.1 Aplicando iconos negros..."
 icons negro
 
 echo "===================================================="
