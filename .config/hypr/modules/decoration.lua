@@ -42,8 +42,8 @@ hl.config({
         },
         blur = {
             enabled           = true,
-            size              = 4,
-            passes            = 3,
+            size              = 8,
+            passes            = 4,
             vibrancy          = 0.17,
             noise             = 0.01,
             new_optimizations = true,
@@ -51,4 +51,4 @@ hl.config({
     },
 })
 
-hl.layer_rule({ name = "pill-blur", match = { namespace = "pill" }, blur = true, ignore_alpha = 0.65 })
+hl.layer_rule({ name = "pill-blur", match = { namespace = "pill" }, blur = true, ignore_alpha = 0.5 })

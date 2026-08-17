@@ -411,7 +411,7 @@ ShellRoot {
 Pill {
     id: pill
     anchors.top: parent.top
-    anchors.topMargin: pill.pillMode === "dynamic" ? 12 : -4
+    anchors.topMargin: pill.pillMode === "dynamic" ? 12 : -3
     anchors.horizontalCenter: parent.horizontalCenter
                
      Behavior on anchors.topMargin {
