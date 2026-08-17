@@ -14,5 +14,4 @@ function toggle-pill-mode --description "Alterna entre modo notch y dynamic isla
     end
 
     echo $new_mode > $mode_file
-    ~/.config/hypr/scripts/ricelin restart pill
 end
