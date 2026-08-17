@@ -43,19 +43,19 @@ FileView {
     path: Quickshell.env("HOME") + "/.cache/ricelin/pill-mode"
     blockLoading: true
     watchChanges: true
+    onFileChanged: reload()
     onLoaded: pill.pillMode = text().trim() === "dynamic" ? "dynamic" : "notch"
 }
 
-
 Timer {
-    interval: 500
+    interval: 700
     repeat: true
     running: true
     onTriggered: {
         notchFile.reload();
+        pillFile.reload();
     }
 }
-
     property real s: 1
     property string screenName: ""
     property var barWindow
@@ -174,7 +174,7 @@ Timer {
     readonly property bool quickCounting: quickHere && ScreenRec.counting && !recorderOpen
 
     readonly property real restW: 128 * s
-    readonly property real restH: 38 * s
+    readonly property real restH: 36 * s
     readonly property real hoverPad: 20 * s
     readonly property real hoverW: hoverRow.implicitWidth + 2 * hoverPad
     readonly property real hoverH: 58 * s
@@ -666,7 +666,7 @@ Timer {
         anchors.verticalCenter: parent.verticalCenter
         visible: opacity > 0.01
         opacity: shown ? 1 : 0
-        border.width: 1
+        border.width: 0
         border.color: Theme.border
         gradient: Gradient {
             GradientStop { position: 0.0; color: Qt.alpha(Theme.cardTop, Flags.pillOpacity) }
@@ -721,8 +721,8 @@ Rectangle {
     Behavior on gameFlat { NumberAnimation { duration: Motion.morph; easing.type: Motion.easeMorph; easing.bezierCurve: Motion.morphCurve } }
 
     radius: pill.morphRadius
-    topLeftRadius: pill.pillMode === "dynamic" ? pill.morphRadius : 0
-    topRightRadius: pill.pillMode === "dynamic" ? pill.morphRadius : 0
+topLeftRadius: pill.pillMode === "dynamic" ? pill.morphRadius : 0
+topRightRadius: pill.pillMode === "dynamic" ? pill.morphRadius : 0
     bottomLeftRadius: pill.morphRadius
     bottomRightRadius: pill.morphRadius
     border.width: 0
@@ -2305,7 +2305,7 @@ gradient: Gradient {
                     height: parent.height
                     radius: 11 * pill.s
                     color: qSrcArea.containsMouse ? Qt.alpha(Theme.vermLit, 0.16) : Theme.tileBg
-                    border.width: 1
+                    border.width: 0
                     border.color: qSrcArea.containsMouse ? Qt.alpha(Theme.vermLit, 0.5) : Theme.border
                     Behavior on color { ColorAnimation { duration: Motion.fast } }
 
@@ -2360,7 +2360,7 @@ gradient: Gradient {
                 height: quickScreens.height
                 radius: 11 * pill.s
                 color: qMonArea.containsMouse ? Qt.alpha(Theme.vermLit, 0.16) : Theme.tileBg
-                border.width: 1
+                border.width: 0
                 border.color: qMonArea.containsMouse ? Qt.alpha(Theme.vermLit, 0.5) : Theme.border
                 Behavior on color { ColorAnimation { duration: Motion.fast } }
 
