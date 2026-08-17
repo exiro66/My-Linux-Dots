@@ -62,6 +62,7 @@ hl.bind("XF86AudioPrev",        hl.dsp.global("quickshell:mediaPrev"),          
 hl.bind(mod .. " + Q",                 hl.dsp.window.close())
 hl.bind(mod .. " + S", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/rishot"))
 hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/rishot monitor"))
-hl.bind(mod .. " + D", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"'))
-hl.bind(mod .. " + C", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-light"'))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd("zen-browser")) -- Zen Browser
+hl.bind(mod .. " + D", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" && echo dark > ~/.cache/ricelin/notch-mode'))
+hl.bind(mod .. " + C", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-light" && echo light > ~/.cache/ricelin/notch-mode'))
+hl.bind(mod .. " + N", hl.dsp.exec_cmd("fish -c toggle-pill-mode"))
