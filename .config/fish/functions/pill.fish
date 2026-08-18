@@ -1,12 +1,11 @@
-function pill --description "Ajustar ancho, alto y grosor del borde de la pill"
+function pill --description "Adjust pill width, height and border thickness"
     set config ~/.config/quickshell/pill/Pill.qml
 
-    read -P "Ancho de la pill (ej: 128): " ancho
-    read -P "Alto de la pill (ej: 36): " alto
-    read -P "Grosor del borde (0 para sin borde): " grosor
+    read -P "Pill width (e.g. 128): " ancho
+    read -P "Pill height (e.g. 36): " alto
+    read -P "Border thickness (0 for none): " grosor
 
     sed -i "s/readonly property real restW: .*/readonly property real restW: $ancho * s/" $config
     sed -i "s/readonly property real restH: .*/readonly property real restH: $alto * s/" $config
     sed -i "s/border.width: .*/border.width: $grosor/" $config
-
 end
