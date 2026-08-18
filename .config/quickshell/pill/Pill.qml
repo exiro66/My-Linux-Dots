@@ -1284,12 +1284,12 @@ gradient: Gradient {
             id: restRow
             anchors.centerIn: parent
             spacing: 9 * pill.s
-            Item {
-                id: restKanji
-                visible: pill.specialView === ""
-                anchors.verticalCenter: parent.verticalCenter
-                width: kanjiFill.implicitWidth
-                height: kanjiFill.implicitHeight
+Item {
+    id: restKanji
+    visible: pill.specialView === ""
+    anchors.verticalCenter: parent.verticalCenter
+    width: Flags.showGlyphs ? kanjiFill.implicitWidth : 0
+    height: Flags.showGlyphs ? kanjiFill.implicitHeight : 0
 
                 /** Audio leaving the speakers flips the clock glyph over to the live waveform. */
                 readonly property bool barsOn: Flags.musicViz && Cava.active
@@ -1325,6 +1325,7 @@ gradient: Gradient {
                     name: "clock"
                     color: pill.textColor
                     stroke: 1.7
+                    visible: false
                     Behavior on opacity { NumberAnimation { duration: Motion.standard; easing.type: Motion.easeStandard } }
                 }
 
