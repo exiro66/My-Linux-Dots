@@ -71,8 +71,9 @@ Singleton {
      * refreshFonts() once its FontLoader is ready.
      */
     property var fontFamilies: Qt.fontFamilies()
+    Component.onCompleted: refreshFonts()
     function refreshFonts() { fontFamilies = Qt.fontFamilies(); }
-    readonly property string font: (Flags.uiFont.length > 0 && fontFamilies.indexOf(Flags.uiFont) >= 0) ? Flags.uiFont : "Inter"
+    readonly property string font: (Flags.uiFont.length > 0 ? Flags.uiFont : "Inter")
     readonly property string fontJp: "Zen Kaku Gothic New"
 
     /**

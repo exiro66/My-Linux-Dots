@@ -1288,11 +1288,11 @@ Item {
     id: restKanji
     visible: pill.specialView === ""
     anchors.verticalCenter: parent.verticalCenter
-    width: Flags.showGlyphs ? kanjiFill.implicitWidth : 0
-    height: Flags.showGlyphs ? kanjiFill.implicitHeight : 0
+width: restKanji.barsOn ? 20 * pill.s : (Flags.showGlyphs ? kanjiFill.implicitWidth : 0)
+height: restKanji.barsOn ? 20 * pill.s : (Flags.showGlyphs ? kanjiFill.implicitHeight : 0)
 
                 /** Audio leaving the speakers flips the clock glyph over to the live waveform. */
-                readonly property bool barsOn: Flags.musicViz && Cava.active
+readonly property bool barsOn: Flags.musicViz && Cava.active
 
                 Text {
                     anchors.fill: parent
@@ -1331,8 +1331,7 @@ Item {
 
                 MusicBars {
                     id: musicBars
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.bottom: kanjiFill.baseline
+anchors.centerIn: parent
                     s: pill.s
                     opacity: restKanji.barsOn ? 1 : 0
                     scale: restKanji.barsOn ? 1 : 0.7
