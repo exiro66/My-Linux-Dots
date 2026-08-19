@@ -119,11 +119,14 @@ mkdir -p ~/.config
 cp $TMP_DIR/starship.toml ~/.config/starship.toml
 echo "starship init fish | source" >> ~/.config/fish/config.fish
 
+# 12.5 Eliminar Ghostty
+echo "==> 12.5 Eliminando Ghostty..."
+sudo pacman -Rns --noconfirm ghostty
+
 # 13. Configurar Kitty
 echo "==> 13. Configurando Kitty..."
 mkdir -p ~/.config/kitty
 cp $TMP_DIR/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
-sudo pacman -Rns ghostty
 
 # 14. Aplicando tema BLACK
 echo "==> 14. Aplicando tema BLACK..."
