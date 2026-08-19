@@ -22,3 +22,5 @@ foreground = #e6e6e6
 cursor-color = #ffffff
 selection-background = #1a1a1a
 selection-foreground = #ffffff
+
+#config-file = ?~/.cache/ricelin/ghostty-colors
