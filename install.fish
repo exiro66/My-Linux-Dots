@@ -20,7 +20,7 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme kitty caelestia-sddm-locklike-git
+yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme kitty caelestia-sddm-locklike-git papirus-folders
 
 # 2.1 Borrar apps que no quiero
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
