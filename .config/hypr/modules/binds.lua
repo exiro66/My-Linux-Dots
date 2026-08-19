@@ -1,7 +1,7 @@
 local mod = "SUPER"
 
 hl.bind(mod .. " + SHIFT + Q",         hl.dsp.window.kill())
-hl.bind(mod .. " + T",    hl.dsp.exec_cmd("ghostty"))
+hl.bind(mod .. " + T",    hl.dsp.exec_cmd("kitty"))
 hl.bind(mod .. " + F",         hl.dsp.window.fullscreen())
 hl.bind(mod .. " + E",         hl.dsp.exec_cmd("nautilus"))
 hl.bind(mod .. " + SHIFT + T",         hl.dsp.window.float({ action = "toggle" }))

@@ -74,7 +74,6 @@ El instalador incluye estas aplicaciones:
 * **Wine + Winetricks** ➔ Compatibilidad con apps de Windows.
 * **GNOME Calculator** ➔ Calculadora.
 * **GNOME Disk Utility** ➔ Gestor de discos.
-* **ZapZap** ➔ WhatsApp no oficial (Flatpak).
 
 También se eliminan automáticamente **Firefox** y **Alacritty** (vienen con CachyOS pero no se usan).
 

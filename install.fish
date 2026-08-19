@@ -20,7 +20,7 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme ghostty caelestia-sddm-locklike-git
+yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme kitty caelestia-sddm-locklike-git
 
 # 2.1 Borrar apps que no quiero
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
@@ -119,10 +119,11 @@ mkdir -p ~/.config
 cp $TMP_DIR/starship.toml ~/.config/starship.toml
 echo "starship init fish | source" >> ~/.config/fish/config.fish
 
-# 13. Configurar Ghostty
-echo "==> 13. Configurando Ghostty..."
-mkdir -p ~/.config/ghostty
-cp $TMP_DIR/.config/ghostty/config ~/.config/ghostty/config
+# 13. Configurar Kitty
+echo "==> 13. Configurando Kitty..."
+mkdir -p ~/.config/kitty
+cp $TMP_DIR/.config/kitty/kitty.conf ~/.config/kitty/kitty.conf
+sudo pacman -Rns ghostty
 
 # 14. Aplicando tema BLACK
 echo "==> 14. Aplicando tema BLACK..."
