@@ -98,8 +98,8 @@ symbol = ' '
 
 [character]
 format = "$symbol "
-success_symbol = "[󰣇](bold white)"
-error_symbol = "[󰣇](bold red)"
+success_symbol = "[](bold white)"
+error_symbol = "[](bold red)"
 
 [env_var.VIMSHELL]
 format = "[$env_value]($style)"
@@ -143,7 +143,7 @@ format = " ◯[$localipv4](bold magenta)"
 disabled = false
 
 [time]
-disabled = false
+disabled = true
 format = "[ $time]($style)"
 time_format = "%R"
 utc_time_offset = "local"
