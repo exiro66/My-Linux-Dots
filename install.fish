@@ -26,19 +26,13 @@ yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetr
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
 sudo pacman -Rns --noconfirm firefox alacritty
 
-# 3. Instalar Flatpak y ZapZap
-echo "==> 3. Instalando Flatpak y ZapZap..."
-sudo pacman -S --needed --noconfirm flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install -y flathub com.rtosta.zapzap
-
-# 4. Ejecutar el instalador oficial de Ricelin y Rishot
-echo "==> 4. Descargando e instalando Ricelin y Rishot..."
+# 3. Ejecutar el instalador oficial de Ricelin y Rishot
+echo "==> 3. Descargando e instalando Ricelin y Rishot..."
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/Ricelin/main/install.sh | bash
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
 
-# 5. Desplegar funciones y configuraciones personales
-echo "==> 5. Inyectando funciones Fish y config de Hyprland..."
+# 4. Desplegar funciones y configuraciones personales DESPUÉS de Ricelin
+echo "==> 4. Inyectando funciones Fish y config de Hyprland..."
 mkdir -p ~/.config/fish/functions
 mkdir -p ~/.config/hypr
 mkdir -p ~/SDDM
@@ -46,14 +40,14 @@ cp -r $TMP_DIR/.config/fish/functions/* ~/.config/fish/functions/
 cp -r $TMP_DIR/.config/hypr/* ~/.config/hypr/
 cp -r $TMP_DIR/SDDM/* ~/SDDM/
 
-# 6. Configurar Fish (torii-greeting)
-echo "==> 6. Configurando Fish..."
+# 5. Configurar Fish (torii-greeting)
+echo "==> 5. Configurando Fish..."
 if test -f ~/.config/fish/config.fish
     sed -i 's|~/.config/fish/torii-greeting.sh|#~/.config/fish/torii-greeting.sh|' ~/.config/fish/config.fish
 end
 
-# 7. Instalar fuente MartianMono
-echo "==> 7. Instalando MartianMono Nerd Font..."
+# 6. Instalar fuente MartianMono
+echo "==> 6. Instalando MartianMono Nerd Font..."
 mkdir -p ~/.local/share/fonts
 set FONT_URL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/MartianMono.zip"
 set FONT_ZIP "/tmp/MartianMono.zip"
@@ -63,8 +57,8 @@ unzip -o $FONT_ZIP -d ~/.local/share/fonts/
 rm -f $FONT_ZIP
 fc-cache -fv
 
-# 8. Configurar Limine (timeout 0 + quiet yes)
-echo "==> 8. Configurando Limine..."
+# 7. Configurar Limine (timeout 0 + quiet yes)
+echo "==> 7. Configurando Limine..."
 if test -f /boot/limine.conf
     sudo sed -i 's/^timeout:.*/timeout: 0/' /boot/limine.conf
     sudo sed -i 's/^quiet:.*/quiet: yes/' /boot/limine.conf
@@ -78,8 +72,8 @@ else
     echo "limine.conf no encontrado, saltando..."
 end
 
-# 9. Configurar Plymouth Pedro Raccoon
-echo "==> 9. Configurando Plymouth Pedro Raccoon..."
+# 8. Configurar Plymouth Pedro Raccoon
+echo "==> 8. Configurando Plymouth Pedro Raccoon..."
 if test -d ./pedro-raccoon
     sudo cp -r ./pedro-raccoon /usr/share/plymouth/themes/
     sudo plymouth-set-default-theme -R pedro-raccoon
@@ -88,19 +82,19 @@ else
     echo "Tema Plymouth no encontrado, saltando..."
 end
 
-# 10. Copiar wallpapers para Ricelin
-echo "==> 10. Copiando wallpapers para Ricelin..."
+# 9. Copiar wallpapers para Ricelin
+echo "==> 9. Copiando wallpapers para Ricelin..."
 mkdir -p ~/Ricelin/wallpapers
 cp -r ./wallpapers/* ~/Ricelin/wallpapers/
 
-# 10.1 Borrar wallpapers de Ricelin
-echo "==> 10.1 Eliminando wallpapers raros..."
+# 9.1 Borrar wallpapers de Ricelin
+echo "==> 9.1 Eliminando wallpapers raros..."
 rm -f ~/Ricelin/wallpapers/wh-d8pq7j.png
 rm -f ~/Ricelin/wallpapers/wh-gp7mq3.jpg
 rm -f ~/Ricelin/wallpapers/wh-z8zkmw.jpg
 
-# 11. Instalar y parchear Caelestia SDDM
-echo "==> 11. Configurando y parcheando SDDM..."
+# 10. Instalar y parchear Caelestia SDDM
+echo "==> 10. Configurando y parcheando SDDM..."
 yay -S --noconfirm caelestia-sddm-locklike-git
 if test -d "$TMP_DIR/caelestia"
     sudo cp -r $TMP_DIR/caelestia/* /usr/share/sddm/themes/caelestia/
@@ -113,29 +107,29 @@ else
 end
 sudo systemctl enable sddm
 
-# 12. Configurar iconos Papirus
-echo "==> 12. Configurando iconos Papirus..."
+# 11. Configurar iconos Papirus
+echo "==> 11. Configurando iconos Papirus..."
 sudo papirus-folders -C carmine --theme Papirus-Dark
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 
-# 13. Instalar y configurar Starship
-echo "==> 13. Instalando Starship..."
+# 12. Instalar y configurar Starship
+echo "==> 12. Instalando Starship..."
 curl -sS https://starship.rs/install.sh | sh
 mkdir -p ~/.config
 cp $TMP_DIR/starship.toml ~/.config/starship.toml
 echo "starship init fish | source" >> ~/.config/fish/config.fish
 
-# 14. Configurar Ghostty
-echo "==> 14. Configurando Ghostty..."
+# 13. Configurar Ghostty
+echo "==> 13. Configurando Ghostty..."
 mkdir -p ~/.config/ghostty
 cp $TMP_DIR/.config/ghostty/config ~/.config/ghostty/config
 
-# 15. Aplicando tema BLACK
-echo "==> 15. Aplicando tema BLACK..."
+# 14. Aplicando tema BLACK
+echo "==> 14. Aplicando tema BLACK..."
 sddm black --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm black"
 
-# 15.1 Aplicando iconos negros
-echo "==> 15.1 Aplicando iconos negros..."
+# 14.1 Aplicando iconos negros
+echo "==> 14.1 Aplicando iconos negros..."
 icons negro
 
 echo "===================================================="
