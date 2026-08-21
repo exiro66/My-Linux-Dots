@@ -31,15 +31,15 @@ git clone https://github.com/exiro66/My-Linux-Dots.git && cd My-Linux-Dots && fi
 
 Aquí puedes ver cómo luce el sistema en acción tras completar la instalación automática:
 
-![Captura 1](assets/A.png)
+![Captura 1](assets/1.png)
 
-![Captura 2](assets/B.png)
+![Captura 2](assets/2.png)
 
-![Captura 3](assets/C.png)
+![Captura 3](assets/3.png)
 
-![Captura 4](assets/D.png)
+![Captura 4](assets/4.png)
 /
-![Captura 5](assets/E.png)
+![Captura 5](assets/5.png)
 
 ---
 
