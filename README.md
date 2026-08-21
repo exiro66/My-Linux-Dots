@@ -35,9 +35,9 @@ Aquí puedes ver cómo luce el sistema en acción tras completar la instalación
 
 ![Captura 2](assets/cd.png)
 
-![Captura 3](assets/ef.png)
+![Captura 3](assets/gh.png)
 
-![Captura 4](assets/gh.png)
+![Captura 4](assets/ef.png)
 
 ---
 
