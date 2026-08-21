@@ -40,6 +40,11 @@ cp -r $TMP_DIR/.config/fish/functions/* ~/.config/fish/functions/
 cp -r $TMP_DIR/.config/hypr/* ~/.config/hypr/
 cp -r $TMP_DIR/SDDM/* ~/SDDM/
 
+# 4.1 Configurar Fastfetch
+echo "==> 4.1 Configurando Fastfetch..."
+mkdir -p ~/.config/fastfetch
+cp $TMP_DIR/.config/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
+
 # 5. Configurar Fish (torii-greeting)
 echo "==> 5. Configurando Fish..."
 if test -f ~/.config/fish/config.fish
