@@ -1,0 +1,42 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "file",
+    "source": "/home/mohamed/.config/fastfetch/lantern.txt",
+    "color": {
+      "1": "38;2;215;177;142",
+      "2": "38;2;235;218;203",
+      "3": "38;2;70;51;33",
+      "4": "38;2;79;58;38",
+      "5": "38;2;191;186;181",
+      "6": "38;2;175;129;87",
+      "7": "38;2;248;247;247"
+    },
+    "padding": { "top": 1, "left": 2, "right": 6 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "38;2;215;177;142"
+    },
+    "key": { "width": 10 }
+  },
+  "modules": [
+   
+    "break",
+    { "type": "custom", "format": "\u001b[38;2;145;137;131m── SYSTEM ──────────────" },
+    { "type": "os", "key": " 󰣇 OS", "format": "{pretty-name}" },
+    { "type": "kernel", "key": " 󰌽 Kernel ", "format": "{release}" },
+    { "type": "uptime", "key": "  Up" },
+    { "type": "packages", "key": " 󰏖 Pkgs", "format": "{all}" },
+    "break",
+
+    { "type": "custom", "format": "\u001b[38;2;145;137;131m── RICE ────────────────" },
+    { "type": "wm", "key": "  WM", "format": "{pretty-name}" },
+    { "type": "shell", "key": "  Shell", "format": "{exe-name}" },
+    { "type": "terminal", "key": "  Term", "format": "{pretty-name}" },
+    { "type": "custom", "key": " 󰂜 Bar", "format": "pill (quickshell)" },
+    { "type": "custom", "key": " 󰄀 Shot", "format": "rishot" },
+    { "type": "custom", "key": "  Font", "format": "Martian Mono Nerd Font" },
+  ]
+}
