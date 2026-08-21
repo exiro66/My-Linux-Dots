@@ -1,7 +1,7 @@
 # 🪐 My-Linux-Dots
 
 <p align="center">
-  <img src="assets/E.jpg" width="150" height="150" style="border-radius: 50%;" alt="Gojo Avatar">
+<img src="assets/F.jpg" width="150" height="150" style="border-radius: 50%;" alt="Gojo Avatar">
 </p>
 
 <p align="center">
@@ -38,7 +38,8 @@ Aquí puedes ver cómo luce el sistema en acción tras completar la instalación
 ![Captura 3](assets/C.png)
 
 ![Captura 4](assets/D.png)
-
+/
+![Captura 5](assets/E.png)
 
 ---
 
