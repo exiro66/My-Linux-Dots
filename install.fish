@@ -45,10 +45,14 @@ echo "==> 4.1 Configurando Fastfetch..."
 mkdir -p ~/.config/fastfetch
 cp $TMP_DIR/.config/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
 
-# 5. Configurar Fish (torii-greeting)
+# 5. Configurar Fish
 echo "==> 5. Configurando Fish..."
-if test -f ~/.config/fish/config.fish
-    sed -i 's|~/.config/fish/torii-greeting.sh|#~/.config/fish/torii-greeting.sh|' ~/.config/fish/config.fish
+if test -f $TMP_DIR/.config/fish/config.fish
+    cp $TMP_DIR/.config/fish/config.fish ~/.config/fish/config.fish
+else
+    if test -f ~/.config/fish/config.fish
+        sed -i 's|~/.config/fish/torii-greeting.sh|#~/.config/fish/torii-greeting.sh|' ~/.config/fish/config.fish
+    end
 end
 
 # 6. Instalar fuente MartianMono
