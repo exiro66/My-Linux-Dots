@@ -115,7 +115,6 @@ El modificador principal (`SUPER`) es la tecla de Windows.
 | `SUPER + Clic Izquierdo` | Arrastrar y mover ventanas flotantes |
 | `SUPER + Clic Derecho` | Redimensionar el tamaño de las ventanas flotantes |
 | `SUPER + N` | Alternar entre modo notch y dynamic island |
-| `SUPER + SHIFT + N` | Alternar barra expandida |
 
 ###  Teclas Multimedia y Control de Brillo
 * `Volumen + / -` ➔ Sube o baja el audio del sistema en intervalos de 5% mediante `wpctl`.
