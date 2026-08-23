@@ -65,3 +65,4 @@ hl.bind(mod .. " + B", hl.dsp.exec_cmd("zen-browser")) -- Zen Browser
 hl.bind(mod .. " + D", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark" && echo dark > ~/.cache/ricelin/notch-mode'))
 hl.bind(mod .. " + C", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-light" && echo light > ~/.cache/ricelin/notch-mode'))
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("fish -c toggle-pill-mode"))
+hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("fish -c 'if test -f ~/.cache/ricelin/expanded-mode; set v (cat ~/.cache/ricelin/expanded-mode); if test \"$v\" = \"true\"; echo false > ~/.cache/ricelin/expanded-mode; else; echo true > ~/.cache/ricelin/expanded-mode; end; else; echo true > ~/.cache/ricelin/expanded-mode; end'"))

@@ -122,7 +122,19 @@ Timer {
         onTriggered: pill.bootSettled = true
     }
 
-    readonly property bool expanded: surfaceOpen || held || hoverLatch
+FileView {
+    id: expandedFile
+    path: Quickshell.env("HOME") + "/.cache/ricelin/expanded-mode"
+    blockLoading: true
+    watchChanges: true
+    onFileChanged: reload()
+    onLoaded: pill.alwaysExpanded = text().trim() === "true"
+}
+
+property bool alwaysExpanded: false
+readonly property bool expanded: surfaceOpen || held || hoverLatch || alwaysExpanded
+
+
 
     /**
      * True while the open surface is waiting on an external auth dialog (the
