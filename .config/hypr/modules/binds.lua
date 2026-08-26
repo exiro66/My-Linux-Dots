@@ -11,18 +11,18 @@ hl.bind(mod .. " + SHIFT + M", hl.dsp.workspace.toggle_special("minimized"))
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind(mod .. " + Left",  hl.dsp.layout("focus l"))
-hl.bind(mod .. " + Right", hl.dsp.layout("focus r"))
-hl.bind(mod .. " + Up",    hl.dsp.layout("focus u"))
-hl.bind(mod .. " + Down",  hl.dsp.layout("focus d"))
+-- Navegar entre ventanas con flechas
+hl.bind(mod .. " + Left", hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + Right", hl.dsp.focus({ direction = "r" }))
+hl.bind(mod .. " + Up", hl.dsp.focus({ direction = "u" }))
+hl.bind(mod .. " + Down", hl.dsp.focus({ direction = "d" }))
 
-hl.bind(mod .. " + SHIFT + Left",  hl.dsp.layout("swapcol l"))
-hl.bind(mod .. " + SHIFT + Right", hl.dsp.layout("swapcol r"))
-hl.bind(mod .. " + SHIFT + Up",    hl.dsp.layout("consume_or_expel next"))
-hl.bind(mod .. " + SHIFT + Down",  hl.dsp.layout("consume_or_expel prev"))
+-- Rueda arriba: siguiente ventana
+hl.bind(mod .. " + mouse_up", hl.dsp.focus({ direction = "r" }))
 
-hl.bind(mod .. " + mouse_up",   hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
+-- Rueda abajo: ventana anterior
+hl.bind(mod .. " + mouse_down", hl.dsp.focus({ direction = "l" }))
+
 
 hl.bind(mod .. " + 1", hl.dsp.focus({ workspace = "r~1" }))
 hl.bind(mod .. " + 2", hl.dsp.focus({ workspace = "r~2" }))

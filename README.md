@@ -108,16 +108,12 @@ El modificador principal (`SUPER`) es la tecla de Windows.
 | `SUPER + C` | Cambiar el sistema global de GTK a **Modo Claro** (*prefer-light*) |
 | `SUPER + [1 - 0]` | Cambiar al espacio de trabajo (*Workspace*) del 1 al 10 |
 | `SUPER + SHIFT + [1 - 0]` | Mover la ventana activa al espacio de trabajo asignado (sin seguirla) |
-| `SUPER + Left` | Foco a la ventana izquierda (modo scrolling) |
-| `SUPER + Right` | Foco a la ventana derecha (modo scrolling) |
-| `SUPER + Up` | Foco a la ventana de arriba (modo scrolling) |
-| `SUPER + Down` | Foco a la ventana de abajo (modo scrolling) |
-| `SUPER + SHIFT + Left` | Mover columna a la izquierda |
-| `SUPER + SHIFT + Right` | Mover columna a la derecha |
-| `SUPER + SHIFT + Up` | Apilar/desapilar ventana |
-| `SUPER + SHIFT + Down` | Apilar/desapilar ventana |
-| `SUPER + Rueda Arriba` | Cambiar al espacio de trabajo anterior con el ratón |
-| `SUPER + Rueda Abajo` | Cambiar al espacio de trabajo siguiente con el ratón |
+| `SUPER + Flecha Izquierda` | Ventana a la izquierda |
+| `SUPER + Flecha Derecha` | Ventana a la derecha |
+| `SUPER + Flecha Arriba` | Ventana arriba |
+| `SUPER + Flecha Abajo` | Ventana abajo |
+| `SUPER + Rueda Arriba` | Siguiente ventana |
+| `SUPER + Rueda Abajo` | Ventana anterior |
 | `SUPER + Clic Izquierdo` | Arrastrar y mover ventanas flotantes |
 | `SUPER + Clic Derecho` | Redimensionar el tamaño de las ventanas flotantes |
 | `SUPER + N` | Alternar entre modo notch y dynamic island |
