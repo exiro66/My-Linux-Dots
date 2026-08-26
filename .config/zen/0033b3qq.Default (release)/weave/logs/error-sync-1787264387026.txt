@@ -1,0 +1,50 @@
+1787262701396	Sync.SyncScheduler	DEBUG	Next sync in 3600000 ms. (why=schedule)
+1787264386115	Sync.Service	DEBUG	User-Agent: Zen/1.21.14b (Linux x86_64) FxSync/1.155.0.20260811103047.desktop
+1787264386115	Sync.Service	INFO	Starting sync at 2026-08-20 23:19:46 in browser session lqheJIB3kYNY
+1787264386115	Sync.SyncScheduler	DEBUG	Clearing sync triggers and the global score.
+1787264386119	Sync.Status	INFO	Resetting Status.
+1787264386119	Sync.Status	DEBUG	Status.service: success.status_ok => success.status_ok
+1787264386123	FirefoxAccounts	DEBUG	FxAccountsProfileClient: Requested profile
+1787264386123	FirefoxAccounts	DEBUG	getOAuthToken enter
+1787264386123	FirefoxAccounts	TRACE	getCachedToken returning cached token
+1787264386123	FirefoxAccounts	DEBUG	getOAuthToken returning a cached token
+1787264386124	Services.Common.RESTRequest	DEBUG	GET request to https://profile.accounts.firefox.com/v1/profile
+1787264386144	Services.Common.RESTRequest	DEBUG	GET request to https://api.accounts.firefox.com/v1/account/attached_clients
+1787264386563	Services.Common.RESTRequest	DEBUG	GET https://profile.accounts.firefox.com/v1/profile 304
+1787264386574	Sync.Resource	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/282894914/info/collections
+1787264386575	Sync.Service	DEBUG	Fetching server configuration: https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/282894914/info/configuration
+1787264386575	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1787264386641	Services.Common.RESTRequest	DEBUG	GET https://api.accounts.firefox.com/v1/account/attached_clients 200
+1787264386641	Hawk	DEBUG	(Response) /account/attached_clients: code: 200 - Status text: 
+1787264386641	Hawk	DEBUG	Clock offset vs https://api.accounts.firefox.com/v1: -641
+1787264386850	Sync.Resource	DEBUG	GET success 200 https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/282894914/info/configuration
+1787264386850	Sync.Service	DEBUG	Fetching global metadata record
+1787264386850	Sync.Service	DEBUG	Weave Version: 1.155.0 Local Storage: 5 Remote Storage: 5
+1787264386850	Sync.Service	DEBUG	Fetching and verifying -- or generating -- symmetric keys.
+1787264386850	Sync.Service	INFO	Testing info/collections: {"addons":1787150351.45,"bookmarks":1787150197.54,"clients":1787249607.1,"crypto":1774893227.69,"passwords":1787150195.84,"extension-storage":1786822850.22,"forms":1786391702.94,"history":1787250210.17,"meta":1774893246.63,"tabs":1787262701.21,"prefs":1787150350.12}
+1787264386850	Sync.CollectionKeyManager	INFO	Testing for updateNeeded. Last modified: 1774893227.69
+1787264386850	Sync.Synchronizer	DEBUG	Refreshing client list.
+1787264386851	Sync.Engine.Clients	DEBUG	Resetting clients last sync time
+1787264386852	FirefoxAccounts	TRACE	not checking freshness of profile as it remains recent
+1787264386980	FirefoxAccounts	DEBUG	CommandQueue shutdown is flushing the queue with a timer=false
+1787264387021	Sync.Collection	WARN	GET request to https://sync-1-us-west1-g.sync.services.mozilla.com/1.5/282894914/storage/clients?full=1&limit=1000 failed: [Exception... "The connection was established, but no data was ever received"  nsresult: "0x804b0014 (NS_ERROR_NET_RESET)"  location: "<unknown>"  data: no] No traceback available
+1787264387021	Sync.Status	DEBUG	Status.sync: success.sync => error.login.reason.network
+1787264387021	Sync.Status	DEBUG	Status.service: success.status_ok => error.sync.failed
+1787264387021	Sync.Status	DEBUG	Status for engine clients: error.engine.reason.unknown_fail
+1787264387021	Sync.Status	DEBUG	Status.service: error.sync.failed => error.sync.failed_partial
+1787264387021	Sync.ErrorHandler	DEBUG	clients failed: [Exception... "The connection was established, but no data was ever received"  nsresult: "0x804b0014 (NS_ERROR_NET_RESET)"  location: "<unknown>"  data: no] No traceback available
+1787264387021	Sync.Synchronizer	INFO	Updating enabled engines: 4 clients.
+1787264387022	Sync.Synchronizer	INFO	Syncing all enabled engines.
+1787264387022	Sync.Status	DEBUG	Status for engine prefs: error.engine.reason.unknown_fail
+1787264387022	Sync.Status	DEBUG	Status.service: error.sync.failed_partial => error.sync.failed_partial
+1787264387022	Sync.ErrorHandler	DEBUG	prefs was interrupted due to the application shutting down
+1787264387022	Sync.Synchronizer	INFO	prefs was interrupted by shutdown; no other engines will sync
+1787264387022	Sync.Synchronizer	INFO	Aborting sync for failure in prefs
+1787264387022	Sync.Doctor	INFO	Skipping consultation: telemetry reporting is disabled
+1787264387023	Sync.Synchronizer	INFO	Sync completed at 2026-08-20 23:19:47 after 0.90 secs.
+1787264387023	Sync.Declined	DEBUG	Handling remote declined: []
+1787264387023	Sync.Declined	DEBUG	Handling local declined: []
+1787264387024	Sync.Declined	DEBUG	Declined changed? false
+1787264387024	Sync.Service	INFO	No change to declined engines. Not reuploading meta/global.
+1787264387024	Sync.ErrorHandler	ERROR	Some engines did not sync correctly.
+1787264387025	Sync.SyncScheduler	DEBUG	Next sync in 600000 ms. (why=schedule)

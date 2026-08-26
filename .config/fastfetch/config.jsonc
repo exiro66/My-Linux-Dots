@@ -4,39 +4,38 @@
     "type": "file",
     "source": "/home/mohamed/.config/fastfetch/lantern.txt",
     "color": {
-      "1": "38;2;215;177;142",
-      "2": "38;2;235;218;203",
-      "3": "38;2;70;51;33",
-      "4": "38;2;79;58;38",
-      "5": "38;2;191;186;181",
-      "6": "38;2;175;129;87",
-      "7": "38;2;248;247;247"
+      "1": "38;2;116;241;220",
+      "2": "38;2;203;235;230",
+      "3": "38;2;27;70;63",
+      "4": "38;2;30;80;72",
+      "5": "38;2;181;191;189",
+      "6": "38;2;71;185;166",
+      "7": "38;2;247;248;248"
     },
     "padding": { "top": 1, "left": 2, "right": 6 }
   },
   "display": {
     "separator": "  ",
     "color": {
-      "keys": "38;2;215;177;142"
+      "keys": "38;2;116;241;220"
     },
     "key": { "width": 10 }
   },
   "modules": [
-   
     "break",
-    { "type": "custom", "format": "\u001b[38;2;145;137;131m── SYSTEM ──────────────" },
-    { "type": "os", "key": " 󰣇 OS", "format": "{pretty-name}" },
-    { "type": "kernel", "key": " 󰌽 Kernel ", "format": "{release}" },
-    { "type": "uptime", "key": "  Up" },
-    { "type": "packages", "key": " 󰏖 Pkgs", "format": "{all}" },
+    { "type": "custom", "format": "\u001b[38;2;131;145;142m── system ──────────────" },
+    { "type": "os", "key": "  os", "format": "{pretty-name}" },
+    { "type": "kernel", "key": "  kernel", "format": "{release}" },
+    { "type": "uptime", "key": "  up" },
+    { "type": "packages", "key": " 󰏖 pkgs", "format": "{all}" },
     "break",
-
-    { "type": "custom", "format": "\u001b[38;2;145;137;131m── RICE ────────────────" },
-    { "type": "wm", "key": "  WM", "format": "{pretty-name}" },
-    { "type": "shell", "key": "  Shell", "format": "{exe-name}" },
-    { "type": "terminal", "key": "  Term", "format": "{pretty-name}" },
-    { "type": "custom", "key": " 󰂜 Bar", "format": "pill (quickshell)" },
-    { "type": "custom", "key": " 󰄀 Shot", "format": "rishot" },
-    { "type": "custom", "key": "  Font", "format": "Martian Mono Nerd Font" },
+    { "type": "custom", "format": "\u001b[38;2;131;145;142m── rice ────────────────" },
+    { "type": "wm", "key": "  wm", "format": "{pretty-name}" },
+    { "type": "shell", "key": "  shell", "format": "{exe-name}" },
+    { "type": "terminal", "key": "  term", "format": "{pretty-name}" },
+    { "type": "custom", "key": " 󰂜 bar", "format": "pill (quickshell)" },
+    { "type": "custom", "key": " 󰄀 shot", "format": "rishot" },
+    { "type": "custom", "key": "  font", "format": "JetBrains Mono Nerd" },
+    { "type": "command", "key": " 󰸉 wall", "text": "basename \"$(cat ${XDG_STATE_HOME:-$HOME/.local/state}/ricelin-wallpaper)\"" }
   ]
 }
