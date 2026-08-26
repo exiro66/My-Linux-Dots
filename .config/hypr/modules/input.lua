@@ -10,12 +10,13 @@ hl.config({
         repeat_delay       = 400,
         numlock_by_default = false,
         touchpad = {
-            natural_scroll = true,
+        natural_scroll = true,
         },
     },
     cursor = {
         no_hardware_cursors = true,
-    },
+        no_warps = true,
+},
     binds = {
         scroll_event_delay = 40,
     },

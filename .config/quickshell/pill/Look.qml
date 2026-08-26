@@ -36,7 +36,7 @@ SettingsSurface {
             r.push({ item: roundPowRow, kind: "scrub", bump: function (d) { roundPowScrub.bump(d); } });
             r.push({ item: borderRow, kind: "scrub", bump: function (d) { borderScrub.bump(d); } });
             r.push({ item: resizeRow, kind: "toggle", get: function () { return root.resizeOnBorder; }, set: function (v) { root.resizeOnBorder = v; root.writeDeco("resize_on_border", v ? "true" : "false"); } });
-            r.push({ item: layoutRow, kind: "seg", vals: ["dwindle", "master"], get: function () { return root.layout; }, set: function (v) { root.layout = v; root.writeDeco("layout", "\"" + v + "\""); } });
+            r.push({ item: layoutRow, kind: "seg", vals: ["dwindle", "scrolling"], get: function () { return root.layout; }, set: function (v) { root.layout = v; root.writeDeco("layout", "\"" + v + "\""); } });
         }
         if (nightGrp.open) {
             r.push({ item: nlModeRow, kind: "seg", vals: ["off", "on", "scheduled"], get: function () { return Flags.nightLightMode; }, set: function (v) { NightLight.setMode(v); } });
@@ -100,8 +100,8 @@ SettingsSurface {
     property real inactiveOpacity: 1.0
 
     readonly property var layoutOptions: [
-        { label: "Dwindle", value: "dwindle" },
-        { label: "Master", value: "master" }
+           { label: "Dwindle", value: "dwindle" },
+          { label: "Scrolling", value: "scrolling" }
     ]
 
     property string decoText: ""

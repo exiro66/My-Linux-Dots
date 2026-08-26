@@ -24,7 +24,7 @@ hl.config({
         gaps_in     = 4,
         gaps_out    = 60,
         border_size = 2,
-        layout      = "dwindle",
+        layout      = "scrolling",
         resize_on_border = true,
         ["col.active_border"]   = active,
         ["col.inactive_border"] = inactive,
@@ -40,8 +40,9 @@ hl.config({
             render_power = 3,
             color        = 0xaa14110f,
         },
+
         blur = {
-            enabled           = true,
+            enabled           = false,
             size              = 6,
             passes            = 3,
             vibrancy          = 0.17,
@@ -49,6 +50,15 @@ hl.config({
             new_optimizations = true,
         },
     },
-})
 
-hl.layer_rule({ name = "pill-blur", match = { namespace = "pill" }, blur = true, ignore_alpha = 0.5 })
+    scrolling = {
+        column_width = 0.5,
+        fullscreen_on_one_column = true,
+        focus_fit_method = 1,
+        direction = "right",
+        wrap_focus = false,    -- ¡Cambia esto a false para que se detenga al llegar al final!
+        wrap_swapcol = false,  -- (Opcional) Evita también que las ventanas roten al moverlas al extremo
+    },
+
+
+})

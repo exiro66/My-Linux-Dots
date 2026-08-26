@@ -11,8 +11,16 @@ hl.bind(mod .. " + SHIFT + M", hl.dsp.workspace.toggle_special("minimized"))
 hl.bind(mod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
-hl.bind(mod .. " + Left",       hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mod .. " + Right",      hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mod .. " + Left",  hl.dsp.layout("focus l"))
+hl.bind(mod .. " + Right", hl.dsp.layout("focus r"))
+hl.bind(mod .. " + Up",    hl.dsp.layout("focus u"))
+hl.bind(mod .. " + Down",  hl.dsp.layout("focus d"))
+
+hl.bind(mod .. " + SHIFT + Left",  hl.dsp.layout("swapcol l"))
+hl.bind(mod .. " + SHIFT + Right", hl.dsp.layout("swapcol r"))
+hl.bind(mod .. " + SHIFT + Up",    hl.dsp.layout("consume_or_expel next"))
+hl.bind(mod .. " + SHIFT + Down",  hl.dsp.layout("consume_or_expel prev"))
+
 hl.bind(mod .. " + mouse_up",   hl.dsp.focus({ workspace = "r-1" }))
 hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
 
@@ -66,3 +74,4 @@ hl.bind(mod .. " + D", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interfac
 hl.bind(mod .. " + C", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-light" && echo light > ~/.cache/ricelin/notch-mode'))
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("fish -c toggle-pill-mode"))
 hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("fish -c 'if test -f ~/.cache/ricelin/expanded-mode; set v (cat ~/.cache/ricelin/expanded-mode); if test \"$v\" = \"true\"; echo false > ~/.cache/ricelin/expanded-mode; else; echo true > ~/.cache/ricelin/expanded-mode; end; else; echo true > ~/.cache/ricelin/expanded-mode; end'"))
+

@@ -185,8 +185,8 @@ readonly property bool expanded: surfaceOpen || held || hoverLatch || alwaysExpa
     readonly property bool quickChoosing: quickHere && ScreenRec.quickChoosing && !surfaceOpen
     readonly property bool quickCounting: quickHere && ScreenRec.counting && !recorderOpen
 
-    readonly property real restW: 110 * s
-    readonly property real restH: 36 * s
+    readonly property real restW: 105 * s
+    readonly property real restH: 35 * s
     readonly property real hoverPad: 20 * s
     readonly property real hoverW: hoverRow.implicitWidth + 2 * hoverPad
     readonly property real hoverH: 58 * s
