@@ -112,13 +112,13 @@ El modificador principal (`SUPER`) es la tecla de Windows.
 | `SUPER + Flecha Derecha` | Ventana a la derecha |
 | `SUPER + Flecha Arriba` | Ventana arriba |
 | `SUPER + Flecha Abajo` | Ventana abajo |
+| `SUPER + Rueda Arriba` | Ventana anterior |
+| `SUPER + Rueda Abajo` | Ventana siguiente |
 | `SUPER + Clic Izquierdo` | Arrastrar y mover ventanas flotantes |
 | `SUPER + Clic Derecho` | Redimensionar el tamaño de las ventanas flotantes |
 | `SUPER + N` | Alternar entre modo notch y dynamic island |
 | `SUPER + SHIFT +  N` | Alternar entre pill y bar |
 | `SUPER + TAB` | Abrir overview de workspaces (hyprexpo) |
-| `SUPER + Rueda Arriba` | Cambiar al workspace anterior |
-| `SUPER + Rueda Abajo` | Cambiar al workspace siguiente |
 
 ###  Teclas Multimedia y Control de Brillo
 * `Volumen + / -` ➔ Sube o baja el audio del sistema en intervalos de 5% mediante `wpctl`.

@@ -17,8 +17,8 @@ hl.bind(mod .. " + Right", hl.dsp.focus({ direction = "r" }))
 hl.bind(mod .. " + Up", hl.dsp.focus({ direction = "u" }))
 hl.bind(mod .. " + Down", hl.dsp.focus({ direction = "d" }))
 
-hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "r-1" }))
-hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
+hl.bind(mod .. " + mouse_up", hl.dsp.focus({ direction = "l" }))
+hl.bind(mod .. " + mouse_down", hl.dsp.focus({ direction = "r" }))
 
 hl.bind(mod .. " + 1", hl.dsp.focus({ workspace = "r~1" }))
 hl.bind(mod .. " + 2", hl.dsp.focus({ workspace = "r~2" }))
