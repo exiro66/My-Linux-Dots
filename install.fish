@@ -26,14 +26,13 @@ yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetr
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
 sudo pacman -Rns --noconfirm firefox alacritty
 
-# 3. Ejecutar el instalador oficial de Ricelin y Rishot
+# 3. Ejecutar el instalador oficial de Ricelin y Rishot PRIMERO
 echo "==> 3. Descargando e instalando Ricelin y Rishot..."
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/Ricelin/main/install.sh | bash
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
 
-# 3.1 Instalar hyprexpo
+# 3.1 Instalar hyprexpo DESPUÉS de Ricelin
 echo "==> 3.1 Instalando hyprexpo..."
-hyprpm update
 hyprpm add https://github.com/sandwichfarm/hyprexpo
 hyprpm enable hyprexpo
 
