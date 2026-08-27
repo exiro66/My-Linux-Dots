@@ -17,12 +17,8 @@ hl.bind(mod .. " + Right", hl.dsp.focus({ direction = "r" }))
 hl.bind(mod .. " + Up", hl.dsp.focus({ direction = "u" }))
 hl.bind(mod .. " + Down", hl.dsp.focus({ direction = "d" }))
 
--- Rueda arriba: siguiente ventana
-hl.bind(mod .. " + mouse_up", hl.dsp.focus({ direction = "r" }))
-
--- Rueda abajo: ventana anterior
-hl.bind(mod .. " + mouse_down", hl.dsp.focus({ direction = "l" }))
-
+hl.bind(mod .. " + mouse_up", hl.dsp.focus({ workspace = "r-1" }))
+hl.bind(mod .. " + mouse_down", hl.dsp.focus({ workspace = "r+1" }))
 
 hl.bind(mod .. " + 1", hl.dsp.focus({ workspace = "r~1" }))
 hl.bind(mod .. " + 2", hl.dsp.focus({ workspace = "r~2" }))
@@ -74,4 +70,9 @@ hl.bind(mod .. " + D", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interfac
 hl.bind(mod .. " + C", hl.dsp.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-light" && echo light > ~/.cache/ricelin/notch-mode'))
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("fish -c toggle-pill-mode"))
 hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("fish -c 'if test -f ~/.cache/ricelin/expanded-mode; set v (cat ~/.cache/ricelin/expanded-mode); if test \"$v\" = \"true\"; echo false > ~/.cache/ricelin/expanded-mode; else; echo true > ~/.cache/ricelin/expanded-mode; end; else; echo true > ~/.cache/ricelin/expanded-mode; end'"))
+
+hl.bind(mod .. " + TAB", function()
+    hl.plugin.hyprexpo.expo("toggle")
+end)
+
 
