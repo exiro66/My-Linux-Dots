@@ -167,27 +167,6 @@ El script se encargará solo de mover tus imágenes a las carpetas del sistema, 
 
 ---
 
-
-##  Cómo Mostrar Limine de Nuevo
-
-Si quieres volver a ver el menú de Limine al arrancar:
-
-1. Abre la configuración:
-
-```bash
-sudo nano /boot/limine.conf
-```
-2. Cambia estos valores:
-
-```bash
-timeout: 5
-quiet: no
-```
-
-3. Guarda con Ctrl + S y sal con Ctrl + X.
-
-4. Reinicia para ver el cambio.
-
 ##  Cómo Cambiar el Tema de Plymouth
 
 Para cambiar el tema de arranque de Plymouth:

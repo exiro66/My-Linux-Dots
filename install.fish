@@ -66,22 +66,7 @@ unzip -o $FONT_ZIP -d ~/.local/share/fonts/
 rm -f $FONT_ZIP
 fc-cache -fv
 
-# 7. Configurar Limine (timeout 0 + quiet yes)
-echo "==> 7. Configurando Limine..."
-if test -f /boot/limine.conf
-    sudo sed -i 's/^timeout:.*/timeout: 0/' /boot/limine.conf
-    sudo sed -i 's/^quiet:.*/quiet: yes/' /boot/limine.conf
-    if not grep -q "^timeout:" /boot/limine.conf
-        echo "timeout: 0" | sudo tee -a /boot/limine.conf
-    end
-    if not grep -q "^quiet:" /boot/limine.conf
-        echo "quiet: yes" | sudo tee -a /boot/limine.conf
-    end
-else
-    echo "limine.conf no encontrado, saltando..."
-end
-
-# 8. Configurar Plymouth Pedro Raccoon
+# 7. Configurar Plymouth Pedro Raccoon
 echo "==> 8. Configurando Plymouth Pedro Raccoon..."
 if test -d ./pedro-raccoon
     sudo cp -r ./pedro-raccoon /usr/share/plymouth/themes/
@@ -91,18 +76,18 @@ else
     echo "Tema Plymouth no encontrado, saltando..."
 end
 
-# 9. Copiar wallpapers para Ricelin
+# 8. Copiar wallpapers para Ricelin
 echo "==> 9. Copiando wallpapers para Ricelin..."
 mkdir -p ~/Ricelin/wallpapers
 cp -r ./wallpapers/* ~/Ricelin/wallpapers/
 
-# 9.1 Borrar wallpapers de Ricelin
+# 8.1 Borrar wallpapers de Ricelin
 echo "==> 9.1 Eliminando wallpapers raros..."
 rm -f ~/Ricelin/wallpapers/wh-d8pq7j.png
 rm -f ~/Ricelin/wallpapers/wh-gp7mq3.jpg
 rm -f ~/Ricelin/wallpapers/wh-z8zkmw.jpg
 
-# 10. Instalar y parchear Caelestia SDDM
+# 9. Instalar y parchear Caelestia SDDM
 echo "==> 10. Configurando y parcheando SDDM..."
 yay -S --noconfirm caelestia-sddm-locklike-git
 if test -d "$TMP_DIR/caelestia"
@@ -116,29 +101,29 @@ else
 end
 sudo systemctl enable sddm
 
-# 11. Configurar iconos Papirus
+# 10. Configurar iconos Papirus
 echo "==> 11. Configurando iconos Papirus..."
 sudo papirus-folders -C carmine --theme Papirus-Dark
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
 
-# 12. Instalar y configurar Starship
+# 11. Instalar y configurar Starship
 echo "==> 12. Instalando Starship..."
 curl -sS https://starship.rs/install.sh | sh
 mkdir -p ~/.config
 cp $TMP_DIR/starship.toml ~/.config/starship.toml
 echo "starship init fish | source" >> ~/.config/fish/config.fish
 
-# 13. Configurar Ghostty
+# 12. Configurar Ghostty
 echo "==> 13. Configurando Ghostty..."
 mkdir -p ~/.config/ghostty
 cp $TMP_DIR/.config/ghostty/config ~/.config/ghostty/config
 
-# 14. Aplicando tema BLACK
+# 13. Aplicando tema BLACK
 echo "==> 14. Aplicando tema BLACK..."
 sddm black --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm black"
 
-# 14.1 Aplicando iconos negros
-echo "==> 14.1 Aplicando iconos negros..."
+# 13.1 Aplicando iconos negros
+echo "==> 13.1 Aplicando iconos negros..."
 icons negro
 
 echo "===================================================="
