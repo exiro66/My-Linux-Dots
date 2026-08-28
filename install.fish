@@ -31,11 +31,6 @@ echo "==> 3. Descargando e instalando Ricelin y Rishot..."
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/Ricelin/main/install.sh | bash
 curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
 
-# 3.1 Instalar hyprexpo DESPUÉS de Ricelin
-echo "==> 3.1 Instalando hyprexpo..."
-hyprpm add https://github.com/sandwichfarm/hyprexpo
-hyprpm enable hyprexpo
-
 # 4. Desplegar funciones y configuraciones personales DESPUÉS de Ricelin
 echo "==> 4. Inyectando funciones Fish y config de Hyprland..."
 mkdir -p ~/.config/fish/functions
