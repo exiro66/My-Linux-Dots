@@ -65,6 +65,7 @@ Este repositorio inyecta funciones nativas muy potentes en tu shell Fish para ge
 El instalador incluye estas aplicaciones:
 
 * **Zen Browser** ➔ Navegador moderno con transparencias.
+* **Quickshell Overview** ➔ Overview de workspaces con previews.
 * **Ghostty** ➔ Terminal rápida con GPU.
 * **Loupe** ➔ Visor de imágenes.
 * **Nautilus** ➔ Gestor de archivos.
@@ -118,6 +119,7 @@ El modificador principal (`SUPER`) es la tecla de Windows.
 | `SUPER + Clic Derecho` | Redimensionar el tamaño de las ventanas flotantes |
 | `SUPER + N` | Alternar entre modo notch y dynamic island |
 | `SUPER + SHIFT +  N` | Alternar entre pill y bar |
+| `SUPER + TAB` | Abrir overview de workspaces (quickshell overview) |
 
 ###  Teclas Multimedia y Control de Brillo
 * `Volumen + / -` ➔ Sube o baja el audio del sistema en intervalos de 5% mediante `wpctl`.
