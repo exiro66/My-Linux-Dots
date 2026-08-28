@@ -20,11 +20,15 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme caelestia-sddm-locklike-git papirus-folders
+yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks zram-generator nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme caelestia-sddm-locklike-git papirus-folders
 
 # 2.1 Borrar apps que no quiero
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
 sudo pacman -Rns --noconfirm firefox alacritty
+
+echo "[zram0]" | sudo tee /etc/systemd/zram-generator.conf
+echo "zram-size = ram / 2" | sudo tee -a /etc/systemd/zram-generator.conf
+echo "compression-algorithm = zstd" | sudo tee -a /etc/systemd/zram-generator.conf
 
 # 3. Ejecutar el instalador oficial de Ricelin y Rishot PRIMERO
 echo "==> 3. Descargando e instalando Ricelin y Rishot..."
