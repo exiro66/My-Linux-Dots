@@ -45,12 +45,6 @@ echo "==> 4.1 Configurando Fastfetch..."
 mkdir -p ~/.config/fastfetch
 cp $TMP_DIR/.config/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
 
-# 4.2 Instalar quickshell overview
-echo "==> 4.2 Instalando quickshell overview..."
-git clone https://github.com/Shanu-Kumawat/quickshell-overview ~/.config/quickshell/overview
-mkdir -p ~/.config/quickshell/overview
-cp ~/.config/quickshell/overview/config.example.json ~/.config/quickshell/overview/config.json
-
 # 5. Configurar Fish
 echo "==> 5. Configurando Fish..."
 if test -f $TMP_DIR/.config/fish/config.fish
