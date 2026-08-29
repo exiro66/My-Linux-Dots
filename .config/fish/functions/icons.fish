@@ -1,24 +1,16 @@
-function icons --description "Cambia el color de las carpetas de Papirus-Dark desde la terminal"
+function icons --description "Cambiar color de Tela-circle"
     if test (count $argv) -ne 1
-        echo "Uso: icons [grey | red | carmine | blue | green | palebrown | violet | black | white | yellow | orange | pink | cyan | magenta | indigo | brown]"
+        echo "Uso: icons [black | blue | brown | green | grey | orange | pink | purple | red | yellow]"
         return 1
     end
 
-    set color_elegido $argv
+    set color $argv[1]
 
-    switch $color_elegido
-        case grey red carmine blue green palebrown violet black white yellow orange pink cyan magenta indigo brown
-            set color_papirus $color_elegido
+    switch $color
+        case black blue brown green grey orange pink purple red yellow
+            gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-$color-dark"
         case '*'
-            echo "Error: Color no reconocido: $color_elegido"
+            echo "Color no válido"
             return 1
     end
-
-    echo "Cambiando carpetas Papirus al color: $color_papirus..."
-
-    sudo papirus-folders -C $color_papirus --theme Papirus-Dark
-
-    gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-
-    echo "¡Listo! Carpetas actualizadas con éxito."
 end

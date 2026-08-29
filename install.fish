@@ -20,7 +20,7 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks zram-generator nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme caelestia-sddm-locklike-git papirus-folders
+yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks zram-generator nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme caelestia-sddm-locklike-git
 
 # 2.1 Borrar apps que no quiero
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
@@ -105,10 +105,9 @@ else
 end
 sudo systemctl enable sddm
 
-# 10. Configurar iconos Papirus
-echo "==> 11. Configurando iconos Papirus..."
-sudo papirus-folders -C carmine --theme Papirus-Dark
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+# 10. Configurar iconos Tela-circle
+echo "==> 10. Configurando iconos Tela-circle..."
+gsettings set org.gnome.desktop.interface icon-theme 'Tela-circle-black-dark'
 
 # 11. Instalar y configurar Starship
 echo "==> 12. Instalando Starship..."
