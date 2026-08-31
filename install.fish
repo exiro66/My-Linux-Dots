@@ -22,6 +22,11 @@ end
 
 yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks zram-generator nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme caelestia-sddm-locklike-git papirus-folders
 
+if not test -d ~/.themes/Adwaita-AMOLED
+    git clone https://github.com/librerob/Adwaita-AMOLED.git ~/.themes/Adwaita-AMOLED
+end
+
+
 # 2.1 Borrar apps que no quiero
 echo "==> 2.1 Eliminando Firefox y Alacritty..."
 sudo pacman -Rns --noconfirm firefox alacritty
