@@ -827,8 +827,7 @@ gradient: Gradient {
         heat: (pill.powerOpen && ldPower.item) ? ldPower.item.holdProgress : 0
         wake: pill.wakePoint
         wickDir: pill.powerOpen ? 1 : -1
-        form: pill.ameSurface ? pill.ameSurface.ameForm
-            : (pill.mode === "hover" && pill.hoverSoulGate ? "soul" : "off")
+        form: "off"
         point: pill.ameSurface
             ? Qt.point(pill.ameSurface.x + pill.ameSurface.amePoint.x,
                        pill.ameSurface.y + pill.ameSurface.amePoint.y)
