@@ -130,6 +130,90 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^primary=.*/primary=#ccff00/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
+        case GRUVBOX
+            echo "Applying gruvbox material..."
+            sudo sed -i 's/^background=.*/background=#32302f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#3c3836/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#504945/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#ddc7a1/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#a89984/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#a9b665/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#32302f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^secondary=.*/secondary=#e78a4e/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSecondary=.*/onSecondary=#32302f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^tertiary=.*/tertiary=#89b482/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onTertiary=.*/onTertiary=#32302f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^inverseOnSurface=.*/inverseOnSurface=#ddc7a1/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surface=.*/surface=#32302f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceVariant=.*/surfaceVariant=#3c3836/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerLow=.*/surfaceContainerLow=#282828/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainer=.*/surfaceContainer=#32302f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerHigh=.*/surfaceContainerHigh=#3c3836/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^outline=.*/outline=#504945/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case LAVENDER
+            echo "Applying lavender..."
+            sudo sed -i 's/^background=.*/background=#181926/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#1e2030/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#24273a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#cad3f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#a5adcb/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#b7bdf8/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#1e2030/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^secondary=.*/secondary=#8aadf4/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSecondary=.*/onSecondary=#1e2030/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^tertiary=.*/tertiary=#f5bde6/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onTertiary=.*/onTertiary=#1e2030/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^inverseOnSurface=.*/inverseOnSurface=#cad3f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surface=.*/surface=#24273a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceVariant=.*/surfaceVariant=#363a4f/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerLow=.*/surfaceContainerLow=#181926/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainer=.*/surfaceContainer=#1e2030/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerHigh=.*/surfaceContainerHigh=#24273a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^outline=.*/outline=#494d64/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case HEXA
+            echo "Applying Hexa34C..."
+            sudo sed -i 's/^background=.*/background=#101510/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#101510/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#414941/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#dfe4dc/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#c1c9be/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#9ad4a1/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#003916/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^secondary=.*/secondary=#b7ccb6/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSecondary=.*/onSecondary=#233425/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^tertiary=.*/tertiary=#a1ced8/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onTertiary=.*/onTertiary=#00363e/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^inverseOnSurface=.*/inverseOnSurface=#dfe4dc/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surface=.*/surface=#101510/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceVariant=.*/surfaceVariant=#101510/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerLow=.*/surfaceContainerLow=#101510/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainer=.*/surfaceContainer=#101510/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerHigh=.*/surfaceContainerHigh=#414941/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^outline=.*/outline=#8b9389/' /usr/share/sddm/themes/caelestia/theme.conf
+
+        case STARS
+            echo "Applying stars..."
+            sudo sed -i 's/^background=.*/background=#0A1126/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#0F1B40/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#152850/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#e0e6f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#99B6F2/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#99B6F2/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#0A1126/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^secondary=.*/secondary=#5581D9/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSecondary=.*/onSecondary=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^tertiary=.*/tertiary=#4E6BA6/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onTertiary=.*/onTertiary=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^inverseOnSurface=.*/inverseOnSurface=#e0e6f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surface=.*/surface=#0A1126/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceVariant=.*/surfaceVariant=#0F1B40/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerLow=.*/surfaceContainerLow=#0A1126/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainer=.*/surfaceContainer=#0F1B40/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surfaceContainerHigh=.*/surfaceContainerHigh=#152850/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^outline=.*/outline=#2a4a7a/' /usr/share/sddm/themes/caelestia/theme.conf
+
         case '*'
             echo "Error: Color no reconocido: $color_input"
             return 1

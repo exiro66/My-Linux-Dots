@@ -1,8 +1,8 @@
-zoxide init fish | source
+source /usr/share/cachyos-fish-config/cachyos-config.fish
 
-abbr -a ff fastfetch
-
-function fish_greeting
-#    ~/.config/fish/torii-greeting.sh
-end
-starship init fish | source
+# overwrite greeting
+# potentially disabling fastfetch
+#function fish_greeting
+#    # smth smth
+#end
+#starship init fish | source

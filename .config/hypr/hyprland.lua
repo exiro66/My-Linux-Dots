@@ -1,18 +1,17 @@
-require("modules.env")
-require("modules.monitors")
-require("modules.input")
-require("modules.decoration")
-require("modules.animations")
-require("modules.binds")
-require("rishot")
-require("modules.window_rules")
-require("modules.spaces-apply")
-require("modules.autostart")
+-- CachyOS Hyprland Configuration
 
-pcall(require, "modules.private")
+require("config.animations")
+require("config.autostart")
+require("config.colors")
+require("config.decorations")
+require("config.variables")
+require("config.environment")
+require("config.inputs")
+require("config.binds")
+require("config.misc")
+require("config.monitors")
+require("config.windowrules")
+require("config.workspaces")
 
--- Personal machine-only hooks (gitignored local.lua: discord, crosshair, ...)
-pcall(require, "local")
-
--- GhostType hotkey (managed by the app)
-pcall(require, "ghosttype")
+-- HyprMod managed settings
+require("hyprland-gui")

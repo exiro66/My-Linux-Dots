@@ -1,142 +1,79 @@
 #!/usr/bin/fish
 
-echo "===================================================="
-echo "    INSTALADOR MAESTRO TOTAL: APPS + RICELINE       "
-echo "===================================================="
+set REPO_DIR (pwd)
 
-# 1. Clonar tus configuraciones personalizadas desde TU GitHub primero
-echo "==> 1. Descargando tus parches y configuraciones..."
-set MI_REPO "https://github.com/exiro66/My-Linux-Dots.git"
-set TMP_DIR "/tmp/mis-parches"
+echo "==> Instalando My-Linux-Dots..."
 
-rm -rf $TMP_DIR
-git clone $MI_REPO $TMP_DIR
-
-# 2. Instalar apps esenciales
-echo "==> 2. Instalando apps esenciales..."
+# yay
 if not command -v yay >/dev/null
     sudo pacman -S --needed git base-devel --noconfirm
     git clone https://aur.archlinux.org/yay.git /tmp/yay
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-yay -S --needed --noconfirm zen-browser-bin loupe qbittorrent lutris wine winetricks zram-generator nautilus gnome-calculator gnome-disk-utility easyeffects audacity tela-circle-icon-theme caelestia-sddm-locklike-git papirus-folders
+# Dependencias
+sudo pacman -S --needed --noconfirm \
+    hyprland hyprland-guiutils xdg-desktop-portal-hyprland \
+    kitty fish nautilus zen-browser \
+    plymouth sddm qt5ct qt6ct nwg-look \
+    btop cava mpv micro satty \
+    playerctl brightnessctl wireplumber \
+    ttf-jetbrains-mono-nerd
 
-if not test -d ~/.themes/Adwaita-AMOLED
-    git clone https://github.com/librerob/Adwaita-AMOLED.git ~/.themes/Adwaita-AMOLED
+# Noctalia
+if not command -v noctalia >/dev/null
+    yay -S --noconfirm noctalia-git
 end
 
+# Backup
+set BACKUP ~/.config-backup-(date +%Y%m%d-%H%M%S)
+mkdir -p $BACKUP
 
-# 2.1 Borrar apps que no quiero
-echo "==> 2.1 Eliminando Firefox y Alacritty..."
-sudo pacman -Rns --noconfirm firefox alacritty
+# Copiar configs
+test -d ~/.config/hypr; and mv ~/.config/hypr $BACKUP/
+cp -r $REPO_DIR/.config/hypr ~/.config/
 
-echo "[zram0]" | sudo tee /etc/systemd/zram-generator.conf
-echo "zram-size = ram / 2" | sudo tee -a /etc/systemd/zram-generator.conf
-echo "compression-algorithm = zstd" | sudo tee -a /etc/systemd/zram-generator.conf
+test -d ~/.config/noctalia; and mv ~/.config/noctalia $BACKUP/
+cp -r $REPO_DIR/.config/noctalia ~/.config/
+mkdir -p ~/.local/state/noctalia
+cp $REPO_DIR/noctalia-state/settings.toml ~/.local/state/noctalia/
 
-# 3. Ejecutar el instalador oficial de Ricelin y Rishot PRIMERO
-echo "==> 3. Descargando e instalando Ricelin y Rishot..."
-curl -fsSL https://raw.githubusercontent.com/Gakuseei/Ricelin/main/install.sh | bash
-curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
+cp -r $REPO_DIR/.config/fish/* ~/.config/fish/
 
-# 4. Desplegar funciones y configuraciones personales DESPUÉS de Ricelin
-echo "==> 4. Inyectando funciones Fish y config de Hyprland..."
-mkdir -p ~/.config/fish/functions
-mkdir -p ~/.config/hypr
+for dir in gtk-3.0 gtk-4.0 qt5ct qt6ct btop cava mpv nwg-look micro satty
+    test -d $REPO_DIR/.config/$dir; and cp -r $REPO_DIR/.config/$dir ~/.config/
+end
+cp $REPO_DIR/.config/kdeglobals ~/.config/ 2>/dev/null
+cp $REPO_DIR/.config/mimeapps.list ~/.config/ 2>/dev/null
+
+mkdir -p ~/.config/kitty
+cp $REPO_DIR/kitty/kitty.conf ~/.config/kitty/
+
+mkdir -p ~/.local/bin
+cp $REPO_DIR/scripts/* ~/.local/bin/
+chmod +x ~/.local/bin/*
+
+test -d $REPO_DIR/.icons/Bibata-Modern-Ice; and cp -r $REPO_DIR/.icons/Bibata-Modern-Ice ~/.local/share/icons/
+
+mkdir -p ~/Imágenes/Wallpapers
+cp $REPO_DIR/wallpapers/* ~/Imágenes/Wallpapers/
+
+# SDDM
+sudo mkdir -p /usr/share/sddm/themes
+sudo cp -r $REPO_DIR/sddm/caelestia /usr/share/sddm/themes/
+sudo chmod -R 755 /usr/share/sddm/themes/caelestia
+sudo mkdir -p /etc/sddm.conf.d
+printf "[Theme]\nCurrent=caelestia\n" | sudo tee /etc/sddm.conf.d/caelestia.conf
+
 mkdir -p ~/SDDM
-cp -r $TMP_DIR/.config/fish/functions/* ~/.config/fish/functions/
-cp -r $TMP_DIR/.config/hypr/* ~/.config/hypr/
-cp -r $TMP_DIR/SDDM/* ~/SDDM/
-
-# 4.1 Configurar Fastfetch
-echo "==> 4.1 Configurando Fastfetch..."
-mkdir -p ~/.config/fastfetch
-cp $TMP_DIR/.config/fastfetch/config.jsonc ~/.config/fastfetch/config.jsonc
-
-# 5. Configurar Fish
-echo "==> 5. Configurando Fish..."
-if test -f $TMP_DIR/.config/fish/config.fish
-    cp $TMP_DIR/.config/fish/config.fish ~/.config/fish/config.fish
-else
-    if test -f ~/.config/fish/config.fish
-        sed -i 's|~/.config/fish/torii-greeting.sh|#~/.config/fish/torii-greeting.sh|' ~/.config/fish/config.fish
-    end
+for color in BEIGE BLACK BLUE GREEN GRUVBOX HEXA LAVENDER ORANGE PINK PURPLE RED STARS WHITE YELLOW
+    test -d $REPO_DIR/sddm/$color; and cp -r $REPO_DIR/sddm/$color ~/SDDM/
 end
 
-# 6. Instalar fuente MartianMono
-echo "==> 6. Instalando MartianMono Nerd Font..."
-mkdir -p ~/.local/share/fonts
-set FONT_URL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/MartianMono.zip"
-set FONT_ZIP "/tmp/MartianMono.zip"
+# Plymouth
+sudo cp -r $REPO_DIR/plymouth/pedro-raccoon /usr/share/plymouth/themes/
+sudo plymouth-set-default-theme -R pedro-raccoon
 
-wget -O $FONT_ZIP $FONT_URL
-unzip -o $FONT_ZIP -d ~/.local/share/fonts/
-rm -f $FONT_ZIP
-fc-cache -fv
-
-# 7. Configurar Plymouth Pedro Raccoon
-echo "==> 8. Configurando Plymouth Pedro Raccoon..."
-if test -d ./pedro-raccoon
-    sudo cp -r ./pedro-raccoon /usr/share/plymouth/themes/
-    sudo plymouth-set-default-theme -R pedro-raccoon
-    sudo mkinitcpio -P
-else
-    echo "Tema Plymouth no encontrado, saltando..."
-end
-
-# 8. Copiar wallpapers para Ricelin
-echo "==> 9. Copiando wallpapers para Ricelin..."
-mkdir -p ~/Ricelin/wallpapers
-cp -r ./wallpapers/* ~/Ricelin/wallpapers/
-
-# 8.1 Borrar wallpapers de Ricelin
-echo "==> 9.1 Eliminando wallpapers raros..."
-rm -f ~/Ricelin/wallpapers/wh-d8pq7j.png
-rm -f ~/Ricelin/wallpapers/wh-gp7mq3.jpg
-rm -f ~/Ricelin/wallpapers/wh-z8zkmw.jpg
-
-# 9. Instalar y parchear Caelestia SDDM
-echo "==> 10. Configurando y parcheando SDDM..."
-yay -S --noconfirm caelestia-sddm-locklike-git
-if test -d "$TMP_DIR/caelestia"
-    sudo cp -r $TMP_DIR/caelestia/* /usr/share/sddm/themes/caelestia/
-end
-if test -f /etc/sddm.conf
-    sudo sed -i 's/^Current=.*/Current=caelestia/' /etc/sddm.conf
-else
-    echo "[Theme]" | sudo tee /etc/sddm.conf
-    echo "Current=caelestia" | sudo tee -a /etc/sddm.conf
-end
 sudo systemctl enable sddm
 
-# 10. Configurar iconos Papirus
-echo "==> 10. Configurando iconos Papirus..."
-sudo papirus-folders -C carmine --theme Papirus-Dark
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-
-# 11. Instalar y configurar Starship
-echo "==> 12. Instalando Starship..."
-curl -sS https://starship.rs/install.sh | sh
-mkdir -p ~/.config
-cp $TMP_DIR/starship.toml ~/.config/starship.toml
-echo "starship init fish | source" >> ~/.config/fish/config.fish
-
-# 12. Configurar Ghostty
-echo "==> 13. Configurando Ghostty..."
-mkdir -p ~/.config/ghostty
-cp $TMP_DIR/.config/ghostty/config ~/.config/ghostty/config
-
-# 13. Aplicando tema BLACK
-echo "==> 14. Aplicando tema BLACK..."
-sddm black --no-restart 2>/dev/null || echo "Aplica manualmente con: sddm black"
-
-# 13.1 Aplicando iconos negros
-echo "==> 13.1 Aplicando iconos negros..."
-icons negro
-
-echo "===================================================="
-echo "   ¡PROCESO TOTAL COMPLETADO CON ÉXITO!            "
-echo "   Tus aplicaciones, Riceline y SDDM están listos. "
-echo "   Por favor, reinicia el sistema para aplicar.     "
-echo "===================================================="
+echo "==> Listo. Reinicia el sistema."
