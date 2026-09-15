@@ -61,8 +61,8 @@ end)
 hl.bind(mod .. " + D", hl.dsp.exec_cmd("noctalia msg dock-toggle"))
 hl.bind(mod .. " + Y", hl.dsp.exec_cmd("~/Applications/Glassy\\ Music-4.0.0.AppImage"))
 
-hl.bind(mod .. " + SHIFT + W", hl.dsp.exec_cmd("noctalia msg desktop-widgets-toggle"))
-
+hl.bind(mod .. " + SHIFT + R", hl.dsp.exec_cmd("noctalia msg desktop-widgets-toggle"))
+hl.bind(mod .. " + SHIFT + W", hl.dsp.exec_cmd("noctalia msg panel-toggle noctalia/wallhaven:browser"))
 
 hl.bind(mod .. " + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-bar-float.fish"))
 hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-dock-float.fish"))
