@@ -1,20 +1,11 @@
 #!/usr/bin/env fish
 
-# Detectar estado actual
-if grep -q "margin_edge = 10" ~/.config/noctalia/config.toml
+if grep -q "margin_edge = 10" ~/.local/state/noctalia/settings.toml
     set value 0
 else
     set value 10
 end
 
-# BARRA - cambiar margin_edge
-if test $value -eq 0
-    sed -i "s/margin_edge = 10/margin_edge = 0/" ~/.config/noctalia/config.toml
-else
-    sed -i "s/margin_edge = 0/margin_edge = 10/" ~/.config/noctalia/config.toml
-end
-
-# DOCK - cambiar SOLO dentro de [dock]
 awk -v val=$value '
     /^\[dock\]/ { in_dock=1; print; next }
     /^\[/ && !/^\[dock\]/ { in_dock=0 }
