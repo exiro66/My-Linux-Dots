@@ -64,4 +64,5 @@ hl.bind(mod .. " + Y", hl.dsp.exec_cmd("~/Applications/Glassy\\ Music-4.0.0.AppI
 hl.bind(mod .. " + SHIFT + W", hl.dsp.exec_cmd("noctalia msg desktop-widgets-toggle"))
 
 
-hl.bind(mod .. " + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-float.fish"))
+hl.bind(mod .. " + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-bar-float.fish"))
+hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-dock-float.fish"))
