@@ -6,32 +6,39 @@ ui_scale = 1.0000000074505806
 [bar.default]
 background_opacity = 0.74999998323619366
 center = [ "clock", "workspaces", "media", "weather" ]
-end = [ "tray", "notifications", "bluetooth", "spacer_1", "volume", "spacer_1", "network", "spacer_2", "session" ]
+end = [ "tray", "notifications", "spacer_1", "volume", "spacer_1", "network", "bluetooth", "spacer_2", "session" ]
 font_family = "Cantarell"
 font_weight = 600
-margin_ends = 350
+margin_ends = 120
+position = "left"
 radius = 0
 radius_bottom_left = 80
 radius_bottom_right = 80
 radius_top_left = 80
 radius_top_right = 80
-start = [ "control-center", "group:g1", "launcher_2", "recorder" ]
+start = [ "control-center", "group:g1", "battery", "launcher_2", "recorder", "notes" ]
 
     [[bar.default.capsule_group]]
     accordion = false
     accordion_direction = "end"
     border = ""
     enabled = true
-    fill = "on_secondary"
+    fill = "on_primary"
     id = "g1"
-    members = [ "cpu", "temp", "ram", "battery" ]
+    members = [ "cpu", "ram" ]
     opacity = 1.0
     padding = 6.0
+
+[calendar]
+enabled = true
+
+    [calendar.account.personal_google]
+    type = "google"
 
 [desktop_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002", "desktop-widget-0000000000000003" ]
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000006", "desktop-widget-0000000000000007" ]
 
     [desktop_widgets.grid]
     cell_size = 16
@@ -49,26 +56,11 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
     rotation = 0.0
     type = "yugaaank/better-clock:clock"
 
-    [desktop_widgets.widget.desktop-widget-0000000000000002]
-    box_height = 256.0
-    box_width = 448.0
-    cx = 480.0
-    cy = 252.0
-    output = "eDP-1"
-    placement_height = 1080.0
-    placement_width = 1920.0
-    rotation = 0.0
-    type = "clock"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
-        background = false
-        shadow = true
-
-    [desktop_widgets.widget.desktop-widget-0000000000000003]
-    box_height = 128.0
-    box_width = 384.0
-    cx = 480.0
-    cy = 412.0
+    [desktop_widgets.widget.desktop-widget-0000000000000006]
+    box_height = 48.0
+    box_width = 352.0
+    cx = 960.0
+    cy = 220.0
     flip_y = true
     output = "eDP-1"
     placement_height = 1080.0
@@ -76,13 +68,37 @@ widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-000000000000
     rotation = 0.0
     type = "audio_visualizer"
 
-        [desktop_widgets.widget.desktop-widget-0000000000000003.settings]
+        [desktop_widgets.widget.desktop-widget-0000000000000006.settings]
         background = false
-        bands = 36
+        bands = 24
         centered = false
-        mirrored = false
-        reversed = false
+        color_1 = "primary"
+        color_2 = "on_primary"
+        mirrored = true
         show_when_idle = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000007]
+    box_height = 144.0
+    box_width = 384.0
+    cx = 960.0
+    cy = 124.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000007.settings]
+        background = true
+        background_color = "surface"
+        background_opacity = 0.75
+        background_padding = 11
+        background_radius = 32
+        color = "primary"
+        font_family = ""
+        hide_when_no_media = true
+        layout = "horizontal"
+        shadow = true
 
 [dock]
 active_monitor_only = true
@@ -193,6 +209,9 @@ heroic_enabled = false
 steam_enabled = false
 steampoacher_enabled = true
 
+[plugin_settings."noctalia/notes"]
+panel_placement = "attached"
+
 [plugin_settings."noctalia/screen_recorder"]
 directory = "/home/mohamed/Vídeos"
 
@@ -200,7 +219,7 @@ directory = "/home/mohamed/Vídeos"
 show_date = false
 
 [plugins]
-enabled = [ "alexander/game-launcher", "noctalia/screen_recorder" ]
+enabled = [ "alexander/game-launcher", "noctalia/screen_recorder", "noctalia/wallhaven", "noctalia/notes" ]
 
 [shell]
 app_icon_color = "primary"
@@ -224,32 +243,36 @@ font_family = "Cantarell"
     directory = "/home/mohamed/Imágenes/Capturas"
     save_to_file = true
 
+    [shell.session]
+    grid = true
+    grid_columns = 1
+
     [shell.shadow]
     alpha = 0.30999999307096004
 
 [theme]
 builtin = "Ayu"
-community_palette = "Gruvbox Material"
+community_palette = "Hexa34C"
 custom_palette = "cat-pacman-ts"
 mode = "dark"
 source = "wallpaper"
-wallpaper_scheme = "m3-monochrome"
+wallpaper_scheme = "m3-tonal-spot"
 
 [wallpaper]
 directory = "/home/mohamed/Imágenes/Wallpapers"
 transition = [ "disc" ]
 
     [wallpaper.default]
-    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-2em8y6.jpg"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-7jxgpo.png"
 
     [wallpaper.last]
-    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-2em8y6.jpg"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-7jxgpo.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-2em8y6.jpg"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-yq9rwx.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-2em8y6.jpg"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-7jxgpo.png"
 
     [[wallpaper.favorite]]
     community_palette = "Gruvbox Material"
@@ -288,22 +311,10 @@ transition = [ "disc" ]
     wallpaper_scheme = "m3-tonal-spot"
 
     [[wallpaper.favorite]]
-    palette_source = "wallpaper"
-    path = "/home/mohamed/Imágenes/Wallpapers/wallpaperflare.com_wallpaper(1).jpg"
-    theme_mode = "dark"
-    wallpaper_scheme = "m3-content"
-
-    [[wallpaper.favorite]]
     community_palette = "Hexa34C"
     palette_source = "community"
     path = "/home/mohamed/Imágenes/Wallpapers/1_DnmUz9zhrQmE0R770SX5ug.jpg"
     theme_mode = "dark"
-
-    [[wallpaper.favorite]]
-    palette_source = "wallpaper"
-    path = "/home/mohamed/Imágenes/Wallpapers/night-scenery-monochrome-4k-wallpaper-uhdpaper.com-149@0@e.jpg"
-    theme_mode = "dark"
-    wallpaper_scheme = "m3-monochrome"
 
     [[wallpaper.favorite]]
     palette_source = "wallpaper"
@@ -342,16 +353,34 @@ transition = [ "disc" ]
     theme_mode = "dark"
 
     [[wallpaper.favorite]]
-    palette_source = "wallpaper"
-    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-2em8y6.jpg"
-    theme_mode = "dark"
-    wallpaper_scheme = "m3-monochrome"
-
-    [[wallpaper.favorite]]
     community_palette = "Atuel"
     palette_source = "community"
     path = "/home/mohamed/Imágenes/Wallpapers/1075230.png"
     theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/mohamed/Imágenes/Wallpapers/berserk-guts-colored-5k-5120x3657-13633.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-content"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-yq9rwx.png"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-tonal-spot"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-d8klw3.png"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-monochrome"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/mohamed/Imágenes/Wallpapers/wallhaven-7jxgpo.png"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-tonal-spot"
 
 [widget.active_window]
 anchor = true
@@ -377,9 +406,19 @@ type = "alexander/game-launcher:launcher"
 
 [widget.media]
 artist_first = true
+enabled = false
 max_length = 170
 show_progress = true
 title_scroll = "always"
+
+[widget.network]
+show_label = false
+
+[widget.notes]
+type = "noctalia/notes:notes"
+
+[widget.ram]
+label_show_units = false
 
 [widget.recorder]
 type = "noctalia/screen_recorder:recorder"
@@ -387,14 +426,12 @@ type = "noctalia/screen_recorder:recorder"
 [widget.spacer_2]
 type = "spacer"
 
-[widget.temp]
-enabled = false
-
 [widget.weather]
 capsule = true
 capsule_foreground = "secondary"
 capsule_opacity = 0.0
 capsule_padding = 3
 color = "secondary"
+font_scale = 0.95000000000000007
 scale = 0.90000000000000002
 show_condition = false

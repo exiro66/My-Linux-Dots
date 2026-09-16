@@ -5,38 +5,17 @@ hl.config({
     cursor = {
         inactive_timeout = 5.0,
     },
-    decoration = {
-        blur = {
-            ignore_opacity = true,
-            passes = 2,
-            popups = true,
-            size = 6,
-            special = true,
-        },
-        rounding = 30,
-        rounding_power = 3.0,
-        shadow = {
-            enabled = true,
-            range = 8,
-            render_power = 4,
-        },
-    },
     dwindle = {
         default_split_ratio = 1.0,
         smart_split = false,
     },
     general = {
-        border_size = 0,
         col = {
             active_border = {
-                colors = {"rgba(99b6f2ff)", "rgba(e1e7f5ff)"},
+                colors = {"rgba(9ad4a1ff)", "rgba(dfe4dcff)"},
                 angle = 45,
             },
         },
-        extend_border_grab_area = 10,
-        gaps_in = 4,
-        gaps_out = 40,
-        layout = "scrolling",
     },
     input = {
         kb_layout = "us,es",
@@ -62,12 +41,6 @@ hl.animation({
     speed = 4.5,
     bezier = "ease",
     style = "slide",
-})
-hl.animation({
-    leaf = "borderangle",
-    enabled = true,
-    speed = 4.5,
-    bezier = "smooth",
 })
 hl.animation({
     leaf = "workspaces",
