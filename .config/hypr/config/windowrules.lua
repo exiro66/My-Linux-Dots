@@ -115,3 +115,5 @@ hl.window_rule({
     no_focus = true,
 })
 
+-- Hacer Nautilus ligeramente transparente
+hl.window_rule({ match = { class = "org.gnome.Nautilus" }, opacity = "0.85 0.85" })
