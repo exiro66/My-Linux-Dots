@@ -76,4 +76,15 @@ sudo plymouth-set-default-theme -R pedro-raccoon
 
 sudo systemctl enable sddm
 
+# Iconos personalizados
+mkdir -p ~/.local/share/icons
+cp $REPO_DIR/icons/noctalia-custom.png ~/.local/share/icons/
+cp $REPO_DIR/icons/zen-custom.png ~/.local/share/icons/
+
+# .desktop personalizados
+mkdir -p ~/.local/share/applications
+cp $REPO_DIR/applications/dev.noctalia.Noctalia.desktop ~/.local/share/applications/
+cp $REPO_DIR/applications/zen.desktop ~/.local/share/applications/
+update-desktop-database ~/.local/share/applications/
+
 echo "==> Listo. Reinicia el sistema."
