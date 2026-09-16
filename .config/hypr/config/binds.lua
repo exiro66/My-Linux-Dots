@@ -68,3 +68,4 @@ hl.bind(mod .. " + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-bar-float.f
 hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd("~/.local/bin/toggle-noctalia-dock-float.fish"))
 
 hl.bind(mod .. " + X", hl.dsp.exec_cmd("noctalia msg panel-toggle noctalia/notes:panel"))
+hl.bind(mod .. " + SHIFT + C", hl.dsp.exec_cmd("noctalia msg panel-toggle yuuto/calculator:panel"))
