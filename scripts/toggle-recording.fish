@@ -1,30 +1,17 @@
 #!/usr/bin/env fish
-# Toggle grabación de pantalla con wf-recorder
+# Toggle grabación de pantalla con gpu-screen-recorder
 
 set RECORDING_DIR ~/Vídeos/Grabaciones
-set PID_FILE /tmp/wf-recorder.pid
+set PID_FILE /tmp/gsr.pid
 
 mkdir -p $RECORDING_DIR
 
 if test -f $PID_FILE
     # Ya está grabando → parar
-    echo "Deteniendo grabación..."
-    
-    # Matar wf-recorder con SIGINT (cierre limpio)
-    pkill -SIGINT wf-recorder
-    
-    # Esperar a que cierre
+    set pid (cat $PID_FILE)
+    kill -SIGINT $pid 2>/dev/null
     sleep 1
-    
-    # Si sigue vivo, matar con SIGTERM
-    pkill -SIGTERM wf-recorder 2>/dev/null
-    
-    # Esperar más
-    sleep 1
-    
-    # Si aún sigue, matar con SIGKILL
-    pkill -SIGKILL wf-recorder 2>/dev/null
-    
+    pkill -SIGTERM gpu-screen-recorder 2>/dev/null
     rm -f $PID_FILE
     notify-send "Grabación detenida" "Guardado en $RECORDING_DIR"
     echo "Grabación detenida"
@@ -33,9 +20,10 @@ else
     set timestamp (date +%Y%m%d-%H%M%S)
     set output_file "$RECORDING_DIR/grabacion-$timestamp.mp4"
     
-    # Grabar el monitor enfocado con aceleración por hardware
+    # Detectar el monitor enfocado
     set monitor (hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .name')
-    wf-recorder -o $monitor -c h264_vaapi -f $output_file &
+    
+    gpu-screen-recorder -w $monitor -s 1920x1080 -f 60 -cursor yes -o $output_file &
     echo $last_pid > $PID_FILE
     notify-send "Grabación iniciada" "Grabando en $output_file"
     echo "Grabación iniciada: $output_file"
