@@ -26,6 +26,10 @@ sudo pacman -S --needed --noconfirm \
 echo "==> Instalando Tide Island..."
 yay -S --noconfirm tide-island
 
+# Fuentes de Apple (SF Pro)
+echo "==> Instalando fuentes SF Pro..."
+yay -S --noconfirm otf-apple-sf-pro
+
 # Wallpaper, notificaciones y colores
 echo "==> Instalando awww, dunst, hyprsunset y pywal..."
 sudo pacman -S --needed --noconfirm awww dunst hyprsunset python-pywal
