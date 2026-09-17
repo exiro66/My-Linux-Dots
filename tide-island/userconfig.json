@@ -26,7 +26,7 @@
     "textFontFamily": "Sans Serif",
     "tlpPermissionMode": "password",
     "tlpSudoPassword": "espaciotech",
-    "wallpaperCustomCommand": "awww img \"$1\" --transition-type grow --transition-duration 1.5 && wal -n -i \"$1\" && ~/.local/bin/wal-apply-all.fish",
+    "wallpaperCustomCommand": "awww img \"$1\" --transition-type grow --transition-duration 1.5 && wal -i \"$1\" && ~/.local/bin/wal-apply-all.fish",
     "wallpaperCustomCommandEnabled": true,
     "wallpaperLibraryPath": "/home/mohamed/Imágenes/Wallpapers",
     "wallpaperPath": "/home/mohamed/Imágenes/fantasy-knight-cat-armor-flowers-4k-wallpaper-uhdpaper.com-594@5@f.jpg",

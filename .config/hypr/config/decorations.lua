@@ -71,8 +71,8 @@ hl.config({
 
             -- AÑADE ESTO para que la barra de Tide Island tenga el efecto
             layers = {
-                enabled = true,
-                namespaces = "quickshell",
+                enabled = false,
+              -- namespaces = "quickshell",
             },
         },
     },
