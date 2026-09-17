@@ -8,10 +8,7 @@ hl.config({
         extend_border_grab_area = 10,
         resize_on_border = true,
         col = {
-            active_border = {
-                colors = { "rgba(a9b665ff)", "rgba(d4be98ff)" },
-                angle = 45,
-            },
+            active_border = { colors = { "rgba(a9b665ff)", "rgba(d4be98ff)" }, angle = 45 },
             inactive_border = "rgba(00000000)",
         },
     },
@@ -31,7 +28,6 @@ hl.config({
             },
         },
     },
-
     decoration = {
         dim_special = 0.3,
         rounding = 30,
@@ -46,13 +42,32 @@ hl.config({
             vibrancy = 0.5,
             vibrancy_darkness = 0.5,
             special = false,
-            variant = "kawase",
         },
         shadow = {
             enabled = true,
             range = 15,
             render_power = 4,
             color = "rgba(000000aa)",
+        },
+    },
+})
+
+hl.config({
+    plugin = {
+        hyprglass = {
+            enabled = true,
+            default_preset = "glass",
+            glass_opacity = 0.75,
+            blur_strength = 1.6,
+            refraction_strength = 0.10,
+            chromatic_aberration = 0.020,
+            fresnel_strength = 0.6,
+            specular_strength = 0.4,
+            brightness = 1.05,
+            contrast = 1.0,
+            saturation = 1.15,
+            vibrancy = 0.5,
+            vibrancy_darkness = 0.5,
         },
     },
 })

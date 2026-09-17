@@ -16,6 +16,7 @@ end
 echo "==> Instalando dependencias base..."
 sudo pacman -S --needed --noconfirm \
     hyprland hyprland-guiutils xdg-desktop-portal-hyprland \
+    hyprpm \
     kitty fish nautilus zen-browser \
     plymouth sddm qt5ct qt6ct nwg-look \
     playerctl brightnessctl wireplumber \
@@ -25,17 +26,9 @@ sudo pacman -S --needed --noconfirm \
 echo "==> Instalando Tide Island..."
 yay -S --noconfirm tide-island
 
-# Wallpaper y colores
-echo "==> Instalando awww y pywal..."
-sudo pacman -S --needed --noconfirm awww python-pywal
-
-# Notificaciones
-echo "==> Instalando dunst..."
-sudo pacman -S --needed --noconfirm dunst
-
-# Modo nocturno
-echo "==> Instalando hyprsunset..."
-sudo pacman -S --needed --noconfirm hyprsunset
+# Wallpaper y notificaciones
+echo "==> Instalando awww, dunst y hyprsunset..."
+sudo pacman -S --needed --noconfirm awww dunst hyprsunset
 
 # Batería
 echo "==> Instalando TLP..."
@@ -106,13 +99,20 @@ sudo plymouth-set-default-theme -R pedro-raccoon
 # Habilitar SDDM
 sudo systemctl enable sddm
 
-# Servicios de usuario
+# Servicios de usuario (awww y tide-island)
 echo "==> Configurando servicios de usuario..."
 mkdir -p ~/.config/systemd/user
-cp $REPO_DIR/systemd-user/awww-daemon.service ~/.config/systemd/user/
+cp $REPO_DIR/systemd-user/awww-daemon.service ~/.config/systemd/user/ 2>/dev/null
 systemctl --user daemon-reload
 systemctl --user enable --now awww-daemon.service
 systemctl --user enable --now tide-island.service
+
+# HyprGlass (efecto Liquid Glass)
+echo "==> Instalando HyprGlass..."
+hyprpm update
+yes | hyprpm add https://github.com/hyprnux/hyprglass
+hyprpm enable hyprglass
+hyprpm reload -n
 
 echo ""
 echo "===================================================="
