@@ -73,6 +73,9 @@ cp $REPO_DIR/wal-templates/* ~/.config/wal/templates/
 mkdir -p ~/.config/tide-island
 cp $REPO_DIR/tide-island/userconfig.json ~/.config/tide-island/
 
+# Parche de Tide Island (notch automático)
+sudo cp $REPO_DIR/tide-island-patches/DynamicIslandWindow.qml /usr/share/tide-island/DynamicIslandWindow.qml
+
 # Wallpapers
 mkdir -p ~/Imágenes/Wallpapers
 cp $REPO_DIR/wallpapers/* ~/Imágenes/Wallpapers/
