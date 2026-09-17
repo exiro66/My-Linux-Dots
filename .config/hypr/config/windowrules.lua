@@ -122,3 +122,9 @@ hl.window_rule({
     match = { class = "^(lutris|net.lutris.Lutris)$" },
     opacity = "0.85 0.85",
 })
+
+-- Excepción para Spun (sin HyprGlass)
+hl.window_rule({
+    match = { class = "^(spun)$" },
+    tag = "+hyprglass_disabled",
+})
