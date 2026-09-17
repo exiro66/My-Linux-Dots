@@ -117,3 +117,8 @@ hl.window_rule({
 
 -- Hacer Nautilus ligeramente transparente
 hl.window_rule({ match = { class = "org.gnome.Nautilus" }, opacity = "0.85 0.85" })
+
+hl.window_rule({
+    match = { class = "^(lutris|net.lutris.Lutris)$" },
+    opacity = "0.85 0.85",
+})
