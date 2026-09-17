@@ -1,0 +1,33 @@
+{
+    "clockFormat": "24",
+    "disableAutoExpandOnTrackChange": true,
+    "dynamicIslandLeftSwipeItems": [
+        "time",
+        "date",
+        "battery",
+        "workspace",
+        "ram",
+        "cpu",
+        "cava"
+    ],
+    "dynamicIslandPrimaryAction": "toggleExpandedPlayer",
+    "dynamicIslandPrimaryButton": 3,
+    "dynamicIslandSecondaryAction": "toggleControlCenter",
+    "dynamicIslandSecondaryButton": 1,
+    "hoverExpandAction": 0,
+    "iconFontFamily": "JetBrainsMono Nerd Font",
+    "islandAutoHideEnabled": false,
+    "islandBackgroundOpacity": 100,
+    "islandExclusiveZone": 25,
+    "islandHeight": 38,
+    "islandTopMargin": 10,
+    "islandWidth": 140,
+    "textFontFamily": "Sans Serif",
+    "tlpPermissionMode": "password",
+    "tlpSudoPassword": "espaciotech",
+    "wallpaperCustomCommand": "awww img \"$1\" --transition-type grow --transition-duration 1.5 && wal -n -i \"$1\"",
+    "wallpaperCustomCommandEnabled": true,
+    "wallpaperLibraryPath": "/home/mohamed/Imágenes/Wallpapers",
+    "wallpaperPath": "/home/mohamed/Imágenes/fantasy-knight-cat-armor-flowers-4k-wallpaper-uhdpaper.com-594@5@f.jpg",
+    "wallpaperPywalEnabled": true
+}

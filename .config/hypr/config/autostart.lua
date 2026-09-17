@@ -1,19 +1,9 @@
 -- Auto-start config
--- if you dont use UWSM add your auto start programs here, otherwise use XDG autostart https://wiki.archlinux.org/title/XDG_Autostart
 
 hl.on("hyprland.start", function ()
     hl.exec_cmd("dbus-update-activation-environment --systemd --all")
-    hl.exec_cmd("noctalia")
+    hl.exec_cmd("dbus-update-activation-environment --systemd QS_ICON_THEME=MacTahoe")
+    hl.exec_cmd("dunst")
+hl.exec_cmd("sleep 1 && dunstctl set-paused true")
     hl.exec_cmd("xhost +SI:localuser:root")
-end)
-
-
-hl.exec_cmd("fish ~/.local/bin/sync-hyprland-colors.fish")
-hl.exec_cmd("fish ~/.local/bin/watch-noctalia-colors.fish &")
-
-hl.on("hyprland.start", function ()
-    hl.exec_cmd("dbus-update-activation-environment --systemd --all")
-    hl.exec_cmd("noctalia")
-    hl.exec_cmd("xhost +SI:localuser:root")
-    hl.exec_cmd("sleep 3 && fish ~/.local/bin/sync-hyprland-colors.fish")
 end)

@@ -1,4 +1,5 @@
 #!/usr/bin/fish
+# My-Linux-Dots - Instalador para CachyOS
 
 set REPO_DIR (pwd)
 
@@ -11,54 +12,81 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-# Dependencias
+# Dependencias base
+echo "==> Instalando dependencias base..."
 sudo pacman -S --needed --noconfirm \
     hyprland hyprland-guiutils xdg-desktop-portal-hyprland \
     kitty fish nautilus zen-browser \
     plymouth sddm qt5ct qt6ct nwg-look \
-    btop cava mpv micro satty \
     playerctl brightnessctl wireplumber \
     ttf-jetbrains-mono-nerd
 
-# Noctalia
-if not command -v noctalia >/dev/null
-    yay -S --noconfirm noctalia-git
-end
+# Tide Island (shell principal)
+echo "==> Instalando Tide Island..."
+yay -S --noconfirm tide-island
 
-# Backup
+# Wallpaper y colores
+echo "==> Instalando awww y pywal..."
+sudo pacman -S --needed --noconfirm awww python-pywal
+
+# Notificaciones
+echo "==> Instalando dunst..."
+sudo pacman -S --needed --noconfirm dunst
+
+# Modo nocturno
+echo "==> Instalando hyprsunset..."
+sudo pacman -S --needed --noconfirm hyprsunset
+
+# Batería
+echo "==> Instalando TLP..."
+sudo pacman -S --needed --noconfirm tlp tlp-rdw
+sudo systemctl enable --now tlp
+
+# Backup de configs existentes
 set BACKUP ~/.config-backup-(date +%Y%m%d-%H%M%S)
 mkdir -p $BACKUP
+echo "==> Backup en: $BACKUP"
 
-# Copiar configs
+# Copiar configs de Hyprland
 test -d ~/.config/hypr; and mv ~/.config/hypr $BACKUP/
 cp -r $REPO_DIR/.config/hypr ~/.config/
 
-test -d ~/.config/noctalia; and mv ~/.config/noctalia $BACKUP/
-cp -r $REPO_DIR/.config/noctalia ~/.config/
-mkdir -p ~/.local/state/noctalia
-cp $REPO_DIR/noctalia-state/settings.toml ~/.local/state/noctalia/
-
+# Copiar configs de Fish
 cp -r $REPO_DIR/.config/fish/* ~/.config/fish/
 
-for dir in gtk-3.0 gtk-4.0 qt5ct qt6ct btop cava mpv nwg-look micro satty
+# Copiar otras configs
+for dir in gtk-3.0 gtk-4.0 qt5ct qt6ct nwg-look
     test -d $REPO_DIR/.config/$dir; and cp -r $REPO_DIR/.config/$dir ~/.config/
 end
-cp $REPO_DIR/.config/kdeglobals ~/.config/ 2>/dev/null
-cp $REPO_DIR/.config/mimeapps.list ~/.config/ 2>/dev/null
 
+# Kitty
 mkdir -p ~/.config/kitty
 cp $REPO_DIR/kitty/kitty.conf ~/.config/kitty/
 
+# Scripts
 mkdir -p ~/.local/bin
 cp $REPO_DIR/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
 
-test -d $REPO_DIR/.icons/Bibata-Modern-Ice; and cp -r $REPO_DIR/.icons/Bibata-Modern-Ice ~/.local/share/icons/
+# Tide Island config
+mkdir -p ~/.config/tide-island
+cp $REPO_DIR/tide-island/userconfig.json ~/.config/tide-island/
 
+# Wallpapers
 mkdir -p ~/Imágenes/Wallpapers
 cp $REPO_DIR/wallpapers/* ~/Imágenes/Wallpapers/
 
+# Iconos personalizados
+mkdir -p ~/.local/share/icons
+cp $REPO_DIR/icons/zen-custom.png ~/.local/share/icons/ 2>/dev/null
+
+# .desktop personalizados
+mkdir -p ~/.local/share/applications
+cp $REPO_DIR/applications/zen.desktop ~/.local/share/applications/ 2>/dev/null
+update-desktop-database ~/.local/share/applications/
+
 # SDDM
+echo "==> Instalando SDDM..."
 sudo mkdir -p /usr/share/sddm/themes
 sudo cp -r $REPO_DIR/sddm/caelestia /usr/share/sddm/themes/
 sudo chmod -R 755 /usr/share/sddm/themes/caelestia
@@ -66,25 +94,26 @@ sudo mkdir -p /etc/sddm.conf.d
 printf "[Theme]\nCurrent=caelestia\n" | sudo tee /etc/sddm.conf.d/caelestia.conf
 
 mkdir -p ~/SDDM
-for color in BEIGE BLACK BLUE GREEN GRUVBOX HEXA LAVENDER ORANGE PINK PURPLE RED STARS WHITE YELLOW
+for color in BEIGE BLACK BLUE GREEN GRUVBOX HEXA LAVENDER ORANGE PINK PURPLE RED SKY STARS WHITE YELLOW
     test -d $REPO_DIR/sddm/$color; and cp -r $REPO_DIR/sddm/$color ~/SDDM/
 end
 
 # Plymouth
+echo "==> Instalando Plymouth..."
 sudo cp -r $REPO_DIR/plymouth/pedro-raccoon /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R pedro-raccoon
 
+# Habilitar SDDM
 sudo systemctl enable sddm
 
-# Iconos personalizados
-mkdir -p ~/.local/share/icons
-cp $REPO_DIR/icons/noctalia-custom.png ~/.local/share/icons/
-cp $REPO_DIR/icons/zen-custom.png ~/.local/share/icons/
+# Servicios de usuario
+echo "==> Habilitando servicios de usuario..."
+systemctl --user enable --now tide-island.service
+systemctl --user enable --now awww-daemon.service
 
-# .desktop personalizados
-mkdir -p ~/.local/share/applications
-cp $REPO_DIR/applications/dev.noctalia.Noctalia.desktop ~/.local/share/applications/
-cp $REPO_DIR/applications/zen.desktop ~/.local/share/applications/
-update-desktop-database ~/.local/share/applications/
-
-echo "==> Listo. Reinicia el sistema."
+echo ""
+echo "===================================================="
+echo "   ✅ INSTALACIÓN COMPLETADA"
+echo "   Backup: $BACKUP"
+echo "   Reinicia el sistema para aplicar los cambios."
+echo "===================================================="
