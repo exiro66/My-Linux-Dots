@@ -63,6 +63,7 @@ cp $REPO_DIR/kitty/kitty.conf ~/.config/kitty/
 # Rishot config
 mkdir -p ~/.config/rishot
 cp $REPO_DIR/rishot/config.json ~/.config/rishot/
+sed -i "s|/home/mohamed|$HOME|g" ~/.config/rishot/config.json
 
 # Scripts
 mkdir -p ~/.local/bin
