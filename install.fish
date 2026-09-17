@@ -26,9 +26,9 @@ sudo pacman -S --needed --noconfirm \
 echo "==> Instalando Tide Island..."
 yay -S --noconfirm tide-island
 
-# Wallpaper y notificaciones
-echo "==> Instalando awww, dunst y hyprsunset..."
-sudo pacman -S --needed --noconfirm awww dunst hyprsunset
+# Wallpaper, notificaciones y colores
+echo "==> Instalando awww, dunst, hyprsunset y pywal..."
+sudo pacman -S --needed --noconfirm awww dunst hyprsunset python-pywal
 
 # Batería
 echo "==> Instalando TLP..."
@@ -60,6 +60,10 @@ cp $REPO_DIR/kitty/kitty.conf ~/.config/kitty/
 mkdir -p ~/.local/bin
 cp $REPO_DIR/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
+
+# Templates de pywal
+mkdir -p ~/.config/wal/templates
+cp $REPO_DIR/wal-templates/* ~/.config/wal/templates/
 
 # Tide Island config
 mkdir -p ~/.config/tide-island
@@ -113,6 +117,12 @@ hyprpm update
 yes | hyprpm add https://github.com/hyprnux/hyprglass
 hyprpm enable hyprglass
 hyprpm reload -n
+
+# Inicializar pywal con el primer wallpaper
+echo "==> Inicializando pywal..."
+set first_wall (ls ~/Imágenes/Wallpapers/* | head -1)
+wal -i $first_wall -n
+~/.local/bin/wal-apply-all.fish
 
 echo ""
 echo "===================================================="
