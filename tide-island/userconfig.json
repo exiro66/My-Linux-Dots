@@ -23,8 +23,10 @@
     "islandTopMargin": 10,
     "islandWidth": 140,
     "textFontFamily": "Sans Serif",
-    "tlpPermissionMode": "password",
-    "tlpSudoPassword": "espaciotech",
+
+"tlpPermissionMode": "ask",
+"tlpSudoPassword": null,
+
     "wallpaperCustomCommand": "awww img \"$1\" --transition-type grow --transition-duration 1.5 && wal -n -i \"$1\" && ~/.local/bin/wal-apply-all.fish",
     "wallpaperCustomCommandEnabled": true,
     "wallpaperLibraryPath": "/home/mohamed/Imágenes/Wallpapers",
