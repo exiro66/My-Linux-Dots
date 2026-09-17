@@ -76,6 +76,8 @@ hl.bind(mod .. " + SHIFT + Right", hl.dsp.exec_cmd(tide .. " tide swipeRight"))
 hl.bind(mod .. " + R", hl.dsp.exec_cmd("systemctl --user restart tide-island"))
 hl.bind(mod .. " + SHIFT + R", hl.dsp.exec_cmd(tide .. " tide showTimer"))
 hl.bind(mod .. " + L", hl.dsp.exec_cmd("hyprlock"))
+-- Grabación de pantalla
+hl.bind(mod .. " + G", hl.dsp.exec_cmd("~/.local/bin/toggle-recording.fish"))
 
 -- ============================================================
 -- HYPRLAND
