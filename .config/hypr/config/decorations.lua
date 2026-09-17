@@ -69,11 +69,11 @@ hl.config({
             vibrancy = 0.5,
             vibrancy_darkness = 0.5,
 
-            -- AÑADE ESTO para que la barra de Tide Island tenga el efecto
-            layers = {
-                enabled = false,
-              -- namespaces = "quickshell",
-            },
+layers = {
+    enabled = true,
+    namespaces = "quickshell",
+},
+
         },
     },
 })
