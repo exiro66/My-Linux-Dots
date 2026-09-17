@@ -70,7 +70,7 @@ hl.config({
             vibrancy_darkness = 0.5,
 
 layers = {
-    enabled = true,
+    enabled = false,
     namespaces = "quickshell",
 },
 
