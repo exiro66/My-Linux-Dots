@@ -71,9 +71,10 @@ hl.bind(mod .. " + N", hl.dsp.exec_cmd(tide .. " tide toggleNotificationCenter")
 hl.bind(mod .. " + P", hl.dsp.exec_cmd(tide .. " tide togglePowerMenu"))
 hl.bind(mod .. " + O", hl.dsp.exec_cmd(tide .. " tide toggleFileShelf"))
 hl.bind(mod .. " + D", hl.dsp.exec_cmd(tide .. " tide showClock"))
-hl.bind(mod .. " + R", hl.dsp.exec_cmd(tide .. " tide showTimer"))
 hl.bind(mod .. " + SHIFT + Left", hl.dsp.exec_cmd(tide .. " tide swipeLeft"))
 hl.bind(mod .. " + SHIFT + Right", hl.dsp.exec_cmd(tide .. " tide swipeRight"))
+hl.bind(mod .. " + R", hl.dsp.exec_cmd("systemctl --user restart tide-island"))
+hl.bind(mod .. " + SHIFT + R", hl.dsp.exec_cmd(tide .. " tide showTimer"))
 
 -- ============================================================
 -- HYPRLAND
