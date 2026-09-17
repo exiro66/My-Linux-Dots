@@ -60,6 +60,10 @@ end
 mkdir -p ~/.config/kitty
 cp $REPO_DIR/kitty/kitty.conf ~/.config/kitty/
 
+# Rishot config
+mkdir -p ~/.config/rishot
+cp $REPO_DIR/rishot/config.json ~/.config/rishot/
+
 # Scripts
 mkdir -p ~/.local/bin
 cp $REPO_DIR/scripts/* ~/.local/bin/

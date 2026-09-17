@@ -1,0 +1,16 @@
+{
+  "mosaicFactor": 14,
+  "blurRadius": 64,
+  "zoomFactor": 2,
+  "copyToDisk": false,
+  "copyOnSave": false,
+  "skipSaveDialog": false,
+  "saveDir": "/home/mohamed/Imágenes/Screenshots",
+  "toolStyle": {
+    "rect": {
+      "color": "#e0563b",
+      "width": 1,
+      "filled": false
+    }
+  }
+}
