@@ -107,9 +107,12 @@ sudo plymouth-set-default-theme -R pedro-raccoon
 sudo systemctl enable sddm
 
 # Servicios de usuario
-echo "==> Habilitando servicios de usuario..."
-systemctl --user enable --now tide-island.service
+echo "==> Configurando servicios de usuario..."
+mkdir -p ~/.config/systemd/user
+cp $REPO_DIR/systemd-user/awww-daemon.service ~/.config/systemd/user/
+systemctl --user daemon-reload
 systemctl --user enable --now awww-daemon.service
+systemctl --user enable --now tide-island.service
 
 echo ""
 echo "===================================================="
