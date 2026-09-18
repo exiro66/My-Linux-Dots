@@ -128,3 +128,9 @@ hl.window_rule({
     match = { class = "^(spun)$" },
     tag = "+hyprglass_disabled",
 })
+
+
+hl.window_rule({
+    match = { class = "^(tide-islan|tide-island-config-app)$" },
+    opacity = "0.85 0.85",
+})
