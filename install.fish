@@ -16,10 +16,11 @@ end
 echo "==> Installing base dependencies..."
 sudo pacman -S --needed --noconfirm \
     hyprland hyprland-guiutils xdg-desktop-portal-hyprland \
-    hyprpm \
+    hyprpm polkit \
     kitty fish nautilus zen-browser \
     plymouth sddm qt5ct qt6ct nwg-look \
     playerctl brightnessctl wireplumber \
+    jq \
     ttf-jetbrains-mono-nerd
 
 # Applications
@@ -37,9 +38,21 @@ yay -S --noconfirm hyprmod
 echo "==> Installing Tide Island..."
 yay -S --noconfirm tide-island
 
-# Apple Fonts (SF Pro)
+# Fonts (SF Pro)
 echo "==> Installing SF Pro fonts..."
 yay -S --noconfirm otf-apple-sf-pro
+
+# Icon theme (MacTahoe)
+echo "==> Installing MacTahoe icons..."
+yay -S --noconfirm mactahoe-icon-theme-git
+
+# Cursor theme (Bibata)
+echo "==> Installing Bibata cursor..."
+yay -S --noconfirm bibata-cursor-theme
+
+# Apply themes
+gsettings set org.gnome.desktop.interface icon-theme "MacTahoe"
+gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"
 
 # Wallpaper, notifications, colors
 echo "==> Installing awww, dunst, hyprsunset, pywal and hyprlock..."
@@ -111,11 +124,20 @@ mkdir -p ~/.local/share/applications
 cp $REPO_DIR/applications/zen.desktop ~/.local/share/applications/ 2>/dev/null
 update-desktop-database ~/.local/share/applications/
 
-# SDDM
+# SDDM + Caelestia theme
 echo "==> Installing SDDM..."
-sudo mkdir -p /usr/share/sddm/themes
-sudo cp -r $REPO_DIR/sddm/caelestia /usr/share/sddm/themes/
+sudo pacman -S --needed --noconfirm sddm
+sudo pacman -S --needed --noconfirm \
+    qt5-base qt5-declarative qt5-quickcontrols2 \
+    qt5-graphicaleffects qt5-svg qt5-multimedia
+
+echo "==> Installing Caelestia SDDM theme..."
+yay -S --noconfirm caelestia-sddm-locklike-git
+
+echo "==> Applying Caelestia customizations..."
+sudo cp -r $REPO_DIR/sddm/caelestia/* /usr/share/sddm/themes/caelestia/
 sudo chmod -R 755 /usr/share/sddm/themes/caelestia
+
 sudo mkdir -p /etc/sddm.conf.d
 printf "[Theme]\nCurrent=caelestia\n" | sudo tee /etc/sddm.conf.d/caelestia.conf
 
