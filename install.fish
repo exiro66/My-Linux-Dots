@@ -1,9 +1,9 @@
 #!/usr/bin/fish
-# My-Linux-Dots - Instalador para CachyOS
+# My-Linux-Dots - Installer for CachyOS
 
 set REPO_DIR (pwd)
 
-echo "==> Instalando My-Linux-Dots..."
+echo "==> Installing My-Linux-Dots..."
 
 # yay
 if not command -v yay >/dev/null
@@ -12,8 +12,8 @@ if not command -v yay >/dev/null
     cd /tmp/yay; makepkg -si --noconfirm; cd -
 end
 
-# Dependencias base
-echo "==> Instalando dependencias base..."
+# Base dependencies
+echo "==> Installing base dependencies..."
 sudo pacman -S --needed --noconfirm \
     hyprland hyprland-guiutils xdg-desktop-portal-hyprland \
     hyprpm \
@@ -22,36 +22,58 @@ sudo pacman -S --needed --noconfirm \
     playerctl brightnessctl wireplumber \
     ttf-jetbrains-mono-nerd
 
-# Tide Island (shell principal)
-echo "==> Instalando Tide Island..."
+# Applications
+echo "==> Installing applications..."
+sudo pacman -S --needed --noconfirm \
+    vscodium qbittorrent lutris wine winetricks \
+    mpv loupe easyeffects \
+    gnome-disk-utility gnome-calculator
+
+# hyprmod (AUR)
+echo "==> Installing hyprmod..."
+yay -S --noconfirm hyprmod
+
+# Tide Island
+echo "==> Installing Tide Island..."
 yay -S --noconfirm tide-island
 
-# Fuentes de Apple (SF Pro)
-echo "==> Instalando fuentes SF Pro..."
+# Apple Fonts (SF Pro)
+echo "==> Installing SF Pro fonts..."
 yay -S --noconfirm otf-apple-sf-pro
 
-# Wallpaper, notificaciones y colores
-echo "==> Instalando awww, dunst, hyprsunset y pywal..."
-sudo pacman -S --needed --noconfirm awww dunst hyprsunset python-pywal
+# Wallpaper, notifications, colors
+echo "==> Installing awww, dunst, hyprsunset, pywal and hyprlock..."
+sudo pacman -S --needed --noconfirm awww dunst hyprsunset python-pywal hyprlock
 
-# Batería
-echo "==> Instalando TLP..."
+# Screen recording
+echo "==> Installing gpu-screen-recorder..."
+sudo pacman -S --needed --noconfirm gpu-screen-recorder
+
+# Rishot (screenshot + annotation)
+echo "==> Installing Rishot..."
+sudo pacman -S --needed --noconfirm \
+    quickshell qt6-declarative qt6-svg qt6-5compat qt6-wayland \
+    wl-clipboard imagemagick cliphist curl kdialog libnotify
+curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
+
+# Battery
+echo "==> Installing TLP..."
 sudo pacman -S --needed --noconfirm tlp tlp-rdw
 sudo systemctl enable --now tlp
 
-# Backup de configs existentes
+# Backup
 set BACKUP ~/.config-backup-(date +%Y%m%d-%H%M%S)
 mkdir -p $BACKUP
-echo "==> Backup en: $BACKUP"
+echo "==> Backup in: $BACKUP"
 
-# Copiar configs de Hyprland
+# Hyprland configs
 test -d ~/.config/hypr; and mv ~/.config/hypr $BACKUP/
 cp -r $REPO_DIR/.config/hypr ~/.config/
 
-# Copiar configs de Fish
+# Fish configs
 cp -r $REPO_DIR/.config/fish/* ~/.config/fish/
 
-# Copiar otras configs
+# GTK / Qt configs
 for dir in gtk-3.0 gtk-4.0 qt5ct qt6ct nwg-look
     test -d $REPO_DIR/.config/$dir; and cp -r $REPO_DIR/.config/$dir ~/.config/
 end
@@ -60,17 +82,12 @@ end
 mkdir -p ~/.config/kitty
 cp $REPO_DIR/kitty/kitty.conf ~/.config/kitty/
 
-# Rishot config
-mkdir -p ~/.config/rishot
-cp $REPO_DIR/rishot/config.json ~/.config/rishot/
-sed -i "s|/home/mohamed|$HOME|g" ~/.config/rishot/config.json
-
 # Scripts
 mkdir -p ~/.local/bin
 cp $REPO_DIR/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
 
-# Templates de pywal
+# pywal templates
 mkdir -p ~/.config/wal/templates
 cp $REPO_DIR/wal-templates/* ~/.config/wal/templates/
 
@@ -78,24 +95,24 @@ cp $REPO_DIR/wal-templates/* ~/.config/wal/templates/
 mkdir -p ~/.config/tide-island
 cp $REPO_DIR/tide-island/userconfig.json ~/.config/tide-island/
 
-# Parche de Tide Island (notch automático)
+# Tide Island patch (auto notch)
 sudo cp $REPO_DIR/tide-island-patches/DynamicIslandWindow.qml /usr/share/tide-island/DynamicIslandWindow.qml
 
 # Wallpapers
 mkdir -p ~/Imágenes/Wallpapers
 cp $REPO_DIR/wallpapers/* ~/Imágenes/Wallpapers/
 
-# Iconos personalizados
+# Custom icons
 mkdir -p ~/.local/share/icons
 cp $REPO_DIR/icons/zen-custom.png ~/.local/share/icons/ 2>/dev/null
 
-# .desktop personalizados
+# Custom .desktop files
 mkdir -p ~/.local/share/applications
 cp $REPO_DIR/applications/zen.desktop ~/.local/share/applications/ 2>/dev/null
 update-desktop-database ~/.local/share/applications/
 
 # SDDM
-echo "==> Instalando SDDM..."
+echo "==> Installing SDDM..."
 sudo mkdir -p /usr/share/sddm/themes
 sudo cp -r $REPO_DIR/sddm/caelestia /usr/share/sddm/themes/
 sudo chmod -R 755 /usr/share/sddm/themes/caelestia
@@ -108,37 +125,37 @@ for color in BEIGE BLACK BLUE GREEN GRUVBOX HEXA LAVENDER ORANGE PINK PURPLE RED
 end
 
 # Plymouth
-echo "==> Instalando Plymouth..."
+echo "==> Installing Plymouth..."
 sudo cp -r $REPO_DIR/plymouth/pedro-raccoon /usr/share/plymouth/themes/
 sudo plymouth-set-default-theme -R pedro-raccoon
 
-# Habilitar SDDM
+# Enable SDDM
 sudo systemctl enable sddm
 
-# Servicios de usuario (awww y tide-island)
-echo "==> Configurando servicios de usuario..."
+# User services (awww and tide-island)
+echo "==> Setting up user services..."
 mkdir -p ~/.config/systemd/user
 cp $REPO_DIR/systemd-user/awww-daemon.service ~/.config/systemd/user/ 2>/dev/null
 systemctl --user daemon-reload
 systemctl --user enable --now awww-daemon.service
 systemctl --user enable --now tide-island.service
 
-# HyprGlass (efecto Liquid Glass)
-echo "==> Instalando HyprGlass..."
+# HyprGlass (Liquid Glass effect)
+echo "==> Installing HyprGlass..."
 hyprpm update
 yes | hyprpm add https://github.com/hyprnux/hyprglass
 hyprpm enable hyprglass
 hyprpm reload -n
 
-# Inicializar pywal con el primer wallpaper
-echo "==> Inicializando pywal..."
+# Initialize pywal with first wallpaper
+echo "==> Initializing pywal..."
 set first_wall (ls ~/Imágenes/Wallpapers/* | head -1)
 wal -i $first_wall -n
 ~/.local/bin/wal-apply-all.fish
 
 echo ""
 echo "===================================================="
-echo "   ✅ INSTALACIÓN COMPLETADA"
+echo "   ✅ INSTALLATION COMPLETE"
 echo "   Backup: $BACKUP"
-echo "   Reinicia el sistema para aplicar los cambios."
+echo "   Reboot to apply all changes."
 echo "===================================================="
