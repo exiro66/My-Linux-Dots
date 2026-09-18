@@ -50,10 +50,6 @@ yay -S --noconfirm mactahoe-icon-theme-git
 echo "==> Installing Bibata cursor..."
 yay -S --noconfirm bibata-cursor-theme
 
-# Apply themes
-gsettings set org.gnome.desktop.interface icon-theme "MacTahoe"
-gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"
-
 # Wallpaper, notifications, colors
 echo "==> Installing awww, dunst, hyprsunset, pywal and hyprlock..."
 sudo pacman -S --needed --noconfirm awww dunst hyprsunset python-pywal hyprlock
@@ -175,9 +171,21 @@ set first_wall (ls ~/Imágenes/Wallpapers/* | head -1)
 wal -i $first_wall -n
 ~/.local/bin/wal-apply-all.fish
 
+# Apply default themes
+echo "==> Applying default themes..."
+
+# SDDM Black theme
+sddm black --no-restart
+
+# MacTahoe Grey Dark icons
+gsettings set org.gnome.desktop.interface icon-theme "MacTahoe-grey-dark"
+
+# Bibata Modern Ice cursor
+gsettings set org.gnome.desktop.interface cursor-theme "Bibata-Modern-Ice"
+
 echo ""
 echo "===================================================="
-echo "   ✅ INSTALLATION COMPLETE"
+echo "   INSTALLATION COMPLETE"
 echo "   Backup: $BACKUP"
 echo "   Reboot to apply all changes."
 echo "===================================================="
