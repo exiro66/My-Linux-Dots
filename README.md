@@ -64,8 +64,7 @@ Notas:
 hypr/        config de Hyprland (Lua)
 kitty/       terminal + tema pywal
 quickshell/  NotchShell + parches (ver abajo)
-scripts/     toggle-recording, wal-apply-all, notch-reload, rishot
-colors/      starship base
+scripts/     toggle-recording, wal-apply-all, notch-reload
 sddm/        conf + tema caelestia + packs de fondos
 Wallpapers/  fondos
 Assets/      capturas del README

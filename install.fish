@@ -29,7 +29,7 @@ end
 
 # --- paquetes oficiales ---
 paso "Paquetes oficiales"
-set pkgs hyprland quickshell kitty fish starship python-pywal jq curl bash \
+set pkgs hyprland quickshell kitty fish python-pywal jq curl bash \
     networkmanager pipewire pipewire-pulse wireplumber bluez bluez-utils \
     power-profiles-daemon upower brightnessctl gpu-screen-recorder playerctl \
     wl-clipboard kdialog ttf-jetbrains-mono-nerd inter-font hyprlock hypridle \
@@ -56,14 +56,13 @@ or echo "Aviso: rishot no se instaló, sigo."
 # --- copia de seguridad + configs ---
 paso "Copiando configs (respaldo en $BACKUP)"
 mkdir -p $BACKUP
-for d in hypr kitty quickshell starship.toml
+for d in hypr kitty quickshell
     if test -e ~/.config/$d
         mv ~/.config/$d $BACKUP/
     end
 end
 mkdir -p ~/.config ~/.local/bin
 cp -r $DOTS/hypr $DOTS/kitty $DOTS/quickshell ~/.config/
-cp $DOTS/colors/starship.toml ~/.config/
 cp $DOTS/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
 
