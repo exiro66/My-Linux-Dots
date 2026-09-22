@@ -1,6 +1,80 @@
-# My Linux Dots
+# My Linux Dots — Hyprland + NotchShell
 
-```bash
+Escritorio Hyprland con notch estilo Dynamic Island, temas automáticos con
+pywal y atajos en Lua. Probado en CachyOS, sirve en cualquier Arch.
+
+![Escritorio con notch](Assets/1.png)
+![Command Center abierto](Assets/2.png)
+![Lanzador de apps](Assets/3.png)
+![Fondos](Assets/4.png)
+
+## Qué incluye
+
+* **Notch** (basado en [NotchShell](https://github.com/selvarn/NotchShell),
+  con parches propios): reloj, centro de comandos, launchers de apps y
+  fondos, notificaciones en el notch, Bluetooth, batería + perfiles
+  (balanced/performance/power-saver), layouts (dwindle/master/scrollable/monocle),
+  brillo, workspaces por monitor, todo en un monitor a la vez.
+* **Temas automáticos**: al cambiar de fondo, pywal retiñe terminal, GTK/Qt,
+  bordes de Hyprland, starship y el propio notch.
+* **Hyprland en Lua**: binds, autostart, decoraciones, workspaces `r~N`
+  (numeración independiente por monitor).
+* **Scripts**: `toggle-recording.fish` (graba pantalla + audio con diálogo
+  de pantalla/mic), `wal-apply-all.fish`, `notch-reload.sh`, `rishot`.
+* **SDDM**: tema caelestia + packs de fondos.
+* **Kitty** con tema generado por pywal.
+
+## Instalación
+
+```fish
 git clone https://github.com/exiro66/My-Linux-Dots.git
 cd My-Linux-Dots
 fish install.fish
+```
+
+El instalador pide sudo, hace respaldo de tu `~/.config`, instala paquetes
+de Arch + AUR, copia configs, deja SDDM listo y genera el primer tema.
+Después cierra sesión y entra en Hyprland.
+
+Notas:
+
+* La fuente del notch es **SF Pro** (Apple, no se puede subir al repo):
+  el instalador pone `otf-apple-sf-pro` del AUR. Sin ella cae a la fuente
+  del sistema. Iconos MacTahoe y cursor Bibata también van por AUR.
+* Sin `brightnessctl` no sale la barra de brillo; sin `bluez`, el tile
+  Bluetooth se oculta solo. Todo degrada sin romper.
+
+## Atajos principales
+
+| Teclas | Acción |
+| --- | --- |
+| SUPER + A | Lanzador de apps |
+| SUPER + C | Command Center / toggle notch |
+| SUPER + W | Fondos |
+| SUPER + R | Recargar quickshell + Hyprland |
+| SUPER + G | Grabar pantalla (para con lo mismo) |
+| SUPER + T / B / E | Terminal / navegador / archivos |
+| SUPER + 1..0 | Workspaces del monitor actual |
+| SUPER + Tab | Overview |
+| SUPER + L | Bloquear |
+
+## Estructura
+
+```
+hypr/        config de Hyprland (Lua)
+kitty/       terminal + tema pywal
+quickshell/  NotchShell + parches (ver abajo)
+scripts/     toggle-recording, wal-apply-all, notch-reload, rishot
+colors/      starship base
+sddm/        conf + tema caelestia + packs de fondos
+Wallpapers/  fondos
+Assets/      capturas del README
+install.fish instalador
+```
+
+## Parches sobre NotchShell upstream
+
+`quickshell/` parte de `selvarn/NotchShell` sin `.git`, con: centro en un
+solo monitor, notificaciones nativas (sin dunst), Bluetooth, batería +
+perfiles, layouts, brillo, workspaces por posición `r~N`, fuente directa
+SF Pro Rounded, MSAA en la curva y ServerNotif→historial propio.
