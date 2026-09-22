@@ -52,12 +52,43 @@ Notas:
 | --- | --- |
 | SUPER + A | Lanzador de apps |
 | SUPER + C | Command Center / toggle notch |
-| SUPER + W | Fondos |
-| SUPER + R | Recargar quickshell + Hyprland |
-| SUPER + T / B / E | Terminal / navegador / archivos |
-| SUPER + 1..0 | Workspaces del monitor actual |
+| SUPER + W | Selector de fondos |
+| SUPER + R | Recargar Quickshell + Hyprland |
+| SUPER + T | Terminal (kitty) |
+| SUPER + B | Navegador (Zen) |
+| SUPER + E | Gestor de archivos (Nautilus) |
+| SUPER + G | Grabar pantalla (Kooha) |
+| SUPER + S | Captura de región + anotar (Satty) |
+| SUPER + SHIFT + S | Captura de monitor + anotar (Satty) |
+| SUPER + L | Bloquear pantalla |
 | SUPER + Tab | Overview |
-| SUPER + L | Bloquear |
+| SUPER + 1..0 | Workspaces del monitor actual |
+| SUPER + SHIFT + 1..0 | Mover ventana al workspace |
+| SUPER + Space | Cambiar layout (dwindle/master/scrolling/monocle) |
+| SUPER + Q | Cerrar ventana |
+| SUPER + SHIFT + Q | Matar ventana |
+| SUPER + SHIFT + T | Alternar flotante |
+| SUPER + F | Pantalla completa |
+| SUPER + ← / → / ↑ / ↓ | Mover foco entre ventanas |
+| SUPER + scroll | Mover foco |
+| SUPER + LMB | Arrastrar ventana |
+| SUPER + RMB | Redimensionar ventana |
+| SUPER + SHIFT + ← | Workspace anterior |
+| SUPER + SHIFT + → | Workspace siguiente |
+| SUPER + N | Fijar notch visible / auto-ocultar |
+
+## Multimedia (teclas físicas)
+
+| Tecla | Acción |
+| --- | --- |
+| XF86AudioRaiseVolume | Subir volumen 5% |
+| XF86AudioLowerVolume | Bajar volumen 5% |
+| XF86AudioMute | Silenciar |
+| XF86MonBrightnessUp | Subir brillo 5% |
+| XF86MonBrightnessDown | Bajar brillo 5% |
+| XF86AudioPlay / XF86AudioPause | Reproducir / pausar |
+| XF86AudioNext | Siguiente pista |
+| XF86AudioPrev | Pista anterior |
 
 ## Estructura
 
