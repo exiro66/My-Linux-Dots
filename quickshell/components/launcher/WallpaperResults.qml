@@ -23,11 +23,24 @@ Item {
     readonly property bool empty: results.length === 0
     readonly property var chosen: results[Launcher.index] || null
 
-    onResultsChanged: if (active)
+    // Integrated folder browsing: the list shows directories instead
+    // of images. Enter descends into subfolders, the top row chooses.
+    property bool browsing: false
+    readonly property var folderRows: Wallpapers.searchFolders(Launcher.query)
+    readonly property bool foldersEmpty: folderRows.length <= 1
+
+    onResultsChanged: if (active && !view.browsing)
         Launcher.count = results.length
+    onFolderRowsChanged: if (active && view.browsing)
+        Launcher.count = folderRows.length
     onActiveChanged: if (active) {
-        Launcher.count = results.length;
+        Launcher.count = view.browsing ? folderRows.length : results.length;
         Launcher.index = 0;
+    }
+    onBrowsingChanged: {
+        Launcher.index = 0;
+        if (active)
+            Launcher.count = view.browsing ? folderRows.length : results.length;
     }
 
     // px/py are screen coordinates for the transition's origin, in awww's
@@ -42,17 +55,36 @@ Item {
     }
 
     function activate() {
+        if (view.browsing) {
+            view.activateFolder();
+            return;
+        }
         if (!chosen)
             return;
         var c = previewPane.mapToItem(null, previewPane.width / 2, previewPane.height / 2);
         view.apply(c.x, view.screenHeight - c.y);
     }
 
+    // Folders: Enter descends into subfolders ("..", dirs), the top row
+    // chooses the current folder as the wallpaper directory.
+    function activateFolder() {
+        var r = folderRows[Launcher.index];
+        if (!r)
+            return;
+        if (r.use) {
+            Wallpapers.setDir(r.path);
+            view.browsing = false;
+        } else {
+            Wallpapers.browseTo(r.path);
+            Launcher.index = 0;
+        }
+    }
+
     // ── empty state ─────────────────────────────────────────────
     Column {
         anchors.centerIn: parent
         spacing: 6
-        visible: view.empty
+        visible: view.empty && !view.browsing && !view.browsing
 
         Icon {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -80,7 +112,7 @@ Item {
         anchors.bottom: parent.bottom
         anchors.margins: 8
         width: Config.launcherWallListWidth - Config.railHitWidth
-        visible: !view.empty
+        visible: !view.empty && !view.browsing
         clip: true
         model: view.results
         currentIndex: Launcher.index
@@ -162,6 +194,92 @@ Item {
         flickable: list
     }
 
+    // ── folder browsing ─────────────────────────────────────────
+    // Same keys as images (↑↓ + Enter). Enter descends into ".." and
+    // subfolders; the top row chooses the current folder.
+    ListView {
+        id: folderList
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.margins: 8
+        width: Config.launcherWallListWidth - Config.railHitWidth
+        visible: view.browsing
+        clip: true
+        model: view.folderRows
+        currentIndex: Launcher.index
+        boundsBehavior: Flickable.StopAtBounds
+        onCurrentIndexChanged: positionViewAtIndex(currentIndex, ListView.Contain)
+
+        delegate: Item {
+            id: frow
+            required property int index
+            required property var modelData
+
+            readonly property bool selected: index === Launcher.index
+
+            width: folderList.width
+            height: 34
+
+            Rectangle {
+                anchors.fill: parent
+                anchors.topMargin: 1
+                anchors.bottomMargin: 1
+                radius: Config.rSm
+                antialiasing: true
+                color: frow.selected ? Theme.surfaceActive : fma.containsMouse ? Theme.surfaceHover : "transparent"
+                Behavior on color {
+                    ColorAnimation { duration: 110; easing.type: Config.easeFade }
+                }
+            }
+
+            Icon {
+                anchors.left: parent.left
+                anchors.leftMargin: 12
+                anchors.verticalCenter: parent.verticalCenter
+                box: 0
+                text: frow.modelData.use ? Icons.check : Icons.folder
+                size: 13
+                color: frow.selected ? Theme.accent : Theme.textMuted
+            }
+
+            Text {
+                anchors.left: parent.left
+                anchors.leftMargin: 38
+                anchors.right: parent.right
+                anchors.rightMargin: 8
+                anchors.verticalCenter: parent.verticalCenter
+                text: frow.modelData.use ? frow.modelData.name + " — " + frow.modelData.sub : frow.modelData.name
+                color: frow.selected ? Theme.accent : Theme.textSecondary
+                font.family: Theme.fontSans
+                font.pixelSize: 12
+                font.weight: frow.selected ? Font.DemiBold : Font.Normal
+                elide: Text.ElideMiddle
+            }
+
+            MouseArea {
+                id: fma
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                // Movement, not arrival — see Launcher.hoverAt.
+                onPositionChanged: mouse => Launcher.hoverAt(frow.index, mapToItem(null, mouse.x, mouse.y))
+                onEntered: Launcher.hoverAt(frow.index, mapToItem(null, mouseX, mouseY))
+                onClicked: {
+                    Launcher.index = frow.index;
+                    view.activateFolder();
+                }
+            }
+        }
+    }
+
+    ScrollRail {
+        anchors.left: folderList.right
+        anchors.top: folderList.top
+        anchors.bottom: folderList.bottom
+        flickable: folderList
+    }
+
     // ── the preview ─────────────────────────────────────────────
     Item {
         id: previewPane
@@ -174,7 +292,16 @@ Item {
         anchors.rightMargin: 12
         anchors.topMargin: 10
         anchors.bottomMargin: 10
-        visible: !view.empty
+        visible: !view.empty || view.browsing
+
+        Text {
+            anchors.centerIn: parent
+            visible: view.browsing
+            text: "↑↓ navigate · Enter open/choose · Esc back"
+            color: Theme.textFaint
+            font.family: Theme.fontSans
+            font.pixelSize: 11
+        }
 
         // ── rounded corners, without ClippingRectangle ──────────
         //
@@ -206,8 +333,8 @@ Item {
             cache: true
             smooth: true
             mipmap: true
-            visible: status === Image.Ready
-            opacity: status === Image.Ready ? 1 : 0
+            visible: status === Image.Ready && !view.browsing
+            opacity: status === Image.Ready && !view.browsing ? 1 : 0
             Behavior on opacity {
                 NumberAnimation { duration: Config.contentFadeDur; easing.type: Config.easeFade }
             }

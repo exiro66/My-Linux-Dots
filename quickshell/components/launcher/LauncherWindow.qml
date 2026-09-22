@@ -179,7 +179,12 @@ PanelWindow {
                         font: input.font
                     }
 
-                    Keys.onEscapePressed: Launcher.hide()
+                    Keys.onEscapePressed: {
+                        if (Launcher.mode === "walls" && wallView.browsing)
+                            wallView.browsing = false;
+                        else
+                            Launcher.hide();
+                    }
                     Keys.onUpPressed: Launcher.move(-1)
                     Keys.onDownPressed: Launcher.move(1)
                     Keys.onTabPressed: Launcher.toggleMode()
@@ -199,18 +204,33 @@ PanelWindow {
                     Keys.onEnterPressed: win.activate()
                 }
 
-                // Carpeta de fondos: abre el diálogo del sistema. Solo en
-                // modo wallpapers; la elección persiste y recarga el picker.
-                IconButton {
+                // Folder picker: opens the integrated browser. Browsing is
+                // inside the notch; the choice persists and reloads alone.
+                // Reload forces a re-read when anything looks stale.
+                Row {
                     anchors.right: modeHint.left
                     anchors.rightMargin: 8
                     anchors.verticalCenter: parent.verticalCenter
+                    spacing: 4
                     visible: Launcher.mode === "walls"
-                    glyph: Icons.folder
-                    glyphSize: 13
-                    implicitWidth: 30
-                    implicitHeight: 30
-                    onClicked: Wallpapers.pickDirectory()
+
+                    IconButton {
+                        implicitWidth: 30
+                        implicitHeight: 30
+                        glyph: Icons.restart
+                        glyphSize: 12
+                        onClicked: Wallpapers.refreshAll()
+                    }
+                    IconButton {
+                        implicitWidth: 30
+                        implicitHeight: 30
+                        glyph: Icons.folder
+                        glyphSize: 13
+                        onClicked: {
+                            Wallpapers.browseRoot = "";
+                            wallView.browsing = true;
+                        }
+                    }
                 }
 
                 // What Tab will give you. A hint that is also the control, so
