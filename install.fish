@@ -35,7 +35,7 @@ set pkgs hyprland quickshell kitty fish python-pywal jq curl bash \
     wl-clipboard kdialog ttf-jetbrains-mono-nerd inter-font hyprlock hypridle \
     hyprsunset nautilus firefox mpv sddm qt6ct nwg-look awww loupe easyeffects \
     gnome-disk-utility gnome-calculator vscodium qbittorrent lutris wine winetricks \
-    kooha grim slurp satty
+    kooha grim slurp satty opencode
 yay -S --needed --noconfirm $pkgs
 or begin
     echo "Falló la instalación de paquetes."

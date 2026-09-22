@@ -9,6 +9,7 @@ pywal y atajos en Lua. Probado en CachyOS, sirve en cualquier Arch.
 ![Fondos](Assets/4.png)
 ![HyprGlass](Assets/5.png)
 ![Caelestia SDDM](Assets/6.png)
+![OpenCode AI](Assets/7.png)
 
 ## Qué incluye
 
