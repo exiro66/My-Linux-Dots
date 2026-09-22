@@ -19,8 +19,7 @@ pywal y atajos en Lua. Probado en CachyOS, sirve en cualquier Arch.
   bordes de Hyprland, starship y el propio notch.
 * **Hyprland en Lua**: binds, autostart, decoraciones, workspaces `r~N`
   (numeración independiente por monitor).
-* **Scripts**: `toggle-recording.fish` (graba pantalla + audio con diálogo
-  de pantalla/mic), `wal-apply-all.fish`, `notch-reload.sh`, `rishot`.
+* **Scripts**: `wal-apply-all.fish`, `notch-reload.sh`, `notch-quickshell.sh`.
 * **SDDM**: tema caelestia + packs de fondos.
 * **Kitty** con tema generado por pywal.
 
@@ -52,7 +51,6 @@ Notas:
 | SUPER + C | Command Center / toggle notch |
 | SUPER + W | Fondos |
 | SUPER + R | Recargar quickshell + Hyprland |
-| SUPER + G | Grabar pantalla (para con lo mismo) |
 | SUPER + T / B / E | Terminal / navegador / archivos |
 | SUPER + 1..0 | Workspaces del monitor actual |
 | SUPER + Tab | Overview |
@@ -64,7 +62,7 @@ Notas:
 hypr/        config de Hyprland (Lua)
 kitty/       terminal + tema pywal
 quickshell/  NotchShell + parches (ver abajo)
-scripts/     toggle-recording, wal-apply-all, notch-reload
+scripts/     wal-apply-all, notch-reload, notch-quickshell
 sddm/        conf + tema caelestia + packs de fondos
 Wallpapers/  fondos
 Assets/      capturas del README

@@ -54,10 +54,8 @@ end
 hl.bind(mod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(fileManager))
-
--- Capturas
-hl.bind(mod .. " + S", hl.dsp.exec_cmd("~/.local/bin/rishot"))
-hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd("~/.local/bin/rishot monitor"))
+-- Capturas con Ksnip (elige carpeta al guardar)
+hl.bind(mod .. " + S", hl.dsp.exec_cmd("ksnip"))
 
 -- ============================================================
 -- TECLAS MULTIMEDIA (físicas)
@@ -95,7 +93,7 @@ hl.bind(mod .. " + A", hl.dsp.exec_cmd(qs .. " launcher apps"))
 hl.bind(mod .. " + C", hl.dsp.exec_cmd(qs .. " notch toggle"))
 
 -- Recarga todo: quickshell + hyprland (script ~/.local/bin/notch-reload.sh)
-hl.bind(mod .. " + R", hl.dsp.exec_cmd("sh /home/exiro/.local/bin/notch-reload.sh"))
+hl.bind(mod .. " + ALT + R", hl.dsp.exec_cmd("sh /home/exiro/.local/bin/notch-reload.sh"))
 
 -- Wallpaper picker
 hl.bind(mod .. " + W", hl.dsp.exec_cmd(qs .. " launcher walls"))
@@ -121,8 +119,6 @@ hl.bind(mod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 -- Cambio de workspace
 hl.bind(mod .. " + SHIFT + Left", hl.dsp.exec_cmd("hyprctl dispatch workspace -1"))
 hl.bind(mod .. " + SHIFT + Right", hl.dsp.exec_cmd("hyprctl dispatch workspace +1"))
-
-hl.bind(mod .. " + G", hl.dsp.exec_cmd("~/.local/bin/toggle-recording.fish"))
 
 -- ============================================================
 -- HYPRLAND (layouts)

@@ -17,4 +17,12 @@ set color1 (sed -n '2p' ~/.cache/wal/colors | string replace '#' '')
 set color4 (sed -n '5p' ~/.cache/wal/colors | string replace '#' '')
 hyprctl eval "hl.config({ general = { col = { active_border = { colors = { 'rgba($color1"ff")', 'rgba($color4"ff")' }, angle = 45 } } } })"
 
+# Colores de pywal → Starship
+cp ~/.cache/wal/starship.toml ~/.config/starship.toml 2>/dev/null
+
+# Auto-reload de Starship si cambia starship.toml
+function __starship_reload --on-variable fish_prompt_pwd_dir_length
+    starship init fish | source
+end
+
 echo "Colores aplicados."

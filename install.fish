@@ -33,7 +33,7 @@ set pkgs hyprland quickshell kitty fish python-pywal jq curl bash \
     networkmanager pipewire pipewire-pulse wireplumber bluez bluez-utils \
     power-profiles-daemon upower brightnessctl gpu-screen-recorder playerctl \
     wl-clipboard kdialog ttf-jetbrains-mono-nerd inter-font hyprlock hypridle \
-    hyprsunset nautilus firefox mpv sddm qt6ct nwg-look awww loupe easyeffects \
+    hyprsunset nautilus firefox mpv ksnip sddm qt6ct nwg-look awww loupe easyeffects \
     gnome-disk-utility gnome-calculator vscodium qbittorrent lutris wine winetricks
 yay -S --needed --noconfirm $pkgs
 or begin
@@ -46,12 +46,6 @@ paso "Paquetes AUR"
 for p in zen-browser hyprmod otf-apple-sf-pro mactahoe-icon-theme-git bibata-cursor-theme
     yay -S --needed --noconfirm $p; or echo "Aviso: no se instaló $p, sigo."
 end
-
-# --- rishot (capturas con anotación) ---
-paso "Rishot"
-yay -S --needed --noconfirm quickshell qt6-declarative qt6-svg qt6-5compat qt6-wayland wl-clipboard imagemagick cliphist curl kdialog libnotify
-and curl -fsSL https://raw.githubusercontent.com/Gakuseei/rishot/main/install.sh | sh
-or echo "Aviso: rishot no se instaló, sigo."
 
 # --- copia de seguridad + configs ---
 paso "Copiando configs (respaldo en $BACKUP)"
@@ -108,4 +102,4 @@ if test -n "$first"
 end
 
 echo -e "\nListo. Cierra sesión y entra en Hyprland."
-echo "Atajos: SUPER+A apps · SUPER+C centro · SUPER+W fondos · SUPER+R recargar · SUPER+G grabar"
+echo "Atajos: SUPER+A apps · SUPER+C centro · SUPER+W fondos · SUPER+R recargar"
