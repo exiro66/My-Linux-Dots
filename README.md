@@ -7,6 +7,8 @@ pywal y atajos en Lua. Probado en CachyOS, sirve en cualquier Arch.
 ![Command Center abierto](Assets/2.png)
 ![Lanzador de apps](Assets/3.png)
 ![Fondos](Assets/4.png)
+![HyprGlass](Assets/5.png)
+![Caelestia SDDM](Assets/6.png)
 
 ## Qué incluye
 
