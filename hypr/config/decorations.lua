@@ -55,7 +55,7 @@ hl.config({
 hl.config({
 	plugin = {
 		hyprglass = {
-			enabled = false,
+			enabled = true,
 			default_preset = "glass",
 			glass_opacity = 0.75,
 			blur_strength = 1.6,
