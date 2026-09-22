@@ -87,6 +87,10 @@ ShellRoot {
         function close(): void {
             UiState.dismiss();
         }
+        // Fija el notch visible o lo devuelve al auto-ocultado.
+        function pin(): void {
+            UiState.togglePin();
+        }
         // Raise a status in the notch from anywhere — a script that finished,
         // a backup that failed. `kind` picks the view; "notification" is the
         // general-purpose one and reads `summary` / `body`.

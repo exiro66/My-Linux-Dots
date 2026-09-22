@@ -31,6 +31,8 @@ QtObject {
     }
 
     function set(value) {
+        // Optimistic: paint at once, the poll confirms right after.
+        current = value;
         _run(["hyprctl", "eval", "hl.config({ general = { layout = \"" + value + "\" } })"]);
     }
 

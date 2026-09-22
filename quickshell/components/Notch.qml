@@ -76,10 +76,16 @@ Item {
     readonly property real detach: ef
 
     anchors.fill: parent
-    // One monitor at a time: the sheet's window while the center is open
-    // (or opening), the focused monitor otherwise. The other screen shows
-    // nothing — no peek, no empty panel.
-    visible: UiState.peekVisible && (notch.centerHere || (!notch.centerActive && notch.screenFocused))
+    // One monitor at a time, cross-faded: the sheet's window while the
+    // center is open (or opening), the focused monitor otherwise. The other
+    // screen shows nothing — no peek, no empty panel.
+    readonly property bool shownHere: UiState.peekVisible && (notch.centerHere || (!notch.centerActive && notch.screenFocused))
+    property real _shown: shownHere ? 1 : 0
+    Behavior on _shown {
+        NumberAnimation { duration: Config.contentFadeDur; easing.type: Easing.OutCubic }
+    }
+    visible: _shown > 0.01
+    opacity: _shown
 
     // ── the drawn notch (shape + content) ───────────────────────
     Item {

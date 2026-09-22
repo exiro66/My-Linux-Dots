@@ -51,12 +51,19 @@ QtObject {
     function togglePower() {
         if (!available)
             return;
-        _run(["bluetoothctl", "power", powered ? "off" : "on"]);
+        // Optimistic: paint at once, the poll confirms right after.
+        powered = !powered;
+        _run(["bluetoothctl", "power", powered ? "on" : "off"]);
     }
 
     function toggleDevice(dev) {
         if (!dev)
             return;
+        var rows = devices.slice();
+        for (var i = 0; i < rows.length; i++)
+            if (rows[i].mac === dev.mac)
+                rows[i] = { name: rows[i].name, mac: rows[i].mac, connected: !rows[i].connected };
+        devices = rows;
         _run(["bluetoothctl", dev.connected ? "disconnect" : "connect", dev.mac]);
     }
 

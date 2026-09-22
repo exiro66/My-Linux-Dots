@@ -99,7 +99,7 @@ hl.bind(mod .. " + A", hl.dsp.exec_cmd(qs .. " launcher apps"))
 hl.bind(mod .. " + C", hl.dsp.exec_cmd(qs .. " notch toggle"))
 
 -- Recarga todo: quickshell + hyprland (script ~/.local/bin/notch-reload.sh)
-hl.bind(mod .. " + ALT + R", hl.dsp.exec_cmd("sh /home/exiro/.local/bin/notch-reload.sh"))
+hl.bind(mod .. " + R", hl.dsp.exec_cmd("sh /home/exiro/.local/bin/notch-reload.sh"))
 
 -- Wallpaper picker
 hl.bind(mod .. " + W", hl.dsp.exec_cmd(qs .. " launcher walls"))
@@ -111,7 +111,8 @@ hl.bind(mod .. " + W", hl.dsp.exec_cmd(qs .. " launcher walls"))
 -- hl.bind(mod .. " + SHIFT + W", ...) -- widgets
 -- hl.bind(mod .. " + SHIFT + D", ...) -- dock
 -- hl.bind(mod .. " + SHIFT + C", ...) -- weather
--- hl.bind(mod .. " + SHIFT + N", ...) -- calendario directo
+-- Fijar notch visible / auto-ocultar
+hl.bind(mod .. " + N", hl.dsp.exec_cmd(qs .. " notch pin"))
 -- hl.bind(mod .. " + U", ...) -- clipboard
 
 -- Overview (todos los workspaces)

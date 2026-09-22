@@ -128,7 +128,13 @@ QtObject {
                          state.toHidden()
     }
 
-    // ── transient status queue ──────────────────────────────────
+    // Releasing the pinned monitor once the close animation has settled
+    // back at peek size with intent peek. Clearing earlier would hide the
+    // sheet mid-collapse instead of animating it out.
+    onProgressChanged: {
+        if (alwaysPeek && intent === "peek" && !dragging && progress <= peekStop + 0.001 && centerScreen !== "")
+            centerScreen = "";
+    }
     // current: { kind: string, data: object, priority: int, ttl: int } | null
     property var current: null
     property var _queue: []
@@ -255,7 +261,21 @@ QtObject {
         _animate(0, progress > peekStop + 0.02 ? "collapse" : "retract");
     }
 
+    // Fija o suelta el notch: visible siempre vs auto-ocultar.
+    function togglePin() {
+        alwaysPeek = !alwaysPeek;
+        if (alwaysPeek)
+            toPeek();
+        else if (hovering)
+            toPeek();
+        else
+            toHidden();
+    }
+
     function toPeek() {
+        // Parking here retires any pinned sheet: a stale centerScreen would
+        // keep authorizing peeks on a screen nobody is looking at.
+        centerScreen = "";
         intent = "peek";
         _animate(peekStop, progress > peekStop + 0.02 ? "collapse" : "peek");
     }

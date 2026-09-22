@@ -19,7 +19,9 @@ QtObject {
     property real level: 0
 
     function set(v) {
-        var pct = Math.round(Config.clamp(v, 0.05, 1) * 100);
+        // Optimistic: the slider follows the finger, the daemon confirms.
+        level = Config.clamp(v, 0.05, 1);
+        var pct = Math.round(level * 100);
         _run(["brightnessctl", "set", pct + "%"]);
     }
 
@@ -41,7 +43,7 @@ QtObject {
         _settle.restart();
     }
     property Timer _settle: Timer {
-        interval: 400
+        interval: 250
         onTriggered: bri.refresh()
     }
 

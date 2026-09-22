@@ -47,6 +47,8 @@ QtObject {
     }
 
     function setProfile(p) {
+        // Optimistic: paint at once, the poll confirms right after.
+        profile = p;
         _run(["powerprofilesctl", "set", p]);
     }
 
