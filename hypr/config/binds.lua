@@ -55,6 +55,14 @@ hl.bind(mod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(fileManager))
 
+-- Captura de región con Satty
+hl.bind("SUPER + S", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f -'))
+
+-- Captura de monitor completo (tú eliges cuál con un clic)
+hl.bind(mod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp -o)" - | satty -f -'))
+
+hl.bind(mod .. " + G", hl.dsp.exec_cmd("kooha"))
+
 -- ============================================================
 -- TECLAS MULTIMEDIA (físicas)
 -- ============================================================

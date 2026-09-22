@@ -34,7 +34,8 @@ set pkgs hyprland quickshell kitty fish python-pywal jq curl bash \
     power-profiles-daemon upower brightnessctl gpu-screen-recorder playerctl \
     wl-clipboard kdialog ttf-jetbrains-mono-nerd inter-font hyprlock hypridle \
     hyprsunset nautilus firefox mpv sddm qt6ct nwg-look awww loupe easyeffects \
-    gnome-disk-utility gnome-calculator vscodium qbittorrent lutris wine winetricks
+    gnome-disk-utility gnome-calculator vscodium qbittorrent lutris wine winetricks \
+    kooha grim slurp satty
 yay -S --needed --noconfirm $pkgs
 or begin
     echo "Falló la instalación de paquetes."
@@ -61,21 +62,21 @@ cp $DOTS/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
 
 # --- wallpapers a ~/Wallpapers + packs SDDM ---
-paso "Wallpapers"
+paso Wallpapers
 mkdir -p ~/Wallpapers ~/SDDM ~/Vídeos/Grabaciones
 cp -n $DOTS/Wallpapers/* ~/Wallpapers/ 2>/dev/null
 cp -rn $DOTS/sddm/wallpapers/* ~/SDDM/ 2>/dev/null
 true
 
 # --- servicios del sistema ---
-paso "Servicios"
+paso Servicios
 sudo systemctl enable --now bluetooth 2>/dev/null
 sudo systemctl enable --now power-profiles-daemon 2>/dev/null
 sudo systemctl mask dunst.service 2>/dev/null
 true
 
 # --- SDDM (tema caelestia) ---
-paso "SDDM"
+paso SDDM
 if test -d $DOTS/sddm/themes/caelestia
     sudo mkdir -p /usr/share/sddm/themes /etc/sddm.conf.d
     sudo cp -r $DOTS/sddm/themes/caelestia /usr/share/sddm/themes/
