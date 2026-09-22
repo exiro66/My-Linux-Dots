@@ -26,7 +26,9 @@ QtObject {
     id: walls
 
     readonly property string _home: Quickshell.env("HOME") || ""
-    readonly property string dir: _home + "/" + Config.wallpaperDir
+    // Config.wallpaperDir puede ser absoluto (override del picker) o
+    // relativo a $HOME (system.wallpapers de shell.conf).
+    readonly property string dir: Config.wallpaperDir.startsWith("/") ? Config.wallpaperDir : _home + "/" + Config.wallpaperDir
     // What is on screen now, written by `apply` below. Also the file a
     // "restore on login" would read, which is why it outlives the process.
     readonly property string stateFile: _home + "/.cache/current-wallpaper"
@@ -84,6 +86,17 @@ QtObject {
             if (all[i].name.toLowerCase().indexOf(q) >= 0)
                 out.push(all[i]);
         return out;
+    }
+
+    // Abre el diálogo de carpeta del sistema y guarda la elegida como
+    // override persistente (wallpapers-dir junto a shell.conf). Cancelar
+    // no toca nada; el watcher recarga el picker solo.
+    function pickDirectory() {
+        if (!_picker.running)
+            _picker.running = true;
+    }
+    property Process _picker: Process {
+        command: ["sh", "-c", "d=$(kdialog --getexistingdirectory \"$HOME\" --title \"Carpeta de fondos\" 2>/dev/null); [ -n \"$d\" ] && printf '%s' \"$d\" > '" + Settings.wallpaperDirFile + "'"]
     }
 
     // px/py: where on the screen the choice was made, in the wallpaper

@@ -199,6 +199,20 @@ PanelWindow {
                     Keys.onEnterPressed: win.activate()
                 }
 
+                // Carpeta de fondos: abre el diálogo del sistema. Solo en
+                // modo wallpapers; la elección persiste y recarga el picker.
+                IconButton {
+                    anchors.right: modeHint.left
+                    anchors.rightMargin: 8
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: Launcher.mode === "walls"
+                    glyph: Icons.folder
+                    glyphSize: 13
+                    implicitWidth: 30
+                    implicitHeight: 30
+                    onClicked: Wallpapers.pickDirectory()
+                }
+
                 // What Tab will give you. A hint that is also the control, so
                 // the shortcut is discoverable without a legend along the
                 // bottom of the sheet.

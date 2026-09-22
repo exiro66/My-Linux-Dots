@@ -47,6 +47,7 @@ QtObject {
     readonly property string search: ""
     readonly property string apps: ""
     readonly property string image: ""
+    readonly property string folder: ""
     readonly property string terminal: ""
 
     readonly property string calendar: ""

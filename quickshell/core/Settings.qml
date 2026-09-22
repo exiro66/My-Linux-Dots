@@ -46,6 +46,23 @@ QtObject {
 
     Component.onCompleted: _parse()
 
+    // ── override de carpeta de fondos ──────────────────────────
+    // El icono de carpeta del picker guarda aquí la ruta absoluta elegida
+    // (una línea). Si existe y no está vacío, manda sobre
+    // `system.wallpapers`. Vigilado: cambiarlo re-lista al instante.
+    property string wallpaperDirOverride: ""
+    readonly property string wallpaperDirFile: {
+        var dir = "" + Quickshell.shellDir;
+        return (dir.startsWith("file://") ? dir.slice(7) : dir) + "/wallpapers-dir";
+    }
+    property FileView _dirFile: FileView {
+        path: settings.wallpaperDirFile
+        watchChanges: true
+        onFileChanged: settings.wallpaperDirOverride = ("" + settings._dirFile.text()).trim()
+        onLoaded: settings.wallpaperDirOverride = ("" + settings._dirFile.text()).trim()
+        onLoadFailed: settings.wallpaperDirOverride = ""
+    }
+
     // ── the format ───────────────────────────────────────────────
     //
     //     section {
@@ -178,7 +195,9 @@ QtObject {
     // ── system ───────────────────────────────────────────────────
     // Split on spaces: the .desktop entry's own argv is appended to it.
     readonly property var terminal: _str("system.terminal", "kitty -e").split(/\s+/)
-    readonly property string wallpaperDir: _str("system.wallpapers", "Pictures/Wallpapers")
+    // system.wallpapers es relativo a $HOME; el override del picker es
+    // absoluto y manda si existe.
+    readonly property string wallpaperDir: settings.wallpaperDirOverride.length > 0 ? settings.wallpaperDirOverride : _str("system.wallpapers", "Pictures/Wallpapers")
     readonly property var keyboardLayouts: _list("system.keyboard_layouts", ["en", "ru"])
     readonly property string hyprlandDispatch: _pick("system.hyprland_dispatch", ["auto", "native", "lua"], "auto")
 

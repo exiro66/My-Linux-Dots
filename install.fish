@@ -66,11 +66,10 @@ cp -r $DOTS/hypr $DOTS/kitty $DOTS/quickshell ~/.config/
 cp $DOTS/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
 
-# --- wallpapers y packs SDDM ---
+# --- wallpapers a ~/Wallpapers + packs SDDM ---
 paso "Wallpapers"
-set pics (xdg-user-dir PICTURES 2>/dev/null; or echo ~/Imágenes)
-mkdir -p "$pics/Wallpapers" ~/SDDM ~/Vídeos/Grabaciones
-cp -n $DOTS/Wallpapers/* "$pics/Wallpapers/" 2>/dev/null
+mkdir -p ~/Wallpapers ~/SDDM ~/Vídeos/Grabaciones
+cp -n $DOTS/Wallpapers/* ~/Wallpapers/ 2>/dev/null
 cp -rn $DOTS/sddm/wallpapers/* ~/SDDM/ 2>/dev/null
 true
 
@@ -101,8 +100,8 @@ true
 
 # --- primer tema pywal ---
 paso "Tema inicial"
-set first "$pics/Wallpapers/ae86.png"
-test -f "$first"; or set first (ls "$pics"/Wallpapers/* 2>/dev/null | head -n 1)
+set first ~/Wallpapers/ae86.png
+test -f "$first"; or set first (ls ~/Wallpapers/* 2>/dev/null | head -n 1)
 if test -n "$first"
     wal -n -i "$first" 2>/dev/null
     ~/.local/bin/wal-apply-all.fish 2>/dev/null
