@@ -68,11 +68,6 @@ hl.config({
 			saturation = 1.15,
 			vibrancy = 0.5,
 			vibrancy_darkness = 0.5,
-
-			layers = {
-				enabled = false,
-				namespaces = "quickshell",
-			},
 		},
 	},
 })
