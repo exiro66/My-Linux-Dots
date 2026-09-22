@@ -33,7 +33,7 @@ set pkgs hyprland quickshell kitty fish python-pywal jq curl bash \
     networkmanager pipewire pipewire-pulse wireplumber bluez bluez-utils \
     power-profiles-daemon upower brightnessctl gpu-screen-recorder playerctl \
     wl-clipboard kdialog ttf-jetbrains-mono-nerd inter-font hyprlock hypridle \
-    hyprsunset nautilus firefox mpv ksnip sddm qt6ct nwg-look awww loupe easyeffects \
+    hyprsunset nautilus firefox mpv sddm qt6ct nwg-look awww loupe easyeffects \
     gnome-disk-utility gnome-calculator vscodium qbittorrent lutris wine winetricks
 yay -S --needed --noconfirm $pkgs
 or begin

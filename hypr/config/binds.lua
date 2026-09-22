@@ -54,8 +54,6 @@ end
 hl.bind(mod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(fileManager))
--- Capturas con Ksnip (elige carpeta al guardar)
-hl.bind(mod .. " + S", hl.dsp.exec_cmd("ksnip"))
 
 -- ============================================================
 -- TECLAS MULTIMEDIA (físicas)
