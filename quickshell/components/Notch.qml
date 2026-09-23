@@ -1,5 +1,6 @@
 import QtQuick
 import "../core"
+import "../../services"
 import "peek"
 import "transient"
 import "center"
@@ -77,9 +78,9 @@ Item {
 
     anchors.fill: parent
     // One monitor at a time, cross-faded: the sheet's window while the
-    // center is open (or opening), the focused monitor otherwise. The other
-    // screen shows nothing — no peek, no empty panel.
-    readonly property bool shownHere: UiState.peekVisible && (notch.centerHere || (!notch.centerActive && notch.screenFocused))
+    // center is open (or opening), the focused monitor otherwise — and never
+    // where that monitor is fullscreen. The other screen shows nothing.
+    readonly property bool shownHere: UiState.peekVisible && !Hypr.isFullscreen(screenName) && (notch.centerHere || (!notch.centerActive && notch.screenFocused))
     property real _shown: shownHere ? 1 : 0
     Behavior on _shown {
         NumberAnimation { duration: Config.contentFadeDur; easing.type: Easing.OutCubic }

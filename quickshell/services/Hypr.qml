@@ -44,9 +44,33 @@ QtObject {
         _dispatch("workspace", id);
     }
 
-    // Name of the monitor that currently has focus, matched against
-    // Quickshell's own screen list by the launcher so it opens where the
-    // user is looking. Empty until Hyprland's collections populate.
+    // Fullscreen por monitor, para ocultar el notch donde lo haya.
+    // Se refresca con el evento fullscreen y al arrancar; el mapa nuevo
+    // notifica y los bindings que lo lean se reevalúan solos.
+    property var fsByMonitor: ({})
+    function isFullscreen(name) {
+        return fsByMonitor[name] === true;
+    }
+    function refreshFs() {
+        if (!_fs.running)
+            _fs.running = true;
+    }
+    property Process _fs: Process {
+        command: ["hyprctl", "workspaces", "-j"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                try {
+                    var map = {};
+                    var list = JSON.parse("" + text);
+                    for (var i = 0; i < list.length; i++)
+                        if (list[i].hasfullscreen)
+                            map[list[i].monitor] = true;
+                    hypr.fsByMonitor = map;
+                } catch (e) {}
+            }
+        }
+    }
+    // Monitor con foco, para el lanzador y el notch de una sola pantalla.
     readonly property string focusedMonitorName: Hyprland.focusedMonitor ? Hyprland.focusedMonitor.name : ""
 
     // One live row per monitor — name plus the workspace it is showing —
@@ -257,6 +281,8 @@ QtObject {
                 hypr.layoutChanged(lname);
             } else if (name === "urgent") {
                 hypr.urgent();
+            } else if (name === "fullscreen") {
+                hypr.refreshFs();
             }
         }
     }

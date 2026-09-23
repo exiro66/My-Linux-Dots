@@ -13,7 +13,10 @@ QtObject {
     property Timer _readyTimer: Timer {
         interval: 1500
         running: true
-        onTriggered: bridge._ready = true
+        onTriggered: {
+            bridge._ready = true;
+            Hypr.refreshFs();
+        }
     }
 
     property Connections _hypr: Connections {
