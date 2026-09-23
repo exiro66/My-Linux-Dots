@@ -95,8 +95,9 @@ QtObject {
     readonly property bool isLight: Settings.theme === "light" ? true : Settings.theme === "dark" ? false : _lum(_wpBg) > 0.62
 
     // Accent: whatever `look.accent` pins, else the most chromatic swatch
-    // pywal produced. If the palette is near-greyscale we fall back to a calm
-    // periwinkle so accents still read.
+    // pywal produced — even when that is grey. Monochrome wallpapers theme
+    // grey rather than falling back to periwinkle: the legibility push in
+    // `accent` below already lifts it to a readable lightness.
     readonly property color _pickedAccent: {
         if (_accentPinned)
             return Settings.accent;
@@ -107,12 +108,12 @@ QtObject {
             if (!c)
                 continue;
             var ch = _chroma(c);
-            if (ch > bestC) {
+            if (!best || ch > bestC) {
                 bestC = ch;
                 best = c;
             }
         }
-        if (!best || bestC < 0.06)
+        if (!best)
             return "#8fa6e6";
         return best;
     }
