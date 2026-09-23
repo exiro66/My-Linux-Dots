@@ -111,8 +111,9 @@ hl.bind(mod .. " + W", hl.dsp.exec_cmd(qs .. " launcher walls"))
 -- hl.bind(mod .. " + SHIFT + W", ...) -- widgets
 -- hl.bind(mod .. " + SHIFT + D", ...) -- dock
 -- hl.bind(mod .. " + SHIFT + C", ...) -- weather
--- Fijar notch visible / auto-ocultar
+-- Fijar notch visible / auto-ocultar + doble notch en pin
 hl.bind(mod .. " + N", hl.dsp.exec_cmd(qs .. " notch pin"))
+hl.bind(mod .. " + SHIFT + N", hl.dsp.exec_cmd(qs .. " notch dual"))
 -- hl.bind(mod .. " + U", ...) -- clipboard
 
 -- Overview (todos los workspaces)
