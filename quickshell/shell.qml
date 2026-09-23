@@ -99,6 +99,12 @@ ShellRoot {
             UiState.togglePin();
             return UiState.alwaysPeek ? "pinned" : "auto";
         }
+        // Doble notch (solo con pin): un peek en cada monitor, cada uno a
+        // lo suyo. En auto-ocultar no hace nada.
+        function dual(): string {
+            UiState.dualNotch = !UiState.dualNotch;
+            return UiState.dualNotch ? "dual" : "single";
+        }
         // Raise a status in the notch from anywhere — a script that finished,
         // a backup that failed. `kind` picks the view; "notification" is the
         // general-purpose one and reads `summary` / `body`.

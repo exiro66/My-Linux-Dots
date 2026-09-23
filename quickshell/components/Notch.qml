@@ -30,13 +30,18 @@ Item {
     // one monitor at a time: the sheet's own window, else the focused one.
     property bool screenFocused: true
 
-    readonly property real pf: UiState.peekFraction     // 0..1 over the peek
+    // True while the pointer is on this window's strip or body. With it,
+    // this window follows the shared progress; without it, it parks at
+    // resting peek instead of mirroring the other screen (dual-pin mode).
+    property bool hoverHere: false
+    readonly property real effP: (notch.centerHere || notch.hoverHere) ? UiState.progress : Math.min(UiState.progress, UiState.peekStop)
+    readonly property real pf: Config.clamp(effP / UiState.peekStop, 0, 1)   // 0..1 over the peek
+    readonly property real ef: notch.centerHere ? Config.clamp((effP - UiState.peekStop) / (1 - UiState.peekStop), 0, 1) : 0   // 0..1 over the expansion
     // The sheet opens only on the monitor it was summoned from (see
     // UiState.centerScreen); the other windows keep rendering the peek.
     // NOTE: empty centerScreen means "no sheet yet", never "everywhere".
     readonly property bool centerActive: UiState.centerVisible || UiState.wantExpanded
     readonly property bool centerHere: UiState.centerScreen !== "" && UiState.centerScreen === screenName
-    readonly property real ef: centerHere ? UiState.expandFraction : 0   // 0..1 over the expansion
     readonly property bool hasTransient: UiState.current !== null
 
     property alias inputArea: hitArea
@@ -77,10 +82,12 @@ Item {
     readonly property real detach: ef
 
     anchors.fill: parent
-    // One monitor at a time, cross-faded: the sheet's window while the
-    // center is open (or opening), the focused monitor otherwise — and never
-    // where that monitor is fullscreen. The other screen shows nothing.
-    readonly property bool shownHere: UiState.peekVisible && !Hypr.isFullscreen(screenName) && (notch.centerHere || (!notch.centerActive && notch.screenFocused))
+    // One monitor at a time, cross-faded — or every monitor in dual-pin
+    // mode. The sheet's window while the center is open (or opening), the
+    // focused monitor otherwise (both, when pinned + dual) — and never
+    // where that monitor is fullscreen. Anything else shows nothing.
+    readonly property bool dualPin: UiState.alwaysPeek && UiState.dualNotch
+    readonly property bool shownHere: UiState.peekVisible && !Hypr.isFullscreen(screenName) && (notch.centerHere || dualPin || (!notch.centerActive && notch.screenFocused))
     property real _shown: shownHere ? 1 : 0
     Behavior on _shown {
         NumberAnimation { duration: Config.contentFadeDur; easing.type: Easing.OutCubic }

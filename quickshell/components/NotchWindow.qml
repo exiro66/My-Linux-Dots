@@ -115,5 +115,7 @@ PanelWindow {
         // Solo este monitor pinta si es el enfocado (peek) o si el centro
         // se abrió aquí. Así el notch nunca sale en los dos a la vez.
         screenFocused: win.screen.name === Hypr.focusedMonitorName
+        // Para el modo dual: cada ventana sigue solo su propio puntero.
+        hoverHere: win.stripHovered || notch.bodyHovered
     }
 }

@@ -37,6 +37,11 @@ QtObject {
     // shell raises a peek once at startup. Hover, transients and the Command
     // Center keep working exactly as before.
     property bool alwaysPeek: false
+    // dualNotch: in pin mode, park a peek on EVERY monitor instead of only
+    // the focused one. Each window still renders its own state (see
+    // Notch.effP) — hover here expands here, the other stays a peek.
+    // In auto-hide mode it does nothing.
+    property bool dualNotch: false
     property string intent: "hidden"
 
     // ── Command Center placement ───────────────────────────────
