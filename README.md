@@ -116,6 +116,7 @@ Notas:
 ```
 hypr/        config de Hyprland (Lua)
 kitty/       terminal + tema pywal
+fish/        funciones fish (sddm: temas del login)
 quickshell/  NotchShell + parches (ver abajo)
 scripts/     wal-apply-all, notch-reload, notch-quickshell
 sddm/        conf + tema caelestia + packs de fondos

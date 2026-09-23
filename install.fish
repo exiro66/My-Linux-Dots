@@ -61,6 +61,10 @@ cp -r $DOTS/hypr $DOTS/kitty $DOTS/quickshell ~/.config/
 cp $DOTS/scripts/* ~/.local/bin/
 chmod +x ~/.local/bin/*
 
+# --- funcion sddm (temas del login) ---
+mkdir -p ~/.config/fish/functions
+cp $DOTS/fish/functions/sddm.fish ~/.config/fish/functions/
+
 # --- wallpapers a ~/Wallpapers + packs SDDM ---
 paso Wallpapers
 mkdir -p ~/Wallpapers ~/SDDM ~/Vídeos/Grabaciones
