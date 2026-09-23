@@ -76,6 +76,7 @@ Notas:
 | SUPER + SHIFT + ← | Workspace anterior |
 | SUPER + SHIFT + → | Workspace siguiente |
 | SUPER + N | Fijar notch visible / auto-ocultar |
+| SUPER + SHIFT + N | Notch en todas las pantallas / 1 pantalla |
 
 ## Multimedia (teclas físicas)
 
