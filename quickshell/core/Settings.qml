@@ -177,6 +177,9 @@ QtObject {
     // ── notch ────────────────────────────────────────────────────
     readonly property real notchWidth: _num("notch.width", 172, 90, 520)
     readonly property real notchHeight: _num("notch.height", 34, 20, 80)
+    // Extra gap under the pill, on top of its own height. Only the pinned
+    // mode reserves (auto-hide stays overlay).
+    readonly property real notchBottomMargin: _num("notch.bottom_margin", 6, 0, 60)
     // Seconds a status (volume, workspace, layout) owns the notch.
     readonly property int statusTime: Math.round(_num("notch.status_time", 1.7, 0.4, 10) * 1000)
 

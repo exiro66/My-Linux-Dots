@@ -19,10 +19,10 @@ PanelWindow {
     anchors {
         top: true
     }
-    // La reserva sigue al tamaño. Solo en modo visible (pin): en
-    // auto-ocultar la ventana se esconde y no reserva nada.
+    // La reserva sigue al pill + margen inferior: en pin las ventanas
+    // empiezan debajo del notch con aire; en auto-ocultar no reserva nada.
     implicitWidth: Math.round(Config.peekWidth)
-    implicitHeight: 10
+    implicitHeight: Math.round(Config.peekHeight + Settings.notchBottomMargin)
     visible: UiState.alwaysPeek
     color: "transparent"
 

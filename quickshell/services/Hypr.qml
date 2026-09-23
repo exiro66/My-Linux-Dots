@@ -139,13 +139,34 @@ QtObject {
 
     // xkb's descriptive name → our two-letter code. Matched loosely on
     // purpose: the same layout is announced differently by different
-    // versions ("Russian", "ru", "Russian (phonetic)"), and anything
-    // unrecognised falling back to "en" is better than a blank notch.
+    // versions ("English (US)", "us", "Russian (phonetic)").
     function _applyLayout(name) {
         if (!name)
             return;
         var n = ("" + name).toLowerCase();
-        if (n.indexOf("rus") !== -1 || n.startsWith("ru"))
+        // "English (US)" → "us": a trailing region in parentheses IS the
+        // layout code xkb itself uses.
+        var paren = n.match(/\(([a-z]{2,3})\)\s*$/);
+        if (paren) {
+            hypr.layoutCode = paren[1];
+            return;
+        }
+        // Bare code already ("us", "es", ...): take it as announced.
+        for (var i = 0; i < layoutCodes.length; i++) {
+            if (n === ("" + layoutCodes[i]).toLowerCase()) {
+                hypr.layoutCode = layoutCodes[i];
+                return;
+            }
+        }
+        if (n.indexOf("spanish") !== -1)
+            hypr.layoutCode = "es";
+        else if (n.indexOf("english") !== -1)
+            hypr.layoutCode = "us";
+        else if (n.indexOf("portuguese") !== -1)
+            hypr.layoutCode = "pt";
+        else if (n.indexOf("italian") !== -1)
+            hypr.layoutCode = "it";
+        else if (n.indexOf("rus") !== -1 || n.startsWith("ru"))
             hypr.layoutCode = "ru";
         else if (n.indexOf("ukrain") !== -1)
             hypr.layoutCode = "ua";
@@ -153,8 +174,8 @@ QtObject {
             hypr.layoutCode = "de";
         else if (n.indexOf("french") !== -1)
             hypr.layoutCode = "fr";
-        else
-            hypr.layoutCode = "en";
+        // Anything else keeps the previous code: a wrong guess would pin
+        // the highlight on the first segment.
     }
 
     // Cycle layouts the same way `grp:alt_shift_toggle` does. Deliberately a
