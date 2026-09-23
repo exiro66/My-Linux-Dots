@@ -1,6 +1,6 @@
 import QtQuick
 import "../core"
-import "../../services"
+import "../services"
 import "peek"
 import "transient"
 import "center"
