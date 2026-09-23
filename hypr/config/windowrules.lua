@@ -186,3 +186,8 @@ hl.window_rule({
 	center = true,
 	size = "1200 1000",
 })
+
+hl.window_rule({
+	match = { class = "^(zapzap|com.rtosta.zapzap)$" },
+	opacity = "0.85 0.85",
+})

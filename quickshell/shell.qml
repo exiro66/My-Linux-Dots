@@ -23,6 +23,12 @@ ShellRoot {
         delegate: NotchWindow {}
     }
 
+    Variants {
+        model: Quickshell.screens
+
+        delegate: NotchReserve {}
+    }
+
     // The launchers are a single window that follows the focused monitor,
     // not one per screen: only one of them can have the keyboard.
     LauncherWindow {}
@@ -87,9 +93,11 @@ ShellRoot {
         function close(): void {
             UiState.dismiss();
         }
-        // Fija el notch visible o lo devuelve al auto-ocultado.
-        function pin(): void {
+        // Fija el notch visible o lo devuelve al auto-ocultado. Devuelve
+        // el estado resultante para verificarlo sin mirar la pantalla.
+        function pin(): string {
             UiState.togglePin();
+            return UiState.alwaysPeek ? "pinned" : "auto";
         }
         // Raise a status in the notch from anywhere — a script that finished,
         // a backup that failed. `kind` picks the view; "notification" is the

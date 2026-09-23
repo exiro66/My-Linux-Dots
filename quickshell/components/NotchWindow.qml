@@ -24,7 +24,9 @@ PanelWindow {
     }
     color: "transparent"
 
-    WlrLayershell.layer: WlrLayer.Overlay
+    // Capa Top (no Overlay): el vidrio de capas interactúa mejor aquí y el
+    // fullscreen se sigue ocultando por lógica propia.
+    WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.namespace: "quickshell-notch"
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
     exclusionMode: ExclusionMode.Ignore
