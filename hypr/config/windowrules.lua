@@ -163,17 +163,7 @@ hl.window_rule({
 	opacity = "0.85 0.85",
 })
 
--- Spun flotante y arrastrable
-hl.window_rule({
-	match = { class = "^(spun)$" },
-	float = true,
-})
 
--- Excepción para Spun (sin HyprGlass)
-hl.window_rule({
-	match = { class = "^(spun)$" },
-	tag = "+hyprglass_disabled",
-})
 
 hl.window_rule({
 	match = { class = "^(shelly|com.shellyorg.shelly)$" },
@@ -187,7 +177,3 @@ hl.window_rule({
 	size = "1200 1000",
 })
 
-hl.window_rule({
-	match = { class = "^(zapzap|com.rtosta.zapzap)$" },
-	opacity = "0.85 0.85",
-})
