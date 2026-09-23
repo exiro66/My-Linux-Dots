@@ -163,8 +163,6 @@ hl.window_rule({
 	opacity = "0.85 0.85",
 })
 
-
-
 hl.window_rule({
 	match = { class = "^(shelly|com.shellyorg.shelly)$" },
 	opacity = "0.85 0.85",
@@ -177,3 +175,13 @@ hl.window_rule({
 	size = "1200 1000",
 })
 
+hl.window_rule({
+	match = { class = "^(zapzap|com.rtosta.zapzap)$" },
+	opacity = "0.85 0.85",
+})
+
+-- Excepción de Hyprglass para Spun
+hl.window_rule({
+	match = { class = "spun" }, -- o el título/título inicial exacto
+	tag = "+hyprglass_disabled",
+})
