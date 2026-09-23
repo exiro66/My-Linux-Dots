@@ -91,6 +91,26 @@ Notas:
 | XF86AudioNext | Siguiente pista |
 | XF86AudioPrev | Pista anterior |
 
+## Scripts (SDDM)
+| Script | Acción |
+| --- | --- |
+|sddm black | aplica tema sddm negro |
+|sddm white | aplica tema sddm blanco |
+|sddm blue | aplica tema sddm azul |
+|sddm red | aplica tema sddm rojo |
+|sddm green | aplica tema sddm verde |
+|sddm purple | aplica tema sddm morado |
+|sddm orange | aplica tema sddm naranja |
+|sddm yellow | aplica tema sddm amarillo |
+|sddm pink | aplica tema sddm rosa |
+|sddm beige | aplica tema sddm beige |
+|sddm hexa | aplica tema sddm hexa |
+|sddm stars | aplica tema sddm stars |
+|sddm gruvbox | aplica tema sddm gruvbox |
+|sddm lavender | aplica tema sddm lavender |
+|sddm sky | aplica tema sddm sky |
+
+
 ## Estructura
 
 ```
