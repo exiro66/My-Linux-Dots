@@ -1,6 +1,8 @@
 pragma Singleton
 
 import QtQuick
+import Quickshell
+import Quickshell.Io
 import "."
 
 // The single source of truth for what the shell is doing.
@@ -267,6 +269,54 @@ QtObject {
     }
 
     // Fija o suelta el notch: visible siempre vs auto-ocultar.
+    // ── persisted state ────────────────────────────────────
+    // Pin + dual survive restarts, so the notch wakes as it slept and no
+    // keypress is needed after every reload. Written on every toggle,
+    // read at startup (and if something else edits the file).
+    readonly property string stateFile: {
+        var dir = "" + Quickshell.shellDir;
+        return (dir.startsWith("file://") ? dir.slice(7) : dir) + "/notch-state.json";
+    }
+    property bool _restoring: false
+
+    property FileView _stateFile: FileView {
+        path: state.stateFile
+        onLoaded: state._readState()
+        onLoadFailed: {}
+    }
+
+    function _readState() {
+        try {
+            var doc = JSON.parse("" + _stateFile.text());
+            state._restoring = true;
+            state.alwaysPeek = doc.pin === true;
+            state.dualNotch = doc.dual === true;
+            state._restoring = false;
+        } catch (e) {
+            state._restoring = false;
+            return;
+        }
+        if (state.alwaysPeek)
+            state.toPeek();
+    }
+
+    onAlwaysPeekChanged: if (!state._restoring)
+        state._saveState()
+    onDualNotchChanged: if (!state._restoring)
+        state._saveState()
+
+    function _saveState() {
+        // Atómico (tmp + mv) y reiniciable: conmutar rápido no pierde el
+        // último estado.
+        _saveProc.running = false;
+        _saveProc.command = ["sh", "-c", "printf '%s' '" + JSON.stringify({
+            pin: state.alwaysPeek,
+            dual: state.dualNotch
+        }).replace(/'/g, "'\\''") + "' > '" + state.stateFile + ".tmp' && mv '" + state.stateFile + ".tmp' '" + state.stateFile + "'"];
+        _saveProc.running = true;
+    }
+    property Process _saveProc: Process {}
+
     function togglePin() {
         alwaysPeek = !alwaysPeek;
         if (alwaysPeek)
