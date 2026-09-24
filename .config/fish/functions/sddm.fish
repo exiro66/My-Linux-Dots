@@ -1,6 +1,6 @@
 function sddm --description "Gestor maestro de temas, colores, wallpapers y avatares para SDDM Caelestia"
     if test (count $argv) -lt 1; or test (count $argv) -gt 2
-        echo "Uso: sddm [beige | black | blue | green | purple | red | orange | pink | white | yellow] [--no-restart]"
+        echo "Uso: sddm [beige | black | blue | green | purple | red | orange | pink | white | yellow...etc] [--no-restart]"
         return 1
     end
 
@@ -30,6 +30,57 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
     sudo chmod 644 /usr/share/sddm/faces/$USER.face.icon
 
     switch $color_input
+        case BLACK
+            echo "Applying black..."
+            sudo sed -i 's/^background=.*/background=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#0a0a0a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#1a1a1a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#b3b3b3/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textLight=.*/textLight=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^secondary=.*/secondary=#cccccc/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSecondary=.*/onSecondary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surface=.*/surface=#0a0a0a/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSurface=.*/onSurface=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^error=.*/error=#ff5555/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onError=.*/onError=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^outline=.*/outline=#333333/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^shadow=.*/shadow=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^hover=.*/hover=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^success=.*/success=#cccccc/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^warning=.*/warning=#b3b3b3/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^inverseOnSurface=.*/inverseOnSurface=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i '543s/#e2e2e2/#ffffff/' /usr/share/sddm/themes/caelestia/Main.qml
+            sudo sed -i 's/#a8a8a8/#ffffff/g' /usr/share/sddm/themes/caelestia/components/PasswordInput.qml
+
+        case WHITE
+            echo "Applying white..."
+
+            sudo sed -i 's/^background=.*/background=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^mainCard=.*/mainCard=#f5f5f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^subComponents=.*/subComponents=#e0e0e0/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^text=.*/text=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textDark=.*/textDark=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^textLight=.*/textLight=#333333/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^primary=.*/primary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onPrimary=.*/onPrimary=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^secondary=.*/secondary=#333333/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSecondary=.*/onSecondary=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^surface=.*/surface=#f5f5f5/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onSurface=.*/onSurface=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^error=.*/error=#cc3333/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^onError=.*/onError=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^outline=.*/outline=#cccccc/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^shadow=.*/shadow=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^hover=.*/hover=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^success=.*/success=#333333/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^warning=.*/warning=#666666/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i 's/^inverseOnSurface=.*/inverseOnSurface=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
+            sudo sed -i '543s/#e2e2e2/#000000/' /usr/share/sddm/themes/caelestia/Main.qml
+            sudo sed -i 's/#a8a8a8/#000000/g' /usr/share/sddm/themes/caelestia/components/PasswordInput.qml
+
         case BEIGE
             echo "Applying beige..."
             sudo sed -i 's/^background=.*/background=#12110e/' /usr/share/sddm/themes/caelestia/theme.conf
@@ -38,16 +89,6 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^text=.*/text=#f5f0e6/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^textDark=.*/textDark=#c2bba8/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^primary=.*/primary=#d4af37/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
-
-        case BLACK
-            echo "Applying black..."
-            sudo sed -i 's/^background=.*/background=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^mainCard=.*/mainCard=#0a0a0a/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^subComponents=.*/subComponents=#121212/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^text=.*/text=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^textDark=.*/textDark=#aaaaaa/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^primary=.*/primary=#ffffff/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case BLUE
@@ -98,16 +139,6 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
             sudo sed -i 's/^text=.*/text=#ffe0cc/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^textDark=.*/textDark=#ba8e74/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^primary=.*/primary=#ff6600/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
-
-        case WHITE
-            echo "Applying white..."
-            sudo sed -i 's/^background=.*/background=#050505/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^mainCard=.*/mainCard=#0f0f0f/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^subComponents=.*/subComponents=#1a1a1a/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^text=.*/text=#fbfbfb/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^textDark=.*/textDark=#999999/' /usr/share/sddm/themes/caelestia/theme.conf
-            sudo sed -i 's/^primary=.*/primary=#e5e5e5/' /usr/share/sddm/themes/caelestia/theme.conf
             sudo sed -i 's/^onPrimary=.*/onPrimary=#000000/' /usr/share/sddm/themes/caelestia/theme.conf
 
         case PINK
@@ -221,7 +252,7 @@ function sddm --description "Gestor maestro de temas, colores, wallpapers y avat
 
     echo "Tema $color_input aplicado correctamente."
 
-    if test "$argv[2]" = "--no-restart"
+    if test "$argv[2]" = --no-restart
         echo "Cambios aplicados sin reiniciar SDDM."
     else
         echo "Reiniciando la pantalla de bloqueo..."
